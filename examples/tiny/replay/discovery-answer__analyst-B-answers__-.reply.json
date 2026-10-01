@@ -1,0 +1,85 @@
+{
+ "discovery/answers/answer_B.json": {
+  "analyst": "B",
+  "answers": [
+   {
+    "challenge_id": "CH-01",
+    "answer": "ACCEPT",
+    "reason": "R24 is about error messages, not context switching.",
+    "revision": "B-RQ1-04: removed R24"
+   },
+   {
+    "challenge_id": "CH-02",
+    "answer": "ACCEPT",
+    "reason": "Careless output is wrong output; R21 meets B-RQ2-01.",
+    "revision": "B-RQ2-01: added R21"
+   },
+   {
+    "challenge_id": "CH-03",
+    "answer": "REJECT",
+    "reason": "Supervising output (B-RQ2-04) and losing one's own skills (B-RQ2-08) are different worries; R09 touches both.",
+    "revision": "none"
+   }
+  ]
+ },
+ "discovery/v1_delta/analyst_B.json": {
+  "replace": [
+   {
+    "id": "B-RQ1-04",
+    "layer": "latent",
+    "rq": "RQ1",
+    "label": "Reduces searching and context switching",
+    "definition": "The developer stays in the editor instead of searching elsewhere.",
+    "include": "No web search, next steps suggested in place.",
+    "exclude": "Explanations as such go to B-RQ1-03.",
+    "participants": [
+     "R26"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R26",
+      "quote": "fewer context switches"
+     }
+    ],
+    "n_participants": 1
+   },
+   {
+    "id": "B-RQ2-01",
+    "layer": "semantic",
+    "rq": "RQ2",
+    "label": "Produces wrong or made-up code",
+    "definition": "Suggestions are wrong or refer to things that do not exist.",
+    "include": "Bugs, invented APIs or flags.",
+    "exclude": "Review effort goes to B-RQ2-02.",
+    "participants": [
+     "R03",
+     "R13",
+     "R20",
+     "R21"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R03",
+      "quote": "often wrong in subtle ways"
+     },
+     {
+      "uid": "R13",
+      "quote": "invents API methods that do not exist"
+     },
+     {
+      "uid": "R20",
+      "quote": "hallucinated a configuration flag"
+     },
+     {
+      "uid": "R21",
+      "quote": "a fast but careless intern"
+     }
+    ],
+    "n_participants": 4
+   }
+  ],
+  "remove": [],
+  "uncodeable_add": [],
+  "uncodeable_remove": []
+ }
+}

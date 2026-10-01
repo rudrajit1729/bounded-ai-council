@@ -1,0 +1,220 @@
+{
+ "discovery/v0/per_reading/analyst_A_RQ2.json": {
+  "analyst": "A",
+  "lens": "layered",
+  "n_read": 30,
+  "codes": [
+   {
+    "id": "A-RQ2-01",
+    "layer": "semantic",
+    "rq": "RQ2",
+    "label": "Suggestions contain subtle or invented errors",
+    "definition": "Suggested code looks right but is wrong, or refers to APIs or flags that do not exist.",
+    "include": "Wrong logic, invented methods, invented configuration.",
+    "exclude": "Time spent checking output goes to A-RQ2-03.",
+    "participants": [
+     "R03",
+     "R13",
+     "R20",
+     "R21"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R03",
+      "quote": "The suggestions are often wrong in subtle ways"
+     },
+     {
+      "uid": "R13",
+      "quote": "it invents API methods that do not exist"
+     },
+     {
+      "uid": "R20",
+      "quote": "It hallucinated a configuration flag"
+     },
+     {
+      "uid": "R21",
+      "quote": "a fast but careless intern"
+     }
+    ],
+    "n_participants": 4
+   },
+   {
+    "id": "A-RQ2-02",
+    "layer": "semantic",
+    "rq": "RQ2",
+    "label": "Security, licensing and data risks",
+    "definition": "The developer sees risks to security, licensing or data handling in using the assistant.",
+    "include": "Insecure suggestions, licence worries, unclear data sharing.",
+    "exclude": "Rules that restrict use go to A-RQ2-07.",
+    "participants": [
+     "R04",
+     "R11",
+     "R18"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R04",
+      "quote": "I don't trust it with anything security related"
+     },
+     {
+      "uid": "R11",
+      "quote": "Our legal team is nervous about licensing of generated code"
+     },
+     {
+      "uid": "R18",
+      "quote": "I can't tell what data it sends to the vendor"
+     }
+    ],
+    "n_participants": 3
+   },
+   {
+    "id": "A-RQ2-03",
+    "layer": "semantic",
+    "rq": "RQ2",
+    "label": "Checking its output costs time",
+    "definition": "Reviewing, editing or chasing the assistant's output takes time that can exceed the time saved.",
+    "include": "Review time, heavy editing, time lost chasing errors, extra review steps.",
+    "exclude": "The errors themselves go to A-RQ2-01.",
+    "participants": [
+     "R07",
+     "R13",
+     "R19",
+     "R23"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R07",
+      "quote": "Reviewing its output takes longer than writing the code myself"
+     },
+     {
+      "uid": "R13",
+      "quote": "I lose time chasing them"
+     },
+     {
+      "uid": "R19",
+      "quote": "needs heavy editing"
+     },
+     {
+      "uid": "R23",
+      "quote": "which adds overhead"
+     }
+    ],
+    "n_participants": 4
+   },
+   {
+    "id": "A-RQ2-04",
+    "layer": "semantic",
+    "rq": "RQ2",
+    "label": "Ignores team conventions and internal libraries",
+    "definition": "Generated code does not follow the team's conventions or fit its internal libraries.",
+    "include": "Naming conventions, internal libraries, house style.",
+    "exclude": "Plain wrong code goes to A-RQ2-01.",
+    "participants": [
+     "R08",
+     "R25"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R08",
+      "quote": "ignores our team's naming conventions"
+     },
+     {
+      "uid": "R25",
+      "quote": "The suggestions rarely fit our internal libraries"
+     }
+    ],
+    "n_participants": 2
+   },
+   {
+    "id": "A-RQ2-05",
+    "layer": "latent",
+    "rq": "RQ2",
+    "label": "Erodes developers' own understanding",
+    "definition": "Relying on suggestions may keep developers from understanding code or keeping their skills.",
+    "include": "Worries about juniors, deskilling, accepting without understanding.",
+    "exclude": "Errors in output go to A-RQ2-01.",
+    "participants": [
+     "R09",
+     "R27"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R09",
+      "quote": "juniors on my team accept suggestions without understanding them"
+     },
+     {
+      "uid": "R27",
+      "quote": "I'm concerned about losing my own skills"
+     }
+    ],
+    "n_participants": 2
+   },
+   {
+    "id": "A-RQ2-06",
+    "layer": "semantic",
+    "rq": "RQ2",
+    "label": "Interrupts concentration",
+    "definition": "Suggestions break the developer's flow of thought.",
+    "include": "Interruptions, dismissing suggestions.",
+    "exclude": "",
+    "participants": [
+     "R16"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R16",
+      "quote": "The autocomplete interrupts my flow"
+     }
+    ],
+    "n_participants": 1
+   },
+   {
+    "id": "A-RQ2-07",
+    "layer": "contrastive",
+    "rq": "RQ2",
+    "label": "Organisation restricts where it may be used",
+    "definition": "Legal, leads or policy limit the code bases where the assistant may be used, or leave it unclear.",
+    "include": "Bans, restrictions to internal tools, unclear policy.",
+    "exclude": "The underlying risk without a rule goes to A-RQ2-02.",
+    "participants": [
+     "R11",
+     "R29",
+     "R18"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R11",
+      "quote": "we can only use it on internal tools"
+     },
+     {
+      "uid": "R29",
+      "quote": "Our team lead banned it on the payments service"
+     },
+     {
+      "uid": "R18",
+      "quote": "our company policy is unclear"
+     }
+    ],
+    "n_participants": 3
+   }
+  ],
+  "candidate_themes": [],
+  "uncodeable": [
+   "R01",
+   "R02",
+   "R05",
+   "R06",
+   "R10",
+   "R12",
+   "R14",
+   "R15",
+   "R17",
+   "R22",
+   "R24",
+   "R26",
+   "R28",
+   "R30"
+  ],
+  "notes": "contrastive pass separated rules from risks."
+ }
+}

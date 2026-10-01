@@ -1,0 +1,364 @@
+<title>Council Codebook Review</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+/* Layout: a reviewer's workbench. Left rail lists the codes by research question; the right pane is one code's file with the decision form pinned at its top. */
+:root {
+  --bg: #f3f5f7; --panel: #ffffff; --fg: #17212b; --muted: #5b6875; --line: #d9dfe5; --soft: #eaeef2;
+  --accent: #0b6e69; --accent-soft: #d8efec; --full: #b3261e; --full-soft: #fbe3e1; --check: #9a6300; --check-soft: #fbefd6;
+  --quick: #3c6e3c; --quick-soft: #e1efe0; --mark: #fff1a8;
+  --serif: "IBM Plex Serif", Georgia, serif; --sans: "IBM Plex Sans", system-ui, sans-serif; --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #11171d; --panel: #18212a; --fg: #e6ebf0; --muted: #98a6b3; --line: #2b3742; --soft: #1f2a34;
+  --accent: #4fc3b8; --accent-soft: #143a38; --full: #ff8a80; --full-soft: #3d1b1a; --check: #f0b75a; --check-soft: #3a2c12;
+  --quick: #8fcf8f; --quick-soft: #1d3320; --mark: #5a4d10; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #11171d; --panel: #18212a; --fg: #e6ebf0; --muted: #98a6b3; --line: #2b3742; --soft: #1f2a34;
+  --accent: #4fc3b8; --accent-soft: #143a38; --full: #ff8a80; --full-soft: #3d1b1a; --check: #f0b75a; --check-soft: #3a2c12;
+  --quick: #8fcf8f; --quick-soft: #1d3320; --mark: #5a4d10; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font: 14px/1.5 var(--sans); }
+.wrap { padding-inline: 16px; padding-block: 12px 40px; max-width: 1400px; margin: 0 auto; }
+header.top { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: end; justify-content: space-between; padding-block: 8px 12px; border-bottom: 1px solid var(--line); }
+h1 { font: 600 22px/1.2 var(--serif); margin: 0; text-wrap: balance; }
+.sub { color: var(--muted); font-size: 13px; margin: 2px 0 0; }
+.save { font-size: 12px; color: var(--muted); font-family: var(--mono); }
+.save.err { color: var(--full); }
+.progress { display: flex; gap: 10px; flex-wrap: wrap; font-size: 12px; font-variant-numeric: tabular-nums; }
+.pbar { display: flex; flex-direction: column; gap: 3px; min-width: 120px; }
+.pbar .track { height: 6px; background: var(--soft); border-radius: 3px; overflow: hidden; }
+.pbar .fill { height: 100%; background: var(--accent); }
+nav.tabs { display: flex; gap: 4px; margin-block: 12px; flex-wrap: wrap; }
+nav.tabs button { font: 500 13px var(--sans); border: 1px solid var(--line); background: var(--panel); color: var(--fg); padding: 6px 12px; border-radius: 6px; cursor: pointer; }
+nav.tabs button[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: var(--panel); }
+nav.tabs button.locked { color: var(--muted); }
+.grid { display: grid; grid-template-columns: minmax(260px, 340px) minmax(0, 1fr); gap: 16px; align-items: start; }
+@media (max-width: 860px) { .grid { grid-template-columns: minmax(0, 1fr); } .rail { max-height: 45vh; } }
+.rail { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; overflow: auto; max-height: calc(100vh - 170px); position: sticky; top: env(safe-area-inset-top, 0px); }
+.filters { display: flex; gap: 6px; flex-wrap: wrap; padding: 10px; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: var(--panel); z-index: 1; }
+.filters select, .filters input { font: 13px var(--sans); padding: 4px 6px; border: 1px solid var(--line); border-radius: 5px; background: var(--panel); color: var(--fg); min-width: 0; }
+.filters input { flex: 1 1 120px; }
+.rqhead { font: 600 11px var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding: 10px 12px 4px; }
+.item { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 8px; align-items: start; padding: 7px 12px; cursor: pointer; border-left: 3px solid transparent; }
+.item:hover { background: var(--soft); }
+.item.sel { background: var(--accent-soft); border-left-color: var(--accent); }
+.item .lab { font-size: 13px; line-height: 1.35; }
+.item .id { font: 500 11px var(--mono); color: var(--muted); padding-top: 2px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; margin-top: 5px; border: 1.5px solid var(--muted); }
+.dot.done { background: var(--accent); border-color: var(--accent); }
+.chip { display: inline-block; font: 600 10px var(--sans); letter-spacing: .05em; text-transform: uppercase; padding: 2px 6px; border-radius: 4px; white-space: nowrap; }
+.chip.full { background: var(--full-soft); color: var(--full); }
+.chip.check { background: var(--check-soft); color: var(--check); }
+.chip.quick { background: var(--quick-soft); color: var(--quick); }
+.pane { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; min-width: 0; }
+.card h2 { font: 600 19px/1.3 var(--serif); margin: 4px 0 6px; text-wrap: balance; }
+.card h3 { font: 600 11px var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
+.meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; font-size: 12px; color: var(--muted); }
+.def dl { display: grid; grid-template-columns: 90px minmax(0, 1fr); gap: 6px 12px; margin: 8px 0 0; }
+.def dt { color: var(--muted); font-size: 12px; padding-top: 1px; }
+.def dd { margin: 0; max-width: 75ch; }
+.flags { display: flex; flex-wrap: wrap; gap: 6px; }
+.flag { font-size: 12px; background: var(--soft); border: 1px solid var(--line); border-radius: 4px; padding: 2px 8px; }
+.decide { border-color: var(--accent); }
+.row { display: flex; gap: 10px 18px; flex-wrap: wrap; align-items: center; }
+.crit { display: flex; gap: 6px; align-items: center; font-size: 13px; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.seg button { font: 13px var(--sans); border: 0; background: var(--panel); color: var(--fg); padding: 4px 10px; cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button.on { background: var(--accent); color: var(--panel); }
+.seg button.on.bad { background: var(--full); }
+label.f { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted); flex: 1 1 220px; min-width: 0; }
+label.f input, label.f textarea, label.f select { font: 14px var(--sans); color: var(--fg); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; width: 100%; }
+label.f textarea { min-height: 56px; resize: vertical; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.hint { font-size: 12px; color: var(--muted); }
+.hint.err { color: var(--full); }
+.quotes blockquote { margin: 0 0 8px; padding-left: 10px; border-left: 2px solid var(--line); font-family: var(--serif); }
+.quotes .uid { font: 500 11px var(--mono); color: var(--muted); }
+.threads { display: flex; flex-direction: column; gap: 6px; }
+.th { border: 1px solid var(--line); border-radius: 6px; }
+.th summary { display: flex; gap: 10px; align-items: center; padding: 6px 10px; cursor: pointer; list-style: none; flex-wrap: wrap; }
+.th summary::-webkit-details-marker { display: none; }
+.th .uid { font: 500 12px var(--mono); }
+.th .first { color: var(--muted); font-size: 13px; flex: 1 1 200px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.th .body { padding: 8px 12px 12px; white-space: pre-wrap; font-size: 13px; border-top: 1px solid var(--line); max-height: 420px; overflow: auto; }
+.th .body mark { background: var(--mark); color: inherit; }
+.th.unsup { border-color: var(--full); }
+.tag { font-size: 11px; border-radius: 4px; padding: 1px 6px; background: var(--soft); color: var(--muted); }
+.tag.weak { background: var(--check-soft); color: var(--check); }
+.tag.dev { background: var(--accent-soft); color: var(--accent); }
+.mini { font: 12px var(--sans); border: 1px solid var(--line); background: var(--panel); color: var(--fg); border-radius: 5px; padding: 2px 8px; cursor: pointer; }
+.mini.on { background: var(--full); border-color: var(--full); color: var(--panel); }
+.ch { border-top: 1px solid var(--line); padding-block: 8px; font-size: 13px; }
+.ch:first-of-type { border-top: 0; padding-top: 0; }
+.ch b { font-family: var(--mono); font-weight: 500; font-size: 12px; }
+.btn { font: 600 13px var(--sans); background: var(--accent); color: var(--panel); border: 0; border-radius: 6px; padding: 8px 14px; cursor: pointer; }
+.btn.ghost { background: var(--panel); color: var(--fg); border: 1px solid var(--line); }
+.btn.danger { background: var(--full); }
+.tablewrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; border-bottom: 1px solid var(--line); padding: 6px 8px; vertical-align: top; }
+th { font: 600 11px var(--sans); letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+.banner { background: var(--check-soft); color: var(--fg); border: 1px solid var(--check); border-radius: 6px; padding: 8px 12px; font-size: 13px; }
+.empty { color: var(--muted); padding: 24px; text-align: center; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Council Codebook Review</h1>
+      <p class="sub"><span id="ncodes"></span> candidate codes from the council (<span id="mode"></span>) on <span id="nunits"></span>, grouped by research question. Decide each code against the units it cites; your choices save as you go. Finish with <b>Finish review</b> and download your decisions.</p>
+    </div>
+    <div class="row">
+      <div class="progress" id="progress"></div>
+      <span class="save" id="save">Connecting…</span>
+    </div>
+  </header>
+  <div id="banner" class="banner" hidden></div>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" id="tab-codes" aria-selected="true">Codes</button>
+    <button role="tab" id="tab-quar" aria-selected="false">Adversary-proposed codes</button>
+    <button role="tab" id="tab-finish" aria-selected="false">Finish review</button>
+  </nav>
+
+  <section id="view-codes" class="grid">
+    <aside class="rail">
+      <div class="filters">
+        <select id="f-rq" aria-label="Research question"><option value="">All questions</option></select>
+        <select id="f-pri" aria-label="Priority"><option value="">All priorities</option><option value="full">Full review</option><option value="check">Check</option><option value="quick">Quick check</option></select>
+        <select id="f-state" aria-label="Status"><option value="">All</option><option value="open">Not decided</option><option value="done">Decided</option></select>
+        <input id="f-q" type="search" placeholder="Search labels" aria-label="Search labels">
+      </div>
+      <div id="list"></div>
+    </aside>
+    <main class="pane" id="detail"></main>
+  </section>
+
+  <section id="view-quar" hidden><div class="pane" id="quar"></div></section>
+  <section id="view-finish" hidden><div class="pane" id="finish"></div></section>
+</div>
+
+<script>
+const DATA = /*__DATA__*/null;
+const ROUND = DATA.round || "r1";
+const PROP = DATA.proposals || {};
+const PRI = { full: "Full review", check: "Check", quick: "Quick check" };
+const DECISIONS = [["keep", "Keep"], ["relabel", "Relabel / redefine"], ["merge", "Merge into…"], ["move", "Move to another question"], ["split", "Split"], ["drop", "Drop"]];
+const DEV = new Set(DATA.dev);
+const byId = Object.fromEntries(DATA.codes.map(c => [c.id, c]));
+const state = { sel: DATA.codes[0].id, reviews: {}, status: null, uid: null, db: null, tab: "codes", q: "" };
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, m => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[m]);
+
+/* ---------- storage: artifact database, with this browser as a fallback ---------- */
+/* Keys carry this review's id, so two studies opened from the same origin (file:// or the local app) never share saved decisions. */
+const STORE = (DATA.store || "") + ":";
+function lsGet(k) { try { return JSON.parse(localStorage.getItem(STORE + k) || "null"); } catch { return null; } }
+function lsSet(k, v) { try { localStorage.setItem(STORE + k, JSON.stringify(v)); } catch {} }
+const pending = {};
+function saveReview(key, patch) {
+  const cur = Object.assign({ reviewer: state.uid || "local", key }, state.reviews[key] || {}, patch, { updatedAt: new Date().toISOString() });
+  state.reviews[key] = cur;
+  renderProgress(); renderList();
+  clearTimeout(pending[key]);
+  pending[key] = setTimeout(async () => {
+    if (!state.db) { lsSet("reviews_" + ROUND, state.reviews); setSave("Saved in this browser only"); return; }
+    try { setSave("Saving…"); await state.db.doc(`reviews_${ROUND}/${state.uid}__${key.replace(/[^\w.-]/g, "_")}`).set(cur); setSave("All changes saved"); }
+    catch (e) { setSave("Not saved: " + (e.message || e.code), true); }
+  }, 500);
+}
+function setSave(t, err) { const el = $("#save"); el.textContent = t; el.classList.toggle("err", !!err); }
+
+async function boot() {
+  let db = null, user = null;
+  try { db = await (window.claude?.use?.("db") ?? null); user = await (window.claude?.use?.("user") ?? null); } catch {}
+  if (db && user) {
+    try { state.uid = await user.id(); } catch { state.uid = null; }
+  }
+  if (!db || !state.uid) {
+    state.reviews = lsGet("reviews_" + ROUND) || {}; state.status = lsGet("status");
+    const b = $("#banner"); b.hidden = false;
+    b.textContent = "Your decisions are kept in this browser (local storage). When you finish, use Download my decisions on the Finish review tab and send the file to whoever assembles the edit log. Clearing site data erases unsaved work, so download a copy as you go.";
+    setSave("Saved in this browser only"); renderAll(); return;
+  }
+  state.db = db;
+  db.collection(`reviews_${ROUND}`).where("reviewer", "==", state.uid).onSnapshot(snap => {
+    snap.docs.forEach(d => { const v = d.data(); if (v && v.key) state.reviews[v.key] = Object.assign(state.reviews[v.key] || {}, v); });
+    setSave("All changes saved"); renderAll();
+  }, e => setSave("Store unavailable: " + e.code, true));
+  db.doc(`status_${ROUND}/${state.uid}`).onSnapshot(s => { state.status = s.exists ? s.data() : null; renderTabs(); if (state.tab === "finish") renderFinish(); });
+}
+
+/* ---------- derived ---------- */
+function decided(c) { const r = state.reviews[c.id]; return !!(r && r.decision); }
+function filtered() {
+  const rq = $("#f-rq").value, pri = $("#f-pri").value, st = $("#f-state").value, q = $("#f-q").value.toLowerCase();
+  return DATA.codes.filter(c => (!rq || c.rq === rq) && (!pri || c.priority === pri) &&
+    (!st || (st === "done") === decided(c)) && (!q || (c.label + " " + c.id).toLowerCase().includes(q)));
+}
+
+/* ---------- render ---------- */
+function renderProgress() {
+  const el = $("#progress"); el.innerHTML = "";
+  for (const p of ["full", "check", "quick"]) {
+    const cs = DATA.codes.filter(c => c.priority === p), n = cs.filter(decided).length;
+    el.insertAdjacentHTML("beforeend", `<div class="pbar"><span><span class="chip ${p}">${PRI[p]}</span> ${n} of ${cs.length}</span><div class="track"><div class="fill" style="width:${100 * n / cs.length}%"></div></div></div>`);
+  }
+}
+function renderList() {
+  const list = $("#list"), items = filtered(); let html = "";
+  for (const rq of Object.keys(DATA.rqs)) {
+    const cs = items.filter(c => c.rq === rq); if (!cs.length) continue;
+    html += `<div class="rqhead">${rq} · ${esc(DATA.rqs[rq])}</div>`;
+    for (const c of cs) html += `<div class="item${c.id === state.sel ? " sel" : ""}" data-id="${c.id}" tabindex="0" role="button" aria-label="${esc(c.id + " " + c.label)}"><span class="dot${decided(c) ? " done" : ""}"></span><span><span class="lab">${esc(c.label)}</span><br><span class="id">${c.id} · ${c.n_units} ${esc(DATA.unit_plural)}</span></span><span class="chip ${c.priority}">${PRI[c.priority].split(" ")[0]}</span>${PROP[c.id] ? `<span></span><span class="id" style="color:var(--accent)">Proposed: ${esc(PROP[c.id].decision)}${PROP[c.id].mergeInto ? " into " + PROP[c.id].mergeInto : ""}${PROP[c.id].rq ? " to " + PROP[c.id].rq : ""}</span>` : ""}</div>`;
+  }
+  list.innerHTML = html || `<div class="empty">No codes match these filters.</div>`;
+}
+function seg(key, field, opts, cur) {
+  return `<span class="seg">${opts.map(([v, l, bad]) => `<button type="button" data-k="${key}" data-f="${field}" data-v="${v}" class="${cur === v ? "on" + (bad ? " bad" : "") : ""}">${l}</button>`).join("")}</span>`;
+}
+function highlight(text, needle) {
+  const t = esc(text); if (!needle) return t;
+  const n = esc(needle).slice(0, 80); const i = t.toLowerCase().indexOf(n.toLowerCase());
+  return i < 0 ? t : t.slice(0, i) + "<mark>" + t.slice(i, i + n.length) + "</mark>" + t.slice(i + n.length);
+}
+function renderDetail() {
+  const c = byId[state.sel], r = state.reviews[c.id] || {}, el = $("#detail");
+  const same = DATA.codes.filter(x => x.rq === c.rq && x.id !== c.id);
+  const rels = DATA.relations.filter(x => x.from === c.id || x.to === c.id);
+  const quoteFor = u => (c.quotes.find(q => q.uid === u) || {}).quote;
+  const unsup = new Set(r.unsupported || []);
+  el.innerHTML = `
+  ${PROP[c.id] ? `<div class="card" style="border-color:var(--accent)"><h3>Proposed edit (${esc(PROP[c.id].round)} round)</h3><p><b>${esc(PROP[c.id].decision === "move" ? "Move to " + PROP[c.id].rq : PROP[c.id].decision === "merge" ? "Merge into " + PROP[c.id].mergeInto + " · " + ((byId[PROP[c.id].mergeInto] || {}).label || "") : "Drop")}</b><br><span class="hint">${esc(PROP[c.id].reason)}</span></p><div class="row"><button type="button" class="btn" data-accept="${c.id}">Accept proposal</button></div></div>` : ""}
+  <div class="card decide">
+    <h3>Your decision on ${c.id}</h3>
+    <div class="row">
+      <span class="crit">Fidelity ${seg(c.id, "fidelity", [["ok", "Holds"], ["no", "Fails", 1]], r.fidelity)}</span>
+      <span class="crit">Grounding ${seg(c.id, "grounding", [["ok", "Holds"], ["no", "Fails", 1]], r.grounding)}</span>
+      <span class="crit">Distinctness ${seg(c.id, "distinctness", [["ok", "Holds"], ["no", "Fails", 1]], r.distinctness)}</span>
+    </div>
+    <div class="row" style="margin-top:10px">${seg(c.id, "decision", DECISIONS, r.decision)}</div>
+    <div class="row" style="margin-top:10px">
+      ${r.decision === "move" ? `<label class="f">Move to question<select data-k="${c.id}" data-f="moveTo"><option value="">Choose a question</option>${Object.entries(DATA.rqs).map(([k, v]) => `<option value="${k}" ${r.moveTo === k ? "selected" : ""}>${k} ${esc(v)}</option>`).join("")}</select></label>` : ""}
+      ${r.decision === "merge" ? `<label class="f">Merge into<select id="m-into" data-k="${c.id}" data-f="mergeInto"><option value="">Choose a code in ${c.rq}</option>${same.map(x => `<option value="${x.id}" ${r.mergeInto === x.id ? "selected" : ""}>${x.id} · ${esc(x.label)}</option>`).join("")}</select></label>` : ""}
+      ${["relabel", "split", "merge"].includes(r.decision) ? `<label class="f">New label${r.decision === "split" ? "s (one per line)" : ""}<textarea id="m-label" data-k="${c.id}" data-f="newLabel">${esc(r.newLabel || "")}</textarea></label><label class="f">New definition, include, exclude${r.decision === "split" ? " (and which units go where)" : ""}<textarea id="m-def" data-k="${c.id}" data-f="newDefinition">${esc(r.newDefinition || "")}</textarea></label>` : ""}
+    </div>
+    ${r.decision && r.decision !== "drop" ? `<div class="row" style="margin-top:10px">
+      <label class="f">Positive examples (development units)<input id="m-pos" data-k="${c.id}" data-f="pos" value="${esc((r.pos || []).join(", "))}" placeholder="e.g. U012, U045"></label>
+      <label class="f">Negative examples (development units)<input id="m-neg" data-k="${c.id}" data-f="neg" value="${esc((r.neg || []).join(", "))}" placeholder="e.g. U101"></label></div>
+      <p class="hint" id="ex-hint">Examples must come from the development units (marked “example-eligible” below); the others are used to evaluate the coding.</p>` : ""}
+    <label class="f" style="margin-top:10px">Reason or note<textarea id="m-note" data-k="${c.id}" data-f="note">${esc(r.note || "")}</textarea></label>
+  </div>
+
+  <div class="card def">
+    <div class="meta"><span class="chip ${c.priority}">${PRI[c.priority]}</span><span>${c.rq}</span><span>${c.n_units} ${esc(DATA.unit_plural)}</span><span>found by ${c.n_analysts} of 3 analysts</span><span>${Object.entries(c.layers).map(([k, v]) => k + " " + v).join(", ")}</span></div>
+    <h2>${esc(c.label)}</h2>
+    <dl><dt>Definition</dt><dd>${esc(c.definition)}</dd><dt>Include</dt><dd>${esc(c.include)}</dd><dt>Exclude</dt><dd>${esc(c.exclude)}</dd></dl>
+  </div>
+
+  ${c.flags.length ? `<div class="card"><h3>Why the council flagged it</h3><div class="flags">${c.flags.map(f => `<span class="flag">${esc(f)}</span>`).join("")}</div></div>` : ""}
+
+  <div class="card quotes"><h3>Anchor quotes</h3>${c.quotes.map(q => `<blockquote>“${esc(q.quote)}” <span class="uid">${q.uid}</span></blockquote>`).join("") || `<p class="hint">None.</p>`}</div>
+
+  <div class="card"><h3>Cited ${esc(DATA.unit_plural)} (${c.units.length}) · mark any that do not support the code</h3><div class="threads">
+    ${c.units.map(u => { const t = DATA.threads[u] || {}; const first = (t.text || "").split("\n")[0].replace(/^Title:\s*/, ""); return `<details class="th${unsup.has(u) ? " unsup" : ""}"><summary><span class="uid">${u}</span>${c.weak.includes(u) ? `<span class="tag weak">weak grounding</span>` : ""}${t.dev ? `<span class="tag dev">example-eligible</span>` : ""}<span class="first">${esc(first)}</span><button type="button" class="mini${unsup.has(u) ? " on" : ""}" data-unsup="${u}">${unsup.has(u) ? "Does not support" : "Supports?"}</button></summary><div class="body">${highlight(t.text, quoteFor(u))}${t.link ? `<p><a href="${esc(t.link)}" target="_blank" rel="noopener">Open source</a></p>` : ""}</div></details>`; }).join("")}
+  </div></div>
+
+  ${c.rejected.length || c.recon.length ? `<div class="card"><h3>Challenges between models</h3>
+    ${c.rejected.map(x => `<div class="ch"><b>${esc(x.id)}</b> · discovery · ${esc(x.type)} · <em>rejected by the analyst</em><br>${esc(x.argument)}<br><span class="hint">Analyst: ${esc(x.reason)}</span></div>`).join("")}
+    ${c.recon.map(x => `<div class="ch"><b>${esc(x.id)}</b> · reconciliation · ${esc(x.type)} · <em>${esc((x.answer || "").toLowerCase())}</em><br>${esc(x.argument)}<br><span class="hint">Reconciler: ${esc(x.reason)} ${x.revision ? "→ " + esc(x.revision) : ""}</span></div>`).join("")}
+  </div>` : ""}
+
+  ${rels.length ? `<div class="card"><h3>Relations</h3>${rels.map(x => `<div class="ch">${x.from === c.id ? "This code" : `<a href="#" data-go="${x.from}">${x.from}</a>`} <em>${esc(x.type.replace(/_/g, " "))}</em> ${x.to === c.id ? "this code" : `<a href="#" data-go="${x.to}">${x.to} · ${esc((byId[x.to] || {}).label || "")}</a>`}${x.note ? `<br><span class="hint">${esc(x.note)}</span>` : ""}</div>`).join("")}</div>` : ""}
+
+  <div class="card"><h3>Where the analysts' codes came from</h3>${c.sources.map(s => `<div class="ch"><b>${esc(s.key)}</b> (${esc(s.layer)}) ${esc(s.label)}</div>`).join("")}</div>`;
+}
+function renderQuar() {
+  const el = $("#quar");
+  el.innerHTML = `<div class="card"><h3>Codes the adversaries proposed</h3><p class="hint">An adversary proposed these when it thought an analyst had missed something. They enter the codebook only if you admit them.</p></div>` +
+    DATA.quarantined.map((q, i) => { const k = "Q_" + q.key, r = state.reviews[k] || {}; return `<div class="card"><div class="meta"><span>${esc(q.key)}</span><span>${q.units.length} ${esc(DATA.unit_plural)}</span>${q.assessment ? `<span>reconciler: ${esc(q.assessment.relation || "")} ${esc(q.assessment.to_code || "")}</span>` : ""}</div><h2>${esc(q.label)}</h2><p>${esc(q.definition)}</p><p class="hint">Cited: ${q.units.join(", ")}</p><div class="row">${seg(k, "decision", [["admit", "Admit"], ["reject", "Reject", 1]], r.decision)}</div><label class="f" style="margin-top:10px">Reason<textarea data-k="${k}" data-f="note">${esc(r.note || "")}</textarea></label></div>`; }).join("");
+}
+function exportDecisions() {
+  const name = ($("#revname") && $("#revname").value.trim()) || lsGet("reviewer_name") || state.uid || "reviewer";
+  const out = { reviewer: name, round: ROUND, exported_at: new Date().toISOString(), n_codes: DATA.codes.length,
+    status: state.status || null, blind_pass_missing: (($("#blindmiss") && $("#blindmiss").value) || lsGet("blindmiss") || "").split("\n").map(x => x.trim()).filter(Boolean),
+    reviews: state.reviews };
+  const blob = new Blob([JSON.stringify(out, null, 1)], { type: "application/json" });
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob);
+  a.download = `review_${name.replace(/[^\w.-]+/g, "_")}.json`; document.body.appendChild(a); a.click(); a.remove();
+}
+function renderFinish() {
+  const el = $("#finish"), n = DATA.codes.filter(decided).length, done = !!(state.status && state.status.done);
+  el.innerHTML = `<div class="card"><h3>Finish your review</h3>
+    <p>You have decided ${n} of ${DATA.codes.length} codes${n < DATA.codes.length ? `. Codes without a decision count as kept unchanged.` : "."}</p>
+    ${Object.keys(PROP).length ? `<div class="row" style="margin-block:8px"><button type="button" class="btn ghost" id="accept-all">Accept all ${Object.keys(PROP).length} proposed edits</button><span class="hint">${Object.keys(PROP).filter(k => (state.reviews[k] || {}).acceptedProposal).length} accepted so far. Accepting sets the code's decision; you can still change it.</span></div>` : ""}
+    <label class="f">Your name or initials (goes into the exported file)<input id="revname" value="${esc(lsGet("reviewer_name") || "")}"></label>
+    <label class="f" style="margin-top:10px">Codes from your blind pass that this codebook lacks (one per line)<textarea id="blindmiss">${esc((state.status && state.status.blindPassMissing) || lsGet("blindmiss") || "")}</textarea></label>
+    <div class="row" style="margin-top:12px"><button class="btn" id="download">Download my decisions</button>
+    ${done ? `<span class="hint">Marked complete.</span>` : `<button class="btn ghost" id="finish-1">Mark my review complete</button>`}</div>
+    <div class="row" id="finish-confirm" hidden style="margin-top:10px"><span>Mark complete?</span><button class="btn danger" id="finish-2">Yes, I'm done</button><button class="btn ghost" id="finish-cancel">Not yet</button></div>
+    <p class="hint" style="margin-top:10px">The downloaded file is what <code>human.py review-to-edits</code> reads. After both reviewers have downloaded their files, meet, negotiate the differences it lists, and record the agreed edits in <code>codebooks/review_edits.json</code>.</p>
+  </div>`;
+}
+function renderTabs() {
+  for (const t of ["codes", "quar", "finish"]) { $("#tab-" + t).setAttribute("aria-selected", String(state.tab === t)); $("#view-" + t).hidden = state.tab !== t; }
+}
+function renderAll() { renderProgress(); renderList(); renderDetail(); renderTabs(); if (state.tab === "quar") renderQuar(); if (state.tab === "finish") renderFinish(); }
+
+/* ---------- events ---------- */
+function acceptProposal(id) {
+  const p = PROP[id]; if (!p) return;
+  saveReview(id, { decision: p.decision, mergeInto: p.mergeInto || null, moveTo: p.rq || null, note: "Accepted proposal: " + p.reason, acceptedProposal: true });
+}
+const UIDS = Object.fromEntries(Object.keys(DATA.threads).map(u => [u.toLowerCase(), u]));
+function parseUids(v) { return v.split(/[\s,;]+/).map(s => s.trim()).filter(Boolean).map(s => UIDS[s.toLowerCase()] || s); }
+document.addEventListener("click", async e => {
+  const t = e.target.closest("button, .item, a[data-go]"); if (!t) return;
+  if (t.matches(".item")) { state.sel = t.dataset.id; renderList(); renderDetail(); window.scrollTo({ top: 0 }); return; }
+  if (t.matches("a[data-go]")) { e.preventDefault(); state.sel = t.dataset.go; renderList(); renderDetail(); return; }
+  if (t.dataset.accept) { acceptProposal(t.dataset.accept); renderDetail(); return; }
+  if (t.id === "accept-all") { Object.keys(PROP).forEach(acceptProposal); renderFinish(); return; }
+  if (t.dataset.unsup) { e.preventDefault(); const r = state.reviews[state.sel] || {}; const s = new Set(r.unsupported || []); s.has(t.dataset.unsup) ? s.delete(t.dataset.unsup) : s.add(t.dataset.unsup); saveReview(state.sel, { unsupported: [...s] }); renderDetail(); return; }
+  if (t.dataset.f) { const k = t.dataset.k, cur = (state.reviews[k] || {})[t.dataset.f]; saveReview(k, { [t.dataset.f]: cur === t.dataset.v ? null : t.dataset.v }); state.tab === "quar" ? renderQuar() : renderDetail(); return; }
+  if (t.id && t.id.startsWith("tab-")) { state.tab = t.id.slice(4); renderTabs(); if (state.tab === "quar") renderQuar(); if (state.tab === "finish") renderFinish(); return; }
+  if (t.id === "download") { exportDecisions(); return; }
+  if (t.id === "finish-1") { $("#finish-confirm").hidden = false; return; }
+  if (t.id === "finish-cancel") { $("#finish-confirm").hidden = true; return; }
+  if (t.id === "finish-2") {
+    const st = { reviewer: state.uid || "local", done: true, doneAt: new Date().toISOString(), blindPassMissing: $("#blindmiss").value };
+    state.status = st;
+    if (state.db) { try { await state.db.doc(`status_${ROUND}/${state.uid}`).set(st); } catch (err) { setSave("Not saved: " + (err.message || err.code), true); } } else lsSet("status", st);
+    renderFinish(); return;
+  }
+});
+document.addEventListener("input", e => {
+  const t = e.target;
+  if (t.id === "revname") { lsSet("reviewer_name", t.value); return; }
+  if (t.id === "blindmiss") { lsSet("blindmiss", t.value); if (state.db && state.status) state.db.doc(`status_${ROUND}/${state.uid}`).update({ blindPassMissing: t.value }).catch(() => {}); return; }
+  if (!t.dataset || !t.dataset.f) { if (t.closest(".filters")) renderList(); return; }
+  const f = t.dataset.f;
+  if (f === "pos" || f === "neg") {
+    const ids = parseUids(t.value), bad = ids.filter(u => !DEV.has(u));
+    const h = $("#ex-hint"); if (h) { h.classList.toggle("err", bad.length > 0); h.textContent = bad.length ? `Not development units: ${bad.join(", ")}. Pick examples from the units marked “example-eligible”.` : "Examples must come from the development units (marked “example-eligible” below); the others are used to evaluate the coding."; }
+    saveReview(t.dataset.k, { [f]: ids.filter(u => DEV.has(u)) }); return;
+  }
+  saveReview(t.dataset.k, { [f]: t.value });
+});
+document.addEventListener("change", e => {
+  const t = e.target;
+  if (t.closest(".filters")) { renderList(); return; }
+  if (t.dataset && (t.dataset.f === "mergeInto" || t.dataset.f === "moveTo")) saveReview(t.dataset.k, { [t.dataset.f]: t.value });
+});
+document.addEventListener("keydown", e => { const t = e.target; if (t.matches && t.matches(".item") && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); t.click(); } });
+
+for (const [k, v] of Object.entries(DATA.rqs)) $("#f-rq").insertAdjacentHTML("beforeend", `<option value="${k}">${k} ${esc(v)}</option>`);
+$("#ncodes").textContent = DATA.codes.length;
+$("#mode").textContent = DATA.mode || "";
+$("#nunits").textContent = DATA.n_units + " " + DATA.unit_plural;
+renderAll();
+boot();
+</script>

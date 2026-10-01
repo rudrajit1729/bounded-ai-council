@@ -1,0 +1,81 @@
+{
+ "discovery/challenges/adversary_A.json": {
+  "adversary_for": "A",
+  "axes": [
+   "semantic",
+   "latent",
+   "contrastive"
+  ],
+  "challenges": [
+   {
+    "id": "CH-01",
+    "axis": "semantic",
+    "type": "GROUNDING",
+    "code_id": "A-RQ1-07",
+    "units": [
+     "R15"
+    ],
+    "quote": "I finish routine tickets faster",
+    "argument": "A-RQ1-07 requires a boundary where the benefit stops; R15 only reports a gain on routine tickets and draws no line. Remove R15 or redefine the code."
+   },
+   {
+    "id": "CH-02",
+    "axis": "contrastive",
+    "type": "BOUNDARY",
+    "code_id": "A-RQ1-01",
+    "units": [
+     "R01"
+    ],
+    "quote": "I spend less time on getters, setters and config files",
+    "argument": "R01 is cited by A-RQ1-01 and A-RQ1-05; the definitions do not say when time saved on boilerplate is 'freed attention'. Test: A-RQ1-05 only when the answer says what the freed time goes to."
+   },
+   {
+    "id": "CH-03",
+    "axis": "contrastive",
+    "type": "OMISSION",
+    "code_id": "",
+    "units": [
+     "R25",
+     "R30",
+     "R07"
+    ],
+    "quote": "I rely on it less than I expected",
+    "argument": "Several answers report little or no net benefit; RQ1 has no code for this negative case, so the codebook overstates benefits.",
+    "candidate_code_id": "QA-01"
+   }
+  ],
+  "quarantined_codes": [
+   {
+    "id": "QA-01",
+    "quarantined": true,
+    "proposed_by": "adversary-A",
+    "layer": "contrastive",
+    "rq": "RQ1",
+    "label": "Reports little or no net benefit",
+    "definition": "The developer says the assistant brings little value, is barely used, or costs more time than it saves.",
+    "include": "Low use, lower value than expected, net time loss.",
+    "exclude": "Specific errors without a judgment of overall value go to RQ2 codes.",
+    "participants": [
+     "R25",
+     "R30",
+     "R07"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R25",
+      "quote": "I rely on it less than I expected"
+     },
+     {
+      "uid": "R30",
+      "quote": "I barely use it"
+     },
+     {
+      "uid": "R07",
+      "quote": "takes longer than writing the code myself"
+     }
+    ]
+   }
+  ],
+  "notes": "semantic: checked every anchor quote; latent: no fragmented codes found; contrastive: one boundary, one missing negative case."
+ }
+}

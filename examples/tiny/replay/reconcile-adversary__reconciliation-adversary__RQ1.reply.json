@@ -1,0 +1,35 @@
+{
+ "reconciliation/adversary_challenges.json": {
+  "challenges": [
+   {
+    "id": "RC-01",
+    "type": "DROPPED_DESPITE_SUPPORT",
+    "group_label": "Fewer context switches, more time for design",
+    "members": [
+     "A:A-RQ1-05",
+     "B:B-RQ1-04"
+    ],
+    "units": [
+     "R15",
+     "R26"
+    ],
+    "evidence": "G06 holds R15 and R26 only (2 units after discovery v1); A-RQ1-05 shares R15 with G01 (B-RQ1-01 and C-RQ1-01 cite R15).",
+    "argument": "G06 will fall below the 3-unit floor and its evidence is lost; R15 could join G01, or G06 should be kept by widening it."
+   },
+   {
+    "id": "RC-02",
+    "type": "WRONG_RELATION",
+    "group_label": "Fewer context switches, more time for design",
+    "members": [
+     "A:A-RQ1-05"
+    ],
+    "units": [
+     "R26"
+    ],
+    "evidence": "G06 and G01 share only R15; R26 is about web searches, not routine code.",
+    "argument": "The 'overlaps' relation G06-G01 rests on one unit and misleads coders; drop it."
+   }
+  ],
+  "notes": "Groups G01 to G05 are well supported by shared units."
+ }
+}

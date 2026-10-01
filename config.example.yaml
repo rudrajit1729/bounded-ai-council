@@ -1,0 +1,134 @@
+# Bounded AI council: run configuration.
+# Copy to config.yaml and edit. Every relative path is resolved against this file's folder.
+# The same file serves both modes: set `mode`. Blocks marked [Full] are ignored in Lite.
+
+mode: lite                      # lite | full
+workspace: runs/my-study        # every artifact of the run is written here
+
+study:
+  corpus_csv: data/corpus.csv   # columns: uid, text; optional: context, question, block, stratum, link
+  # Words the prompts use for one unit and the people who wrote it.
+  unit_name: response
+  unit_name_plural: responses
+  respondent_name: respondent
+  respondent_name_plural: respondents
+  # One or two sentences the analysts read about the corpus (what a unit is, how it was collected).
+  corpus_description: >
+    Answers of software developers to an open-ended survey question, one answer per unit, de-identified.
+  # The extraction rule every role applies.
+  scope_rule: "Code only what a respondent states in the unit."
+  # Optional phrase used in the decision-model question (Full), with a leading space, e.g. " about code review".
+  topic_phrase: ""
+  # One discovery reading per question per analyst. `rationale` (optional) says what the question means.
+  research_questions:
+    - id: RQ1
+      text: "What challenges do developers report when reviewing AI-generated code?"
+      rationale: "Problems, difficulties or risks the respondent describes in their own review work."
+    - id: RQ2
+      text: "What support do developers want for reviewing AI-generated code?"
+
+# Data problems get issue codes instead of being dropped (Stage 4). Defaults from the method:
+issue_codes:
+  ISSUE_WRONG_FIELD: "The text answers another field or question and cannot be coded as supplied."
+  ISSUE_BACK_REFERENCE: "The unit only refers to missing material (for example 'same as above') and lacks enough content."
+  ISSUE_NON_RESPONSE: "Blank, 'N/A', 'no comment', an unreadable fragment, or another non-answer."
+
+# Roles -> model family. Three analysts and three coders from three families. Adversaries [Full] rotate by
+# default (A is critiqued by C's family, B by A's, C by B's; the same for coders 1, 2, 3); override with
+# `adversaries: {A: gpt, ...}` and `coding_adversaries: {"1": gemini, ...}`.
+roles:
+  analysts: {A: claude, B: gpt, C: gemini}
+  reconciler: claude
+  reconciliation_adversary: gpt          # [Full] another family than the reconciler
+  coders: {"1": claude, "2": gpt, "3": gemini}
+
+# Family -> backend and model id. Backends: claude_cli | codex_cli | anthropic_api | openai_api |
+# gemini_api | command | manual | replay. API keys are read from the environment variable NAMED in api_key_env;
+# never put a key in this file.
+models:
+  claude:
+    backend: claude_cli                  # `claude -p`, no tools, no MCP servers
+    model: claude-opus-5                 # replace with the model you use
+  gpt:
+    backend: codex_cli                   # `codex exec`, read-only sandbox
+    model: gpt-5.6-terra                 # replace; the experiment used gpt-5.6-terra for whole-corpus roles
+    stage_models: {coding: gpt-5.6-sol}  # optional per-stage model (here: coders and coding adversaries)
+  gemini:
+    backend: gemini_api
+    model: REPLACE_WITH_GEMINI_MODEL_ID
+    api_key_env: GEMINI_API_KEY
+    # reduced_generation_config: {thinkingConfig: {thinkingBudget: 0}}   # optional, for reduced-reasoning calls
+  # Other examples:
+  # claude:  {backend: anthropic_api, model: claude-opus-5, api_key_env: ANTHROPIC_API_KEY}
+  # gpt:     {backend: openai_api, model: REPLACE, api_key_env: OPENAI_API_KEY}
+  # local:   {backend: openai_api, model: REPLACE, base_url: "http://localhost:8000/v1", api_key_env: LOCAL_KEY, reasoning_param: false}
+  # agent:   {backend: manual, model: REPLACE, answered_by: "the model the agent runs on"}   # prompts written to <workspace>/manual/
+  # replay:  {backend: replay, replay_dir: replay, model: REPLACE}   # answers from replies recorded with `council.py export-replies`
+
+# Discovery and reconciliation run at each model's default reasoning; every other call runs reduced.
+reasoning:
+  default_stages: [discovery, discovery-repair, discovery-answer, reconcile, reconcile-answer]
+  reduced_effort: low
+
+# [Full] Calibrated yes/no decision model (grounding and omission leads at discovery; screening and
+# leads at coding). Not used at reconciliation.
+decision_model:
+  enabled: true
+  backend: typesafe                      # typesafe | command | manual (requests in <workspace>/manual/) | replay (needs replay_dir)
+  endpoint: https://api.typesafe.ai/v1/systemone
+  model: jev-latest
+  api_key_env: TYPESAFE_API_KEY          # the variable's NAME; the key stays in your environment
+  command: null                          # backend: command -> e.g. ["python3", "my_classifier.py"]
+  state_key: unit_text
+  include_research_question: true
+  workers: 8
+
+thresholds:
+  support_floor: 3                       # units a code needs after reconciliation
+  min_quotes: 3                          # anchor quotes from distinct units (or n_participants if fewer)
+  consensus: 2                           # coders that must assign a code
+  alpha_drop: 0.67                       # codes with Krippendorff's alpha below this are dropped from the results
+  alpha_high: 0.80
+  grounding_lead_below: 0.5              # [Full]
+  omission_lead_at_or_above: 0.8         # [Full]
+  screening_tau: 0.10                    # [Full]
+  screening_top_k: 5                     # [Full]
+  screening_audit_share: 0.05            # [Full]
+  coding_lead_assigned_below: 0.2        # [Full]
+  coding_lead_unassigned_at_or_above: 0.8  # [Full]
+  max_label_words: 14
+
+batch_size: 25                           # the method: 20 to 50 units per coding batch
+discovery_block_size: 0                  # 0 = whole corpus per reading; N = blocks of N units when the corpus exceeds a context window
+max_repairs: 2                           # provenance repair rounds per discovery file
+workers: 6                               # concurrent model calls
+
+reconciliation:
+  groups_per_rq: [5, 15]                 # consolidation guide given to the reconciler
+  run_lite_baseline_in_full: true        # [Full] also reconcile discovery v0 (Lite) so the run reports what Full changed
+
+splits:
+  seed: 20260930
+  development_share: 0.25                # examples and the blind pass come from development units
+  blind_pass_min: 50                     # at least 50 units, or 10% up to 200
+  blind_pass_share: 0.10
+  blind_pass_max: 200
+  held_out_min: 50                       # held-out sample from the evaluation units
+  strata_columns: [question, block, stratum]
+
+reliability:
+  units: evaluation                      # evaluation | all: units on which alpha (and the drop rule) is computed
+
+spot_check:
+  random_sample: 50                      # random consensus assignments added to the researchers' spot-check
+  seed: 20260930
+
+# USD per million tokens [input, output], for the cost table. Dated list prices; fill in your own.
+prices:
+  claude-opus-5: [5.0, 25.0]
+  gpt-5.6-terra: [2.0, 12.0]
+  gpt-5.6-sol: [4.0, 20.0]
+  jev-latest: [0.042, 0]
+
+# What left the machine, to which vendors, under which consent terms or agreements (reported verbatim).
+data_governance: "REPLACE: e.g. de-identified survey answers sent to Anthropic, OpenAI and Google under ..."

@@ -1,0 +1,17 @@
+{
+ "coding/challenges/coder1_batch2.json": {
+  "coder": "1",
+  "batch": 2,
+  "challenges": [
+   {
+    "id": "CC-01",
+    "type": "FALSE_NEGATIVE",
+    "uid": "R26",
+    "code_id": "T03",
+    "quote": "I don't have to search the web for syntax anymore",
+    "argument": "Answering syntax questions in place is explaining code; T03 is met."
+   }
+  ],
+  "notes": "Checked every unit in the batch against the codebook."
+ }
+}

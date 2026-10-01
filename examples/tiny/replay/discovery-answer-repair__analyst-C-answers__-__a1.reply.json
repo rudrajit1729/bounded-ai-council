@@ -1,0 +1,38 @@
+{
+ "discovery/v1_delta/analyst_C.json": {
+  "replace": [
+   {
+    "id": "C-RQ2-07",
+    "layer": "contrastive",
+    "rq": "RQ2",
+    "label": "Organisational rules restrict use",
+    "definition": "A team, legal department or company policy limits where the assistant may be used, or leaves it unclear.",
+    "include": "Bans, scope restrictions, unclear policy.",
+    "exclude": "Risks without a rule go to C-RQ2-03.",
+    "participants": [
+     "R29",
+     "R11",
+     "R18"
+    ],
+    "n_participants": 3,
+    "anchor_quotes": [
+     {
+      "uid": "R29",
+      "quote": "Our team lead banned it on the payments service"
+     },
+     {
+      "uid": "R11",
+      "quote": "we can only use it on internal tools"
+     },
+     {
+      "uid": "R18",
+      "quote": "our company policy is unclear"
+     }
+    ]
+   }
+  ],
+  "remove": [],
+  "uncodeable_add": [],
+  "uncodeable_remove": []
+ }
+}

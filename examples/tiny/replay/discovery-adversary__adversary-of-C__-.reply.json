@@ -1,0 +1,48 @@
+{
+ "discovery/challenges/adversary_C.json": {
+  "adversary_for": "C",
+  "axes": [
+   "semantic",
+   "latent",
+   "contrastive"
+  ],
+  "challenges": [
+   {
+    "id": "CH-01",
+    "axis": "contrastive",
+    "type": "SPLIT",
+    "code_id": "C-RQ2-03",
+    "units": [
+     "R29",
+     "R04"
+    ],
+    "quote": "Our team lead banned it on the payments service",
+    "argument": "C-RQ2-03 mixes risks the developer perceives (R04, R11, R18) with rules the organisation set (R29). A risk is not a restriction; split into two codes."
+   },
+   {
+    "id": "CH-02",
+    "axis": "latent",
+    "type": "OMISSION",
+    "code_id": "C-RQ2-02",
+    "units": [
+     "R19"
+    ],
+    "quote": "Anything with business logic needs heavy editing",
+    "argument": "Heavy editing is time spent verifying and fixing output, which C-RQ2-02 describes; R19 is cited only under C-RQ2-05."
+   },
+   {
+    "id": "CH-03",
+    "axis": "semantic",
+    "type": "GROUNDING",
+    "code_id": "C-RQ2-04",
+    "units": [
+     "R21"
+    ],
+    "quote": "working with a fast but careless intern",
+    "argument": "R21 judges the assistant's output, not the developer's reliance or skills; it does not meet C-RQ2-04."
+   }
+  ],
+  "quarantined_codes": [],
+  "notes": "Benefit codes are well grounded."
+ }
+}

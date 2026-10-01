@@ -1,0 +1,2 @@
+code,label,alpha,decision,new_label,new_definition,new_include,new_exclude,reason,decided_by
+T10,Reports little or no net benefit,0.456,drop,,,,,"The code mixes how much the assistant is used (R30) with a judgment of its net value (R07, R25); coders split on exactly that. With three supporting answers a refined definition could not be tested, so the negative case is reported in the write-up instead.","DEMO-A, DEMO-B (fictional reviewers)"

@@ -1,0 +1,44 @@
+cff-version: 1.2.0
+message: "If you use this pipeline, please cite the paper and this software."
+title: "A Bounded AI Council Procedure for Thematic Analysis of Qualitative Data in Software Engineering Research"
+type: software
+authors:
+  - family-names: Choudhuri
+    given-names: Rudrajit
+    affiliation: Oregon State University
+  - family-names: Bird
+    given-names: Christian
+    affiliation: Microsoft Research
+  - family-names: Badea
+    given-names: Carmen
+    affiliation: Microsoft Research
+  - family-names: Sarma
+    given-names: Anita
+    affiliation: Oregon State University
+version: "1.0"
+date-released: "2026-09-30"
+doi: "10.5281/zenodo.TODO"
+license:
+  - MIT
+  - CC-BY-SA-4.0
+keywords:
+  - thematic analysis
+  - qualitative analysis
+  - large language models
+  - inter-rater reliability
+  - research methods
+  - software engineering
+preferred-citation:
+  type: article
+  title: "A Bounded AI Council Procedure for Thematic Analysis of Qualitative Data in Software Engineering Research"
+  authors:
+    - family-names: Choudhuri
+      given-names: Rudrajit
+    - family-names: Bird
+      given-names: Christian
+    - family-names: Badea
+      given-names: Carmen
+    - family-names: Sarma
+      given-names: Anita
+  year: 2026
+  notes: "Manuscript under review"

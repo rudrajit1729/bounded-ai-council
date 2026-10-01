@@ -1,0 +1,97 @@
+# Tiny demo, replayed offline (the `replay` backend). Run it with:  python3 pipeline/demo.py
+#
+# The corpus in corpus.csv is INVENTED for a demo: 30 short, fictional developer survey answers about
+# a fictional AI coding assistant called "Quill". No real person wrote them.
+#
+# Every model and decision-model call is answered from replay/, the replies recorded when a coding agent
+# (Claude Opus 5.5) answered the prompts of config.manual.yaml by hand, role-playing each role. Nothing is
+# sent anywhere and no key is needed. The three "families" are labels for that role-play, not three
+# vendors; the researchers' steps are dummy files in human_demo/ from fictional reviewers DEMO-A and DEMO-B.
+
+mode: full
+workspace: workspace
+
+study:
+  corpus_csv: corpus.csv
+  unit_name: answer
+  unit_name_plural: answers
+  respondent_name: developer
+  respondent_name_plural: developers
+  corpus_description: >
+    Invented answers (a demo, not real data) of software developers to one open-ended survey
+    question: "How has Quill, your team's AI coding assistant, changed your day-to-day coding?
+    Tell us what works and what does not." One answer per unit.
+  scope_rule: "Code only what a developer states in the answer."
+  topic_phrase: " about the AI coding assistant"
+  research_questions:
+    - id: RQ1
+      text: "What benefits do developers report from using the AI coding assistant?"
+      rationale: "Gains the developer describes in their own work: time, quality, learning, or anything else they value."
+    - id: RQ2
+      text: "What problems or concerns do developers report about the AI coding assistant?"
+      rationale: "Difficulties, risks, costs or worries the developer describes, including rules their organisation sets."
+
+issue_codes:
+  ISSUE_WRONG_FIELD: "The text answers another field or question and cannot be coded as supplied."
+  ISSUE_BACK_REFERENCE: "The unit only refers to missing material (for example 'same as above') and lacks enough content."
+  ISSUE_NON_RESPONSE: "Blank, 'N/A', 'no comment', an unreadable fragment, or another non-answer."
+
+roles:
+  analysts: {A: alpha, B: beta, C: gamma}
+  reconciler: alpha
+  reconciliation_adversary: beta
+  coders: {"1": alpha, "2": beta, "3": gamma}
+
+# Three labelled families; their replies come from replay/ (see the note at the top).
+models:
+  alpha: {backend: replay, replay_dir: replay, model: demo-alpha, answered_by: "claude-opus-5.5 role-playing family alpha (demo)"}
+  beta: {backend: replay, replay_dir: replay, model: demo-beta, answered_by: "claude-opus-5.5 role-playing family beta (demo)"}
+  gamma: {backend: replay, replay_dir: replay, model: demo-gamma, answered_by: "claude-opus-5.5 role-playing family gamma (demo)"}
+
+decision_model:
+  enabled: true
+  backend: replay                        # recorded replies in replay/
+  replay_dir: replay
+  model: demo-decision-model
+  answered_by: "claude-opus-5.5 giving plausible probabilities (demo, not calibrated)"
+  state_key: unit_text
+  include_research_question: true
+  workers: 8
+
+thresholds:
+  support_floor: 3
+  min_quotes: 3
+  consensus: 2
+  alpha_drop: 0.67
+  alpha_high: 0.80
+
+batch_size: 20                           # 30 answers -> 2 batches (20 + 10)
+discovery_block_size: 0
+max_repairs: 2
+workers: 6
+
+splits:
+  seed: 20260930
+  development_share: 0.30                # 9 development answers
+  blind_pass_min: 8                      # the method's minimum is 50; this corpus has 30 units
+  blind_pass_share: 0.10
+  blind_pass_max: 200
+  held_out_min: 10                       # the method's minimum is 50; this corpus has 30 units
+  strata_columns: [question, block, stratum]
+
+reliability:
+  units: evaluation
+
+spot_check:
+  random_sample: 8
+  seed: 20260930
+
+# Illustrative prices only (USD per million tokens, input and output), so the cost table has numbers.
+# Token counts in a manual or replay run are estimated from characters (about 4 per token).
+prices:
+  demo-alpha: [3.0, 15.0]
+  demo-beta: [2.0, 10.0]
+  demo-gamma: [1.0, 5.0]
+  demo-decision-model: [0.05, 0]
+
+data_governance: "Demo only: the corpus is invented; nothing left the machine (manual and replay backends)."

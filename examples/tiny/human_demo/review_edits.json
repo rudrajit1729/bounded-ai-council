@@ -1,0 +1,95 @@
+{
+ "reviewed_by": "DEMO-A, DEMO-B",
+ "status_note": "DUMMY edit log for the demo: DEMO-A and DEMO-B are fictional reviewers. T09 kept separate from T07 after negotiation (DEMO-A withdrew the merge: R04 has a risk and no rule). R21 kept in T05 as a negative example rather than removed.",
+ "blind_pass_codes_missing": [
+  "learning a new language or framework (dropped below the 3-unit floor at reconciliation)",
+  "writes documentation (one unit, below the floor)"
+ ],
+ "edits": [
+  {
+   "op": "examples",
+   "id": "T01",
+   "positive": [
+    "R08"
+   ],
+   "negative": [
+    "R28"
+   ]
+  },
+  {
+   "op": "examples",
+   "id": "T02",
+   "positive": [
+    "R28"
+   ],
+   "negative": []
+  },
+  {
+   "op": "examples",
+   "id": "T03",
+   "positive": [
+    "R10",
+    "R24"
+   ],
+   "negative": [
+    "R17"
+   ]
+  },
+  {
+   "op": "examples",
+   "id": "T04",
+   "positive": [
+    "R13"
+   ],
+   "negative": []
+  },
+  {
+   "op": "examples",
+   "id": "T05",
+   "positive": [
+    "R13"
+   ],
+   "negative": [
+    "R21"
+   ]
+  },
+  {
+   "op": "examples",
+   "id": "T06",
+   "positive": [
+    "R08"
+   ],
+   "negative": []
+  },
+  {
+   "op": "relabel",
+   "id": "T06",
+   "label": "Ignores team conventions and internal libraries",
+   "definition": "Generated code does not follow the team's conventions or fit its internal libraries.",
+   "reason": "DEMO-B's wording names both conventions and libraries; DEMO-A agreed."
+  },
+  {
+   "op": "relabel",
+   "id": "T08",
+   "label": "Accepting suggestions without understanding them",
+   "definition": "The developer worries that people accept suggestions they do not understand, or that developers lose their own skills by relying on it.",
+   "exclude": "A judgment that the output itself is careless or wrong goes to T05.",
+   "reason": "Negotiated: DEMO-A's label, DEMO-B's definition; exclude added so R21-like answers go to T05."
+  },
+  {
+   "op": "accept_quarantined",
+   "key": "Q:QA-01",
+   "id": "T10",
+   "rq": "RQ1",
+   "label": "Reports little or no net benefit",
+   "reason": "Both reviewers admitted it: a negative case for RQ1 the analysts' codes lacked (C's own version fell below the floor)."
+  },
+  {
+   "op": "relation",
+   "type": "contrasts_with",
+   "from": "T10",
+   "to": "T01",
+   "reason": "the negative case against the main benefit"
+  }
+ ]
+}

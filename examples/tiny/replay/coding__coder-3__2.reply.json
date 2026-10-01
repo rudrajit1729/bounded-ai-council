@@ -1,0 +1,78 @@
+{
+ "coding/v0/coder3_batch2.jsonl": [
+  {
+   "uid": "R21",
+   "why": "fast but careless intern",
+   "codes": [
+    "T08"
+   ]
+  },
+  {
+   "uid": "R22",
+   "why": "turns my notes into readable docstrings",
+   "codes": [
+    "UNCOVERED"
+   ],
+   "uncovered_note": "writing documentation comments"
+  },
+  {
+   "uid": "R23",
+   "why": "checking whether a block came from the assistant adds overhead",
+   "codes": [
+    "T04",
+    "T05"
+   ]
+  },
+  {
+   "uid": "R24",
+   "why": "explaining error messages",
+   "codes": [
+    "T03"
+   ]
+  },
+  {
+   "uid": "R25",
+   "why": "rely on it less; rarely fit our internal libraries",
+   "codes": [
+    "T06",
+    "T10"
+   ]
+  },
+  {
+   "uid": "R26",
+   "why": "fewer context switches",
+   "codes": [
+    "T03"
+   ]
+  },
+  {
+   "uid": "R27",
+   "why": "losing my own skills",
+   "codes": [
+    "T08"
+   ]
+  },
+  {
+   "uid": "R28",
+   "why": "first drafts of test fixtures",
+   "codes": [
+    "T02"
+   ]
+  },
+  {
+   "uid": "R29",
+   "why": "banned it on the payments service",
+   "codes": [
+    "T07",
+    "T09"
+   ]
+  },
+  {
+   "uid": "R30",
+   "why": "barely use it",
+   "codes": [
+    "T10"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,218 @@
+{
+ "discovery/v0/per_reading/analyst_A_RQ1.json": {
+  "analyst": "A",
+  "lens": "layered",
+  "n_read": 30,
+  "codes": [
+   {
+    "id": "A-RQ1-01",
+    "layer": "semantic",
+    "rq": "RQ1",
+    "label": "Writes boilerplate and repetitive code",
+    "definition": "The assistant produces routine, repetitive code such as boilerplate, getters, setters and config files.",
+    "include": "Answers naming boilerplate or repetitive code as something it writes well.",
+    "exclude": "Test code goes to A-RQ1-02.",
+    "participants": [
+     "R01",
+     "R08",
+     "R19"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R01",
+      "quote": "Quill writes most of my boilerplate now"
+     },
+     {
+      "uid": "R08",
+      "quote": "It is fast at boilerplate"
+     },
+     {
+      "uid": "R19",
+      "quote": "Boilerplate and repetitive code are where it shines"
+     }
+    ],
+    "n_participants": 3
+   },
+   {
+    "id": "A-RQ1-02",
+    "layer": "semantic",
+    "rq": "RQ1",
+    "label": "Drafts tests, fixtures and mock data",
+    "definition": "The assistant drafts unit tests, test fixtures or mock data that the developer then adjusts.",
+    "include": "Any mention of tests, fixtures or mocks being written with it.",
+    "exclude": "General boilerplate goes to A-RQ1-01.",
+    "participants": [
+     "R02",
+     "R12",
+     "R28"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R02",
+      "quote": "I describe the case and it drafts the test"
+     },
+     {
+      "uid": "R12",
+      "quote": "It made writing tests less tedious"
+     },
+     {
+      "uid": "R28",
+      "quote": "It writes decent first drafts of test fixtures and mock data"
+     }
+    ],
+    "n_participants": 3
+   },
+   {
+    "id": "A-RQ1-03",
+    "layer": "semantic",
+    "rq": "RQ1",
+    "label": "Explains unfamiliar code and error messages",
+    "definition": "The assistant explains code or errors the developer does not understand.",
+    "include": "Explanations of legacy code, unfamiliar code or error messages.",
+    "exclude": "Learning a whole new language goes to A-RQ1-04.",
+    "participants": [
+     "R05",
+     "R10",
+     "R24"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R05",
+      "quote": "I ask it to explain unfamiliar code"
+     },
+     {
+      "uid": "R10",
+      "quote": "Explaining legacy code is the best part"
+     },
+     {
+      "uid": "R24",
+      "quote": "It is good at explaining error messages"
+     }
+    ],
+    "n_participants": 3
+   },
+   {
+    "id": "A-RQ1-04",
+    "layer": "semantic",
+    "rq": "RQ1",
+    "label": "Speeds up learning a new language or framework",
+    "definition": "The developer learns a new language or framework faster with the assistant.",
+    "include": "Explicit mention of learning or picking up a technology.",
+    "exclude": "Explaining a specific piece of code goes to A-RQ1-03.",
+    "participants": [
+     "R05",
+     "R17"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R05",
+      "quote": "Great for learning a new framework"
+     },
+     {
+      "uid": "R17",
+      "quote": "It helped me pick up Rust much faster than reading the book alone"
+     }
+    ],
+    "n_participants": 2
+   },
+   {
+    "id": "A-RQ1-05",
+    "layer": "latent",
+    "rq": "RQ1",
+    "label": "Frees time and attention for higher-level work",
+    "definition": "Routine work shrinks, so the developer keeps attention for design or stays in context.",
+    "include": "Time or attention reported as freed for other work, or fewer interruptions to look things up.",
+    "exclude": "The kind of code it writes goes to A-RQ1-01.",
+    "participants": [
+     "R15",
+     "R26",
+     "R01"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R15",
+      "quote": "I finish routine tickets faster, so I have more time for design work"
+     },
+     {
+      "uid": "R26",
+      "quote": "fewer context switches, I don't have to search the web for syntax"
+     },
+     {
+      "uid": "R01",
+      "quote": "I spend less time on getters, setters and config files"
+     }
+    ],
+    "n_participants": 3
+   },
+   {
+    "id": "A-RQ1-06",
+    "layer": "semantic",
+    "rq": "RQ1",
+    "label": "Turns notes into documentation",
+    "definition": "The assistant writes documentation comments from the developer's notes.",
+    "include": "Docstrings and documentation comments.",
+    "exclude": "Code explanations go to A-RQ1-03.",
+    "participants": [
+     "R22"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R22",
+      "quote": "It turns my notes into readable docstrings"
+     }
+    ],
+    "n_participants": 1
+   },
+   {
+    "id": "A-RQ1-07",
+    "layer": "contrastive",
+    "rq": "RQ1",
+    "label": "Gains limited to routine work",
+    "definition": "Benefits are reported for routine code only, with a boundary at business logic.",
+    "include": "Answers that place the benefit on routine work and draw a line where it stops.",
+    "exclude": "Answers that only praise boilerplate, without a boundary, go to A-RQ1-01.",
+    "participants": [
+     "R19",
+     "R08",
+     "R15"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R19",
+      "quote": "Anything with business logic needs heavy editing"
+     },
+     {
+      "uid": "R08",
+      "quote": "It is fast at boilerplate, but"
+     },
+     {
+      "uid": "R15",
+      "quote": "I finish routine tickets faster"
+     }
+    ],
+    "n_participants": 3
+   }
+  ],
+  "candidate_themes": [],
+  "uncodeable": [
+   "R03",
+   "R04",
+   "R06",
+   "R07",
+   "R09",
+   "R11",
+   "R13",
+   "R14",
+   "R16",
+   "R18",
+   "R20",
+   "R21",
+   "R23",
+   "R25",
+   "R27",
+   "R29",
+   "R30"
+  ],
+  "notes": "semantic: boilerplate, tests, explanations, learning, docs; latent: freed attention; contrastive: the routine/business-logic boundary."
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "coding/challenges/coder2_batch1.json": {
+  "coder": "2",
+  "batch": 1,
+  "challenges": [
+   {
+    "id": "CC-01",
+    "type": "FALSE_NEGATIVE",
+    "uid": "R07",
+    "code_id": "T10",
+    "quote": "Reviewing its output takes longer than writing the code myself",
+    "argument": "T10 includes net time loss; the unit says the assistant costs more time than it saves."
+   },
+   {
+    "id": "CC-02",
+    "type": "FALSE_POSITIVE",
+    "uid": "R19",
+    "code_id": "T06",
+    "quote": "Anything with business logic needs heavy editing",
+    "argument": "T06 is about conventions and internal libraries; business logic needing edits is T04."
+   },
+   {
+    "id": "CC-03",
+    "type": "FALSE_NEGATIVE",
+    "uid": "R18",
+    "code_id": "T07",
+    "quote": "our company policy is unclear",
+    "argument": "T07 includes unclear policy."
+   }
+  ],
+  "notes": "Checked every unit in the batch against the codebook."
+ }
+}

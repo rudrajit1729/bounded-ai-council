@@ -1,0 +1,221 @@
+{
+ "discovery/v0/per_reading/analyst_C_RQ1.json": {
+  "analyst": "C",
+  "lens": "layered",
+  "n_read": 30,
+  "codes": [
+   {
+    "id": "C-RQ1-01",
+    "layer": "semantic",
+    "rq": "RQ1",
+    "label": "Saves time on repetitive work",
+    "definition": "Repetitive or routine work goes faster.",
+    "include": "Boilerplate, routine tickets.",
+    "exclude": "Tests go to C-RQ1-02.",
+    "participants": [
+     "R01",
+     "R15",
+     "R19",
+     "R08"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R01",
+      "quote": "I spend less time on getters, setters and config files"
+     },
+     {
+      "uid": "R15",
+      "quote": "I finish routine tickets faster"
+     },
+     {
+      "uid": "R19",
+      "quote": "repetitive code are where it shines"
+     },
+     {
+      "uid": "R08",
+      "quote": "It is fast at boilerplate"
+     }
+    ],
+    "n_participants": 4
+   },
+   {
+    "id": "C-RQ1-02",
+    "layer": "semantic",
+    "rq": "RQ1",
+    "label": "Test writing support",
+    "definition": "It helps write tests and test data.",
+    "include": "Tests, fixtures, mocks.",
+    "exclude": "",
+    "participants": [
+     "R02",
+     "R12",
+     "R28"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R02",
+      "quote": "it drafts the test, which I then fix"
+     },
+     {
+      "uid": "R12",
+      "quote": "Coverage on my module went up"
+     },
+     {
+      "uid": "R28",
+      "quote": "test fixtures and mock data"
+     }
+    ],
+    "n_participants": 3
+   },
+   {
+    "id": "C-RQ1-03",
+    "layer": "semantic",
+    "rq": "RQ1",
+    "label": "Answers questions about code instead of searching",
+    "definition": "It explains code and errors or answers syntax questions in place.",
+    "include": "Code or error explanations, syntax answers.",
+    "exclude": "Learning a language goes to C-RQ1-04.",
+    "participants": [
+     "R05",
+     "R10",
+     "R24",
+     "R26"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R05",
+      "quote": "it usually gets the gist right"
+     },
+     {
+      "uid": "R10",
+      "quote": "summarised a 600-line function"
+     },
+     {
+      "uid": "R24",
+      "quote": "explaining error messages"
+     },
+     {
+      "uid": "R26",
+      "quote": "I don't have to search the web for syntax anymore"
+     }
+    ],
+    "n_participants": 4
+   },
+   {
+    "id": "C-RQ1-04",
+    "layer": "semantic",
+    "rq": "RQ1",
+    "label": "Learning new tools",
+    "definition": "It helps developers learn new languages or frameworks.",
+    "include": "Learning.",
+    "exclude": "",
+    "participants": [
+     "R17",
+     "R05"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R17",
+      "quote": "It helped me pick up Rust"
+     },
+     {
+      "uid": "R05",
+      "quote": "Great for learning a new framework"
+     }
+    ],
+    "n_participants": 2
+   },
+   {
+    "id": "C-RQ1-05",
+    "layer": "semantic",
+    "rq": "RQ1",
+    "label": "Documentation",
+    "definition": "It writes documentation.",
+    "include": "Docstrings.",
+    "exclude": "",
+    "participants": [
+     "R22"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R22",
+      "quote": "readable docstrings"
+     }
+    ],
+    "n_participants": 1
+   },
+   {
+    "id": "C-RQ1-06",
+    "layer": "latent",
+    "rq": "RQ1",
+    "label": "Lowers the effort to start a task",
+    "definition": "First drafts make it cheap to start writing tests or docs.",
+    "include": "First drafts, cheap starts.",
+    "exclude": "",
+    "participants": [
+     "R12",
+     "R28",
+     "R22"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R12",
+      "quote": "tests are cheap to start now"
+     },
+     {
+      "uid": "R28",
+      "quote": "decent first drafts"
+     },
+     {
+      "uid": "R22",
+      "quote": "It turns my notes into readable docstrings"
+     }
+    ],
+    "n_participants": 3
+   },
+   {
+    "id": "C-RQ1-07",
+    "layer": "contrastive",
+    "rq": "RQ1",
+    "label": "Little or no benefit reported",
+    "definition": "The developer reports using it little or getting less than expected.",
+    "include": "Low use, low value.",
+    "exclude": "",
+    "participants": [
+     "R25",
+     "R30"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R25",
+      "quote": "I rely on it less than I expected"
+     },
+     {
+      "uid": "R30",
+      "quote": "I barely use it"
+     }
+    ],
+    "n_participants": 2
+   }
+  ],
+  "candidate_themes": [],
+  "uncodeable": [
+   "R03",
+   "R04",
+   "R06",
+   "R07",
+   "R09",
+   "R11",
+   "R13",
+   "R14",
+   "R16",
+   "R18",
+   "R20",
+   "R21",
+   "R23",
+   "R27",
+   "R29"
+  ],
+  "notes": "contrastive: a negative case of low benefit."
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "coding/challenges/coder2_batch2.json": {
+  "coder": "2",
+  "batch": 2,
+  "challenges": [
+   {
+    "id": "CC-01",
+    "type": "FALSE_POSITIVE",
+    "uid": "R21",
+    "code_id": "T05",
+    "quote": "a fast but careless intern",
+    "argument": "R21 is a negative example of T05 in the codebook; T08 covers needing to supervise it."
+   },
+   {
+    "id": "CC-02",
+    "type": "FALSE_NEGATIVE",
+    "uid": "R25",
+    "code_id": "T10",
+    "quote": "I rely on it less than I expected",
+    "argument": "Lower value than expected is in T10's include clause."
+   },
+   {
+    "id": "CC-03",
+    "type": "ISSUE_MISSED",
+    "uid": "R30",
+    "code_id": "ISSUE_NON_RESPONSE",
+    "quote": "I barely use it",
+    "argument": "The unit has codeable content (low use, T10); it is not a non-answer."
+   }
+  ],
+  "notes": "Checked every unit in the batch against the codebook."
+ }
+}

@@ -1,0 +1,229 @@
+{
+ "discovery/v0/per_reading/analyst_B_RQ2.json": {
+  "analyst": "B",
+  "lens": "layered",
+  "n_read": 30,
+  "codes": [
+   {
+    "id": "B-RQ2-01",
+    "layer": "semantic",
+    "rq": "RQ2",
+    "label": "Produces wrong or made-up code",
+    "definition": "Suggestions are wrong or refer to things that do not exist.",
+    "include": "Bugs, invented APIs or flags.",
+    "exclude": "Review effort goes to B-RQ2-02.",
+    "participants": [
+     "R03",
+     "R13",
+     "R20"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R03",
+      "quote": "often wrong in subtle ways"
+     },
+     {
+      "uid": "R13",
+      "quote": "invents API methods that do not exist"
+     },
+     {
+      "uid": "R20",
+      "quote": "hallucinated a configuration flag"
+     }
+    ],
+    "n_participants": 3
+   },
+   {
+    "id": "B-RQ2-02",
+    "layer": "semantic",
+    "rq": "RQ2",
+    "label": "Review and editing overhead",
+    "definition": "Checking and fixing its output costs effort.",
+    "include": "Review time, heavy edits, extra review checks.",
+    "exclude": "Errors themselves go to B-RQ2-01.",
+    "participants": [
+     "R07",
+     "R19",
+     "R23"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R07",
+      "quote": "takes longer than writing the code myself"
+     },
+     {
+      "uid": "R19",
+      "quote": "needs heavy editing"
+     },
+     {
+      "uid": "R23",
+      "quote": "which adds overhead"
+     }
+    ],
+    "n_participants": 3
+   },
+   {
+    "id": "B-RQ2-03",
+    "layer": "semantic",
+    "rq": "RQ2",
+    "label": "Security, licensing and data concerns",
+    "definition": "Worries about insecure code, licences or data sent to the vendor.",
+    "include": "Security, licensing, data privacy.",
+    "exclude": "Explicit bans go to B-RQ2-05.",
+    "participants": [
+     "R04",
+     "R11",
+     "R18"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R04",
+      "quote": "It suggested string concatenation for a SQL query"
+     },
+     {
+      "uid": "R11",
+      "quote": "nervous about licensing of generated code"
+     },
+     {
+      "uid": "R18",
+      "quote": "what data it sends to the vendor"
+     }
+    ],
+    "n_participants": 3
+   },
+   {
+    "id": "B-RQ2-04",
+    "layer": "latent",
+    "rq": "RQ2",
+    "label": "Needs supervision like a junior",
+    "definition": "Its output must be watched like a careless junior's work.",
+    "include": "Intern or junior comparisons, unchecked acceptance.",
+    "exclude": "Deskilling goes to B-RQ2-08.",
+    "participants": [
+     "R21",
+     "R09"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R21",
+      "quote": "a fast but careless intern"
+     },
+     {
+      "uid": "R09",
+      "quote": "accept suggestions without understanding them"
+     }
+    ],
+    "n_participants": 2
+   },
+   {
+    "id": "B-RQ2-05",
+    "layer": "contrastive",
+    "rq": "RQ2",
+    "label": "Use restricted by team or company rules",
+    "definition": "Rules limit where it may be used.",
+    "include": "Bans, restricted scope.",
+    "exclude": "",
+    "participants": [
+     "R11",
+     "R29"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R11",
+      "quote": "we can only use it on internal tools"
+     },
+     {
+      "uid": "R29",
+      "quote": "Our team lead banned it on the payments service"
+     }
+    ],
+    "n_participants": 2
+   },
+   {
+    "id": "B-RQ2-06",
+    "layer": "semantic",
+    "rq": "RQ2",
+    "label": "Suggestions do not fit local code",
+    "definition": "Suggestions ignore local conventions or libraries.",
+    "include": "Conventions, internal libraries.",
+    "exclude": "",
+    "participants": [
+     "R08",
+     "R25"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R08",
+      "quote": "ignores our team's naming conventions"
+     },
+     {
+      "uid": "R25",
+      "quote": "rarely fit our internal libraries"
+     }
+    ],
+    "n_participants": 2
+   },
+   {
+    "id": "B-RQ2-07",
+    "layer": "semantic",
+    "rq": "RQ2",
+    "label": "Distracting suggestions",
+    "definition": "Suggestions distract more than help.",
+    "include": "Flow interruptions.",
+    "exclude": "",
+    "participants": [
+     "R16"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R16",
+      "quote": "Half the time I am dismissing suggestions instead of thinking"
+     }
+    ],
+    "n_participants": 1
+   },
+   {
+    "id": "B-RQ2-08",
+    "layer": "latent",
+    "rq": "RQ2",
+    "label": "Fear of losing skills",
+    "definition": "Developers fear their own skills will fade.",
+    "include": "Skill loss.",
+    "exclude": "Supervision goes to B-RQ2-04.",
+    "participants": [
+     "R27",
+     "R09"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R27",
+      "quote": "losing my own skills"
+     },
+     {
+      "uid": "R09",
+      "quote": "juniors on my team accept suggestions"
+     }
+    ],
+    "n_participants": 2
+   }
+  ],
+  "candidate_themes": [],
+  "uncodeable": [
+   "R01",
+   "R02",
+   "R05",
+   "R06",
+   "R10",
+   "R12",
+   "R14",
+   "R15",
+   "R17",
+   "R22",
+   "R24",
+   "R26",
+   "R28",
+   "R30"
+  ],
+  "notes": ""
+ }
+}

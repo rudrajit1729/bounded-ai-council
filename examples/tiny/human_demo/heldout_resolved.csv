@@ -1,0 +1,11 @@
+uid,T01,T02,T03,T04,T05,T06,T07,T08,T09,T10,ISSUE_NON_RESPONSE,ISSUE_BACK_REFERENCE,UNCOVERED note,resolved_by
+R01,1,0,0,0,0,0,0,0,0,0,0,0,,"DEMO-A, DEMO-B (fictional)"
+R02,0,1,0,0,0,0,0,0,0,0,0,0,,"DEMO-A, DEMO-B (fictional)"
+R03,0,0,0,0,1,0,0,0,0,0,0,0,,"DEMO-A, DEMO-B (fictional)"
+R06,0,0,0,0,0,0,0,0,0,0,1,0,,"DEMO-A, DEMO-B (fictional)"
+R07,0,0,0,1,0,0,0,0,0,1,0,0,,"DEMO-A, DEMO-B (fictional)"
+R14,0,0,0,0,0,0,0,0,0,0,0,1,,"DEMO-A, DEMO-B (fictional)"
+R16,0,0,0,0,0,0,0,0,0,0,0,0,flow interruption,"DEMO-A, DEMO-B (fictional)"
+R23,0,0,0,1,0,0,0,0,0,0,0,0,,"DEMO-A, DEMO-B (fictional)"
+R25,0,0,0,0,0,1,0,0,0,0,0,0,,"DEMO-A, DEMO-B (fictional)"
+R29,0,0,0,0,0,0,1,0,1,0,0,0,,"DEMO-A, DEMO-B (fictional)"

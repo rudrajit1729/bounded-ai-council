@@ -1,0 +1,129 @@
+{
+ "reviewer": "DEMO-A",
+ "round": "r1",
+ "exported_at": "2026-09-30T12:00:00Z",
+ "n_codes": 9,
+ "status": {
+  "done": true
+ },
+ "_comment": "DUMMY FILE for the demo: reviewer DEMO-A is fictional.",
+ "blind_pass_missing": [
+  "learning a new language or framework",
+  "writes documentation"
+ ],
+ "reviews": {
+  "T01": {
+   "fidelity": "ok",
+   "grounding": "ok",
+   "distinctness": "ok",
+   "decision": "keep",
+   "pos": [
+    "R08",
+    "R15"
+   ],
+   "neg": [
+    "R28"
+   ],
+   "note": "Clear."
+  },
+  "T02": {
+   "fidelity": "ok",
+   "grounding": "ok",
+   "distinctness": "ok",
+   "decision": "keep",
+   "pos": [
+    "R28"
+   ],
+   "neg": [
+    "R08"
+   ],
+   "note": ""
+  },
+  "T03": {
+   "fidelity": "ok",
+   "grounding": "ok",
+   "distinctness": "ok",
+   "decision": "keep",
+   "pos": [
+    "R10",
+    "R24"
+   ],
+   "neg": [
+    "R17"
+   ],
+   "note": ""
+  },
+  "T04": {
+   "fidelity": "ok",
+   "grounding": "ok",
+   "distinctness": "ok",
+   "decision": "keep",
+   "pos": [
+    "R13"
+   ],
+   "neg": [],
+   "note": ""
+  },
+  "T05": {
+   "fidelity": "ok",
+   "grounding": "ok",
+   "distinctness": "ok",
+   "decision": "keep",
+   "pos": [
+    "R13"
+   ],
+   "neg": [],
+   "note": "R21 judges the assistant, not a specific error.",
+   "unsupported": [
+    "R21"
+   ]
+  },
+  "T06": {
+   "fidelity": "ok",
+   "grounding": "ok",
+   "distinctness": "ok",
+   "decision": "keep",
+   "pos": [
+    "R08"
+   ],
+   "neg": [],
+   "note": ""
+  },
+  "T07": {
+   "fidelity": "ok",
+   "grounding": "ok",
+   "distinctness": "ok",
+   "decision": "keep",
+   "pos": [],
+   "neg": [],
+   "note": "No development unit available as an example."
+  },
+  "T08": {
+   "fidelity": "ok",
+   "grounding": "ok",
+   "distinctness": "no",
+   "decision": "relabel",
+   "pos": [
+    "R21"
+   ],
+   "neg": [],
+   "note": "Too close to T05 for R21.",
+   "newLabel": "Accepting suggestions without understanding them",
+   "newDefinition": "Developers accept output they do not understand, or fear losing their own skills."
+  },
+  "T09": {
+   "fidelity": "ok",
+   "grounding": "ok",
+   "distinctness": "ok",
+   "decision": "merge",
+   "pos": [],
+   "neg": [],
+   "note": "Risks and rules co-occur in R11 and R18.",
+   "mergeInto": "T07"
+  },
+  "Q_Q:QA-01": {
+   "decision": "admit",
+   "note": "A real negative case for RQ1 with three units."
+  }
+ }
+}

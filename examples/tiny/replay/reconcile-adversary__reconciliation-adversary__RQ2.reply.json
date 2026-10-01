@@ -1,0 +1,37 @@
+{
+ "reconciliation/adversary_challenges.json": {
+  "challenges": [
+   {
+    "id": "RC-01",
+    "type": "LOW_OVERLAP_MERGE",
+    "group_label": "Reliance without understanding and loss of skills",
+    "members": [
+     "B:B-RQ2-04",
+     "A:A-RQ2-05"
+    ],
+    "units": [
+     "R21",
+     "R09"
+    ],
+    "evidence": "B-RQ2-04 vs A-RQ2-05: shared 1 (R09), only_a 1 (R21), Jaccard 0.333.",
+    "argument": "R21 is about careless output that must be supervised, not about the developer's understanding; B-RQ2-04 should not pull R21 into G06."
+   },
+   {
+    "id": "RC-02",
+    "type": "MISSED_MERGE",
+    "group_label": "Security, licensing and data risks",
+    "members": [
+     "A:A-RQ2-02",
+     "A:A-RQ2-07"
+    ],
+    "units": [
+     "R11",
+     "R18"
+    ],
+    "evidence": "G03 and G04 share R11 and R18, two of their three units each.",
+    "argument": "A coder cannot tell a risk from the rule made about it in R11 and R18; merge G03 and G04."
+   }
+  ],
+  "notes": "G01, G02, G05 sound."
+ }
+}

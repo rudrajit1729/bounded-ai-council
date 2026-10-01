@@ -1,0 +1,81 @@
+{
+ "discovery/answers/answer_A.json": {
+  "analyst": "A",
+  "answers": [
+   {
+    "challenge_id": "CH-01",
+    "answer": "ACCEPT",
+    "reason": "R15 reports a gain but no boundary; it fails the definition of A-RQ1-07.",
+    "revision": "A-RQ1-07: removed R15"
+   },
+   {
+    "challenge_id": "CH-02",
+    "answer": "ACCEPT",
+    "reason": "The proposed test is sound; R01 does not say where the saved time goes.",
+    "revision": "A-RQ1-05: removed R01, definition and exclude sharpened"
+   },
+   {
+    "challenge_id": "CH-03",
+    "answer": "REJECT",
+    "reason": "RQ1 asks for benefits; R07 reports a cost, which A-RQ2-03 holds. Low use alone (R30) says nothing about benefit.",
+    "revision": "none",
+    "quarantined_view": "NEUTRAL"
+   }
+  ]
+ },
+ "discovery/v1_delta/analyst_A.json": {
+  "replace": [
+   {
+    "id": "A-RQ1-07",
+    "layer": "contrastive",
+    "rq": "RQ1",
+    "label": "Gains limited to routine work",
+    "definition": "Benefits are reported for routine code only, with a boundary at business logic.",
+    "include": "Answers that place the benefit on routine work and draw a line where it stops.",
+    "exclude": "Answers that only praise boilerplate, without a boundary, go to A-RQ1-01.",
+    "participants": [
+     "R19",
+     "R08"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R19",
+      "quote": "Anything with business logic needs heavy editing"
+     },
+     {
+      "uid": "R08",
+      "quote": "It is fast at boilerplate, but"
+     }
+    ],
+    "n_participants": 2
+   },
+   {
+    "id": "A-RQ1-05",
+    "layer": "latent",
+    "rq": "RQ1",
+    "label": "Frees time and attention for higher-level work",
+    "definition": "Routine work shrinks and the developer says what the freed time or attention goes to (design, staying in context).",
+    "include": "Time or attention reported as freed for other work, or fewer interruptions to look things up.",
+    "exclude": "Time saved on boilerplate without saying where it goes stays in A-RQ1-01.",
+    "participants": [
+     "R15",
+     "R26"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R15",
+      "quote": "I finish routine tickets faster, so I have more time for design work"
+     },
+     {
+      "uid": "R26",
+      "quote": "fewer context switches: I don't have to search the web for syntax"
+     }
+    ],
+    "n_participants": 2
+   }
+  ],
+  "remove": [],
+  "uncodeable_add": [],
+  "uncodeable_remove": []
+ }
+}

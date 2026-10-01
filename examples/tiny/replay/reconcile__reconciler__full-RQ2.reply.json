@@ -1,0 +1,121 @@
+{
+ "reconciliation/merge_plan.json": {
+  "groups": [
+   {
+    "group_id": "G01",
+    "rq": "RQ2",
+    "label": "Suggestions are wrong or invented",
+    "definition": "Suggested code looks plausible but is wrong, or refers to APIs or flags that do not exist.",
+    "include": "Subtle bugs, invented methods or flags, careless output.",
+    "exclude": "Time spent checking goes to 'Checking and fixing output costs time'.",
+    "members": [
+     "A:A-RQ2-01",
+     "B:B-RQ2-01",
+     "C:C-RQ2-01"
+    ],
+    "rationale": "All cite R03, R13, R20."
+   },
+   {
+    "group_id": "G02",
+    "rq": "RQ2",
+    "label": "Checking and fixing output costs time",
+    "definition": "Reviewing, editing or chasing the assistant's output takes time, sometimes more than it saves.",
+    "include": "Review time, heavy editing, chasing errors, extra review steps.",
+    "exclude": "The errors themselves go to 'Suggestions are wrong or invented'.",
+    "members": [
+     "A:A-RQ2-03",
+     "B:B-RQ2-02",
+     "C:C-RQ2-02"
+    ],
+    "rationale": "R07 and R23 in all three."
+   },
+   {
+    "group_id": "G03",
+    "rq": "RQ2",
+    "label": "Security, licensing and data risks",
+    "definition": "The developer sees risks to security, licensing or data handling.",
+    "include": "Insecure suggestions, licence worries, unclear data flows to the vendor.",
+    "exclude": "Rules that restrict use go to 'Organisation restricts where it may be used'.",
+    "members": [
+     "A:A-RQ2-02",
+     "B:B-RQ2-03",
+     "C:C-RQ2-03"
+    ],
+    "rationale": "R04, R11, R18 in all three."
+   },
+   {
+    "group_id": "G04",
+    "rq": "RQ2",
+    "label": "Organisation restricts where it may be used",
+    "definition": "A lead, legal team or policy limits where the assistant may be used, or leaves it unclear.",
+    "include": "Bans, internal-tools-only rules, unclear policy.",
+    "exclude": "Risks without a rule go to 'Security, licensing and data risks'.",
+    "members": [
+     "A:A-RQ2-07",
+     "B:B-RQ2-05",
+     "C:C-RQ2-07"
+    ],
+    "rationale": "R11 and R29 shared."
+   },
+   {
+    "group_id": "G05",
+    "rq": "RQ2",
+    "label": "Does not fit team conventions or internal libraries",
+    "definition": "Generated code ignores the team's conventions or does not fit its internal libraries.",
+    "include": "Naming conventions, internal libraries, house style.",
+    "exclude": "Plainly wrong code goes to 'Suggestions are wrong or invented'.",
+    "members": [
+     "A:A-RQ2-04",
+     "B:B-RQ2-06",
+     "C:C-RQ2-05"
+    ],
+    "rationale": "R08 and R25 in all three."
+   },
+   {
+    "group_id": "G06",
+    "rq": "RQ2",
+    "label": "Reliance without understanding and loss of skills",
+    "definition": "Developers may accept suggestions without understanding them or lose their own skills.",
+    "include": "Juniors accepting suggestions, fear of deskilling, needing to supervise it.",
+    "exclude": "Wrong output itself goes to 'Suggestions are wrong or invented'.",
+    "members": [
+     "A:A-RQ2-05",
+     "B:B-RQ2-04",
+     "B:B-RQ2-08",
+     "C:C-RQ2-04"
+    ],
+    "rationale": "R09 and R27 shared across all three."
+   },
+   {
+    "group_id": "G07",
+    "rq": "RQ2",
+    "label": "Interrupts the developer's flow",
+    "definition": "Suggestions break concentration.",
+    "include": "Dismissing suggestions, interruptions.",
+    "exclude": "",
+    "members": [
+     "A:A-RQ2-06",
+     "B:B-RQ2-07",
+     "C:C-RQ2-06"
+    ],
+    "rationale": "R16 only."
+   }
+  ],
+  "relations": [
+   {
+    "type": "overlaps",
+    "from": "G03",
+    "to": "G04",
+    "note": "rules respond to the risks"
+   },
+   {
+    "type": "overlaps",
+    "from": "G01",
+    "to": "G02",
+    "note": "wrong output causes checking time"
+   }
+  ],
+  "quarantined_assessment": [],
+  "notes": "G07 has one unit."
+ }
+}

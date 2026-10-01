@@ -1,0 +1,201 @@
+{
+ "discovery/v0/per_reading/analyst_C_RQ2.json": {
+  "analyst": "C",
+  "lens": "layered",
+  "n_read": 30,
+  "codes": [
+   {
+    "id": "C-RQ2-01",
+    "layer": "semantic",
+    "rq": "RQ2",
+    "label": "Incorrect suggestions",
+    "definition": "Suggestions are wrong or invented.",
+    "include": "Wrong code, invented APIs or flags, careless output.",
+    "exclude": "",
+    "participants": [
+     "R03",
+     "R13",
+     "R20",
+     "R21"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R03",
+      "quote": "I caught an off-by-one error that looked perfectly fine"
+     },
+     {
+      "uid": "R13",
+      "quote": "Sometimes it invents API methods"
+     },
+     {
+      "uid": "R20",
+      "quote": "the build failed in CI"
+     },
+     {
+      "uid": "R21",
+      "quote": "fast but careless"
+     }
+    ],
+    "n_participants": 4
+   },
+   {
+    "id": "C-RQ2-02",
+    "layer": "semantic",
+    "rq": "RQ2",
+    "label": "Time lost verifying output",
+    "definition": "Verifying output costs time.",
+    "include": "Review, chasing errors.",
+    "exclude": "",
+    "participants": [
+     "R07",
+     "R23",
+     "R13"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R07",
+      "quote": "Reviewing its output takes longer"
+     },
+     {
+      "uid": "R23",
+      "quote": "My code reviews now include checking whether a block came from the assistant"
+     },
+     {
+      "uid": "R13",
+      "quote": "I lose time chasing them"
+     }
+    ],
+    "n_participants": 3
+   },
+   {
+    "id": "C-RQ2-03",
+    "layer": "semantic",
+    "rq": "RQ2",
+    "label": "Security and compliance risks",
+    "definition": "Security, legal or data-policy risks, and the rules made because of them.",
+    "include": "Security, licences, data, bans.",
+    "exclude": "",
+    "participants": [
+     "R04",
+     "R11",
+     "R18",
+     "R29"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R04",
+      "quote": "anything security related"
+     },
+     {
+      "uid": "R11",
+      "quote": "licensing of generated code"
+     },
+     {
+      "uid": "R18",
+      "quote": "our company policy is unclear"
+     },
+     {
+      "uid": "R29",
+      "quote": "banned it on the payments service"
+     }
+    ],
+    "n_participants": 4
+   },
+   {
+    "id": "C-RQ2-04",
+    "layer": "latent",
+    "rq": "RQ2",
+    "label": "Over-reliance and skill loss",
+    "definition": "Developers may rely on it without understanding and lose skills.",
+    "include": "Juniors, skills, careless acceptance.",
+    "exclude": "",
+    "participants": [
+     "R09",
+     "R27",
+     "R21"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R09",
+      "quote": "without understanding them"
+     },
+     {
+      "uid": "R27",
+      "quote": "losing my own skills"
+     },
+     {
+      "uid": "R21",
+      "quote": "working with a fast but careless intern"
+     }
+    ],
+    "n_participants": 3
+   },
+   {
+    "id": "C-RQ2-05",
+    "layer": "semantic",
+    "rq": "RQ2",
+    "label": "Poor fit with the codebase",
+    "definition": "Output does not fit the team's code.",
+    "include": "Conventions, internal libraries, business logic.",
+    "exclude": "",
+    "participants": [
+     "R08",
+     "R25",
+     "R19"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R08",
+      "quote": "ignores our team's naming conventions"
+     },
+     {
+      "uid": "R25",
+      "quote": "rarely fit our internal libraries"
+     },
+     {
+      "uid": "R19",
+      "quote": "Anything with business logic needs heavy editing"
+     }
+    ],
+    "n_participants": 3
+   },
+   {
+    "id": "C-RQ2-06",
+    "layer": "semantic",
+    "rq": "RQ2",
+    "label": "Disrupts flow",
+    "definition": "Suggestions interrupt thinking.",
+    "include": "Flow.",
+    "exclude": "",
+    "participants": [
+     "R16"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R16",
+      "quote": "interrupts my flow"
+     }
+    ],
+    "n_participants": 1
+   }
+  ],
+  "candidate_themes": [],
+  "uncodeable": [
+   "R01",
+   "R02",
+   "R05",
+   "R06",
+   "R10",
+   "R12",
+   "R14",
+   "R15",
+   "R17",
+   "R22",
+   "R24",
+   "R26",
+   "R28",
+   "R30"
+  ],
+  "notes": ""
+ }
+}

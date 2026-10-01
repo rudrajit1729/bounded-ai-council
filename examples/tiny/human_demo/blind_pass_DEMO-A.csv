@@ -1,0 +1,10 @@
+# DUMMY FILE for the demo: reviewer DEMO-A is fictional; these codes were written to illustrate the format
+uid,text,your codes (; separated),research questions
+R08,"It is fast at boilerplate, but the code it writes ignores our team's naming conventions.",fast boilerplate; ignores team conventions,RQ1;RQ2
+R10,Explaining legacy code is the best part. It summarised a 600-line function in plain English.,explains legacy code,RQ1
+R13,"Sometimes it invents API methods that do not exist, and I lose time chasing them.",invents non-existent APIs,RQ2
+R15,"I finish routine tickets faster, so I have more time for design work.",faster routine work; time for design,RQ1
+R17,It helped me pick up Rust much faster than reading the book alone.,learning a new language,RQ1
+R21,Pair programming with it feels like working with a fast but careless intern.,careless output needs supervision,RQ2
+R22,I use it to write documentation comments. It turns my notes into readable docstrings.,writes docs/docstrings,RQ1
+R24,It is good at explaining error messages and suggesting what to try next.,explains errors; debugging help,RQ1

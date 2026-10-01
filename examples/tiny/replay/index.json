@@ -1,0 +1,843 @@
+{
+  "recorded_from": "examples/tiny/workspace_agent",
+  "recorded_at": "2026-10-01T06:55:44+00:00",
+  "n_replies": 167,
+  "note": "Replies to manual prompts, replayed by the `replay` backend (models.<family>.replay_dir, decision_model.replay_dir). No model is contacted when replaying. Three discovery-adversary prompt hashes were refreshed after a fix made the order of the grounding-lead file deterministic (the content is unchanged).",
+  "calls": {
+    "coding-adversary__adversary-of-coder-1__1": {
+      "stage": "coding-adversary",
+      "role": "adversary-of-coder-1",
+      "prompt_sha256": "13789ddd3ba524666a93bd8dc0b30e4d48f615b118b4621cf15cae76f528133e"
+    },
+    "coding-adversary__adversary-of-coder-1__2": {
+      "stage": "coding-adversary",
+      "role": "adversary-of-coder-1",
+      "prompt_sha256": "3a33bf5e2debc468ecf4ddc83b4cca0a2e7a8e36db935ef672388dbdbc01f63f"
+    },
+    "coding-adversary__adversary-of-coder-2__1": {
+      "stage": "coding-adversary",
+      "role": "adversary-of-coder-2",
+      "prompt_sha256": "f1d41011ba0fe5f17e59dee6d177209e76ac7a63ea7d0f29bba861f2d5ab720f"
+    },
+    "coding-adversary__adversary-of-coder-2__2": {
+      "stage": "coding-adversary",
+      "role": "adversary-of-coder-2",
+      "prompt_sha256": "c01cd983432b9ce5e84b1c16f91cf7a8b5d91d2459f871064b0e927f47a30755"
+    },
+    "coding-adversary__adversary-of-coder-3__1": {
+      "stage": "coding-adversary",
+      "role": "adversary-of-coder-3",
+      "prompt_sha256": "671f77a1eea0ae3d971360397ede014875f9ec2e63e7c623d3c89334939519eb"
+    },
+    "coding-adversary__adversary-of-coder-3__2": {
+      "stage": "coding-adversary",
+      "role": "adversary-of-coder-3",
+      "prompt_sha256": "3151ff97cbac8a89b574982265b4da35163e904fbd1a0178657d0944c12071f0"
+    },
+    "coding-answer__coder-1-answers__1": {
+      "stage": "coding-answer",
+      "role": "coder-1-answers",
+      "prompt_sha256": "4595e3be720f680b2508fea3be52b90c4150a97786862578539f03f9bbcce65d"
+    },
+    "coding-answer__coder-1-answers__2": {
+      "stage": "coding-answer",
+      "role": "coder-1-answers",
+      "prompt_sha256": "6596db52e06dca65b1c82b108a858973f88033ebdff86d79c0f9a2d0d447b925"
+    },
+    "coding-answer__coder-2-answers__1": {
+      "stage": "coding-answer",
+      "role": "coder-2-answers",
+      "prompt_sha256": "f0370aa891d023c74c0b28e1d3ca52d273efd6a1f60985faf0c8825ab92e69f9"
+    },
+    "coding-answer__coder-2-answers__2": {
+      "stage": "coding-answer",
+      "role": "coder-2-answers",
+      "prompt_sha256": "73e72ad47c587bd21d10f919112055bc1c013d5e18febf026a7f41ebfda1f5da"
+    },
+    "coding-answer__coder-3-answers__1": {
+      "stage": "coding-answer",
+      "role": "coder-3-answers",
+      "prompt_sha256": "2d70afdbc987aefca9db4ab30979ebb60130745e6bc39e3dfbbde70a3ff36947"
+    },
+    "coding-answer__coder-3-answers__2": {
+      "stage": "coding-answer",
+      "role": "coder-3-answers",
+      "prompt_sha256": "735a4b53e8c760a8d7405a021ea76c85828e5fc541b7b70b19441be229474ba3"
+    },
+    "coding-screened__coder-1__1": {
+      "stage": "coding-screened",
+      "role": "coder-1",
+      "prompt_sha256": "6cdf223ecfc84200899c97406cf9046b4d3ed806be2c8309d57949f3531eb78c"
+    },
+    "coding-screened__coder-1__2": {
+      "stage": "coding-screened",
+      "role": "coder-1",
+      "prompt_sha256": "87333a84505d73f3ed818e9cc1e36222b48e4e69ea9aa1a75f76e7d4c4251632"
+    },
+    "coding-screened__coder-2__1": {
+      "stage": "coding-screened",
+      "role": "coder-2",
+      "prompt_sha256": "692243435c9f95369287db8ac2dc6878ccdb3278bd963ce50bd3c93dcf3e48b7"
+    },
+    "coding-screened__coder-2__2": {
+      "stage": "coding-screened",
+      "role": "coder-2",
+      "prompt_sha256": "c3e54629159fa866b8bf295539d8feac5bc5b632ed5112dcaba791e7ec212d48"
+    },
+    "coding-screened__coder-3__1": {
+      "stage": "coding-screened",
+      "role": "coder-3",
+      "prompt_sha256": "01ac481de157aeba3e78f8d2fd1f48d1f7896b0549d61201c942f744265843de"
+    },
+    "coding-screened__coder-3__2": {
+      "stage": "coding-screened",
+      "role": "coder-3",
+      "prompt_sha256": "3043235ec5100e022a8773276c519c5f6220405dd028d07024d5b1fb63ff3144"
+    },
+    "coding__coder-1__1": {
+      "stage": "coding",
+      "role": "coder-1",
+      "prompt_sha256": "2491bf22a6045b73351ce89486372008559c1321d6ad98c3f4f603dca1da0e8c"
+    },
+    "coding__coder-1__2": {
+      "stage": "coding",
+      "role": "coder-1",
+      "prompt_sha256": "af4e52095c9eec5cff0e4e1e613b4b18ca14a35d0be3b0767bdcec98ec053134"
+    },
+    "coding__coder-2__1": {
+      "stage": "coding",
+      "role": "coder-2",
+      "prompt_sha256": "f6a17c5e328ef712d85ddd9e7386cbf4efc6422d2cdba8c3dc846f26bc21a116"
+    },
+    "coding__coder-2__2": {
+      "stage": "coding",
+      "role": "coder-2",
+      "prompt_sha256": "6ecb35fa101b5e348a6bcd8a6127a854d81cc4b628378114e52281159fef8138"
+    },
+    "coding__coder-3__1": {
+      "stage": "coding",
+      "role": "coder-3",
+      "prompt_sha256": "3a248fd602496358a0905db8fb14d1da840bfc39fb45616826eac106037e0c2e"
+    },
+    "coding__coder-3__2": {
+      "stage": "coding",
+      "role": "coder-3",
+      "prompt_sha256": "5a7c4480cbc628944078962921491a46d84813ecdc0e6826117303b376fd16cd"
+    },
+    "discovery-adversary__adversary-of-A__-": {
+      "stage": "discovery-adversary",
+      "role": "adversary-of-A",
+      "prompt_sha256": "338ca692f5a0e73995cace5aa018e743753cc9e699bdbe77ec1fd77109c0d354"
+    },
+    "discovery-adversary__adversary-of-B__-": {
+      "stage": "discovery-adversary",
+      "role": "adversary-of-B",
+      "prompt_sha256": "aa773878b9275c1f1161a7aa34b56c68d9307ef7dabd93ba24d589cdef222717"
+    },
+    "discovery-adversary__adversary-of-C__-": {
+      "stage": "discovery-adversary",
+      "role": "adversary-of-C",
+      "prompt_sha256": "3a158fd5c3d1f65cbdc7bbfb6bee05856c3a6d90a61d71647cc4ee8de4742f45"
+    },
+    "discovery-answer-repair__analyst-C-answers__-__a1": {
+      "stage": "discovery-answer-repair",
+      "role": "analyst-C-answers",
+      "prompt_sha256": "278d1a957d6c5c554e30031e5398b5253235a2ecc13aa64622317b833054c854"
+    },
+    "discovery-answer__analyst-A-answers__-": {
+      "stage": "discovery-answer",
+      "role": "analyst-A-answers",
+      "prompt_sha256": "e89603cc73342d1e6ab370b1dc6f03e3eb5941cab950ae7f272e4a1bf112109f"
+    },
+    "discovery-answer__analyst-B-answers__-": {
+      "stage": "discovery-answer",
+      "role": "analyst-B-answers",
+      "prompt_sha256": "f23641d9548cf5d483730963c0071d3991ec120c71d242d102021ddef79a308d"
+    },
+    "discovery-answer__analyst-C-answers__-": {
+      "stage": "discovery-answer",
+      "role": "analyst-C-answers",
+      "prompt_sha256": "81bf1e44c05480c7748c5556da223134c3e018a3670d8cc5167b9c1e3aa2865e"
+    },
+    "discovery-repair__analyst-A__A_RQ1__a1": {
+      "stage": "discovery-repair",
+      "role": "analyst-A",
+      "prompt_sha256": "13914c13f7628f0e45a7d0c7c7702af40a75a33fea18188ef272700c5f97276f"
+    },
+    "discovery-repair__analyst-B__B_RQ1__a1": {
+      "stage": "discovery-repair",
+      "role": "analyst-B",
+      "prompt_sha256": "ecd8c747c4456761715798667b81f8b03f3b50f4cb7b13ccb24d971732de7274"
+    },
+    "discovery__analyst-A__A_RQ1": {
+      "stage": "discovery",
+      "role": "analyst-A",
+      "prompt_sha256": "e30656087e3f8cc84619f5585803d2d493a2c164adcc059f3dc6f5dc99260349"
+    },
+    "discovery__analyst-A__A_RQ2": {
+      "stage": "discovery",
+      "role": "analyst-A",
+      "prompt_sha256": "35a129be412d8e5ebff3a944e9d7f7d233289414a0891957ba8a9fbe2e6506b6"
+    },
+    "discovery__analyst-B__B_RQ1": {
+      "stage": "discovery",
+      "role": "analyst-B",
+      "prompt_sha256": "89d8d97b925966629664f85b38deccec68b2e7db6ddde52b903e33e16c6ee590"
+    },
+    "discovery__analyst-B__B_RQ2": {
+      "stage": "discovery",
+      "role": "analyst-B",
+      "prompt_sha256": "aee93bc424d093cc44deeaddd38f28567ec122b5943fbabd37eded40d4f66a29"
+    },
+    "discovery__analyst-C__C_RQ1": {
+      "stage": "discovery",
+      "role": "analyst-C",
+      "prompt_sha256": "597d202c367c680e8649dbb549bf60ad5c7ede44449b83c86f830d517b988983"
+    },
+    "discovery__analyst-C__C_RQ2": {
+      "stage": "discovery",
+      "role": "analyst-C",
+      "prompt_sha256": "a191a611427ce434a11bb63e67c72380a2453c002cbc3f7c0dcd5b287d1da885"
+    },
+    "jev-leads__analyst-A__R01": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "fad8a605f5df7b83cc3ec043fdbb0bf17c99fb04201edbad07481329e7b7bd1a"
+    },
+    "jev-leads__analyst-A__R02": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "35fd8e7a33c9281ac9ea971140ec886bcabd387b3f8c87440876f0e3ac349a3e"
+    },
+    "jev-leads__analyst-A__R03": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "dea9befb68d7cd995cbf75c19648cf6c7430031b191a435a976102c47205cbe8"
+    },
+    "jev-leads__analyst-A__R04": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "bf1ff79d72f42bf965d7df7748ad77e9f310b13f4dd8b3f564d7ef7e73cb05d1"
+    },
+    "jev-leads__analyst-A__R05": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "bda27529fc2341ce59d13f937feae87c5e0bdc8a705ea5c20cff281ed064728d"
+    },
+    "jev-leads__analyst-A__R06": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "9953d2a2243fc2b6c6dc6ba2e3307e8fb9adc139b3300bf581ffd6be0677ef88"
+    },
+    "jev-leads__analyst-A__R07": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "b24d86e794235c2ad80f5fbf3c23fdaa0bb5f5a3ce03200509434427d1e4cbfe"
+    },
+    "jev-leads__analyst-A__R08": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "3fc631753180f0fba8ceaa07d25d2346fcfb01eb86522e9e5669633bcac6b2d2"
+    },
+    "jev-leads__analyst-A__R09": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "dae0c0bda836a5cd1a2c562b7e4156c6e85c4357e8d8cdabc1f8aea0fb2e70a4"
+    },
+    "jev-leads__analyst-A__R10": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "432a526e466baac596dd943489b6a6d38c8f7cc269397a2462965f975333bfe2"
+    },
+    "jev-leads__analyst-A__R11": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "5ccd8c9d8cb1b2fb875840b668b9fb5df41226921cf5483569a13573f3941e63"
+    },
+    "jev-leads__analyst-A__R12": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "b1d30435756ab3d46ffad6fd25de8fd19a2b288f4f7b45f784ce05ee3d9dca1d"
+    },
+    "jev-leads__analyst-A__R13": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "627c39abfa6086fda34173b28f888c819a37c556711d1c24004dfd9d30fbdba9"
+    },
+    "jev-leads__analyst-A__R14": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "1f1d1cfc484e2407566e6d7cbf31eaaaadf95d33c8bb74c56443e106da8416b3"
+    },
+    "jev-leads__analyst-A__R15": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "200180dc02641a55f3f2eadda545182b73082d3ddd166f6bd31cea0a576757bb"
+    },
+    "jev-leads__analyst-A__R16": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "8a5d2316bd5e9c9accd3a6d16f7909254d21a25303ead23dc8d817f35bf20046"
+    },
+    "jev-leads__analyst-A__R17": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "14529411db3d8878cda492b0e0820fe0ebfb9c92a263ba17de89fdad2079e9e1"
+    },
+    "jev-leads__analyst-A__R18": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "297ac6d271bb204821cc540a36c787bb33953c15336d215faf6dcc05ea8b7eef"
+    },
+    "jev-leads__analyst-A__R19": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "87c49813e2ba8938f4f557300ac973e4a7b5ddb8743a05a8b6a69aa872064145"
+    },
+    "jev-leads__analyst-A__R20": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "c78624854fa01719116c52f11b7e3cac1e680fbdb1ec2a171e5f9d1ed576aa7d"
+    },
+    "jev-leads__analyst-A__R21": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "dd393295288e954001d10ed68c116b48c06d4f6493fe57f01e99ad7ef2c3ecb4"
+    },
+    "jev-leads__analyst-A__R22": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "b2da51d69842f3b574e10ace6db7d9705e46e11a8e39a64fd2b1d92ad037db89"
+    },
+    "jev-leads__analyst-A__R23": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "67c591e10042d324ee728062d0be6e1a0d09dcde28c92af2c73b289efab10b7d"
+    },
+    "jev-leads__analyst-A__R24": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "9aae200d1b2f76ccd12bf1a8b9cfcbf335c1b396e3b4aa554c4879518520ba92"
+    },
+    "jev-leads__analyst-A__R25": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "567c6c976aa13709982523eca63d6f50da71780713a053532bb098242d193527"
+    },
+    "jev-leads__analyst-A__R26": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "1e1b5fb5b20f06eadf891209957be94c0d49046dec99d681ffbc525105d3d07c"
+    },
+    "jev-leads__analyst-A__R27": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "aa52f9911ba37033199c7362ad064ef2ccd39ce4536f12037a22db06710451a7"
+    },
+    "jev-leads__analyst-A__R28": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "6a0dd9ad4edf761c1aec10e65667cc2237d4c2a8a55a35d8a0d36f679e95fd4a"
+    },
+    "jev-leads__analyst-A__R29": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "1dbf5d63fe11207f7e831b7127271cf56dd0eacfa4d6d89e7f58d168a63dcb6f"
+    },
+    "jev-leads__analyst-A__R30": {
+      "stage": "jev-leads",
+      "role": "analyst-A",
+      "prompt_sha256": "566a41a3ce3308528edbd168f8983ace34b100fa282d3a7150b5815859d0f1d5"
+    },
+    "jev-leads__analyst-B__R01": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "2848478aedbfc528a58220ae3e4ad7409b6e4062be9d9e3a626009425bf5d7b3"
+    },
+    "jev-leads__analyst-B__R02": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "69cd2cb7cd11540ef143c50b875727f1a0de49d5986c018fb27be17dc2123d80"
+    },
+    "jev-leads__analyst-B__R03": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "9fb2f020947179b8af01581f3758a01127bdf3d80220b875478952952441e874"
+    },
+    "jev-leads__analyst-B__R04": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "f43660ef9d938f889e7fe88091108f3cb57409d6cca025d3d10b0d54b0b3bb06"
+    },
+    "jev-leads__analyst-B__R05": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "a36e452cd6202e5b00b20545002ed934b96becf689de47b29481c22ad3b7cdc4"
+    },
+    "jev-leads__analyst-B__R06": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "569b0126dd165fd4910817f06070c812cdb5437f2cb8f041b72663d84cfcd4ff"
+    },
+    "jev-leads__analyst-B__R07": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "a7ff76890ab5d8f0a606cf0240f5648ab91ef80da9aa0e6d33267dd9fea1487b"
+    },
+    "jev-leads__analyst-B__R08": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "2f545b155dd415bcbbbf84d68e391312350d05c05f1af57d9a45f5ae63f7249b"
+    },
+    "jev-leads__analyst-B__R09": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "13ca12b06445b0ebee313c88288d555f1dbd386e9de481712254ef96ab603456"
+    },
+    "jev-leads__analyst-B__R10": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "f9f8cb3806db6f544c8edbfd18ac56a07382a9861188d8ab14485e8ec6dac80c"
+    },
+    "jev-leads__analyst-B__R11": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "c19be8844bdcd667fb1deb952e0df47579e5a2cc61e1b067c4d2a355152f9542"
+    },
+    "jev-leads__analyst-B__R12": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "5809c169f26a95c41bac87a3c4034585131b4df94c62fba49d47dbc094db7967"
+    },
+    "jev-leads__analyst-B__R13": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "ee9f3a9305728597cee210c7e017152b561609ba38eb412805a48482611e8bf1"
+    },
+    "jev-leads__analyst-B__R14": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "71915393a02ea8e918f4f8f6c4045cfc634306978c17b863878fe7332949eef2"
+    },
+    "jev-leads__analyst-B__R15": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "77e970891c19e8f356793a0119b48a7956cdd7d57cbfa8a7a6412a52400b2b41"
+    },
+    "jev-leads__analyst-B__R16": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "a059ad3f4189b1692d20f3669b20d0c0b8bd5307c490ad5154ef313808dcae83"
+    },
+    "jev-leads__analyst-B__R17": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "cf3111b373fb4e9a0368d202c57d4b9d4eb5e4b6ff09b20a1757a4a70cf4301d"
+    },
+    "jev-leads__analyst-B__R18": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "caa6d48cdfae2fa6099f8be435de7c63ea7761f689e40ef960aa03a5ca52670c"
+    },
+    "jev-leads__analyst-B__R19": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "4918685988449b7c4d8fef1661139d2402020bd7e515a3924b300eec1df0bd4a"
+    },
+    "jev-leads__analyst-B__R20": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "6dec9db22a9e68dae484f0d982358409b3d55237698e7431e471f591a393a3d7"
+    },
+    "jev-leads__analyst-B__R21": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "b6287a7ba6f5530f101291f9a59331799a721889dfad51a74635129d4c4feb00"
+    },
+    "jev-leads__analyst-B__R22": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "f30eda4ff0e210319b3887ed3b1f99264bb0dac06c1c00e24b8a9a5b55979f3f"
+    },
+    "jev-leads__analyst-B__R23": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "d4617a39f4ad66cf9bd0c121c494149dfd121820c68c63e83b7344810afb2777"
+    },
+    "jev-leads__analyst-B__R24": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "ee201f31f72ce321605c666b6c678a9472c3905461d3e41b022313d292202cf1"
+    },
+    "jev-leads__analyst-B__R25": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "63c78b7eeccfce01c04c31d49faba8c27a4d19d20a4d82acbbc40c6f75c56f79"
+    },
+    "jev-leads__analyst-B__R26": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "46adcdf955cafb695b2bd5ba1fd9f71a0c665e1486917d275facd87008a407b9"
+    },
+    "jev-leads__analyst-B__R27": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "2870c9e8939e60d67d701a06b171e890e97064f01fdd77ad475fe1b31dcea9af"
+    },
+    "jev-leads__analyst-B__R28": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "73a75c80cf1269461282f8e097ad6be170de71fcead1d35568b69e7a12c4eac7"
+    },
+    "jev-leads__analyst-B__R29": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "e939d31a001f1f28167dc1438336ac128a5b0b6c58a976455ea56f02d125f525"
+    },
+    "jev-leads__analyst-B__R30": {
+      "stage": "jev-leads",
+      "role": "analyst-B",
+      "prompt_sha256": "bab3b37d28b554e6e30a02c9cec76ff26f9f0642c4b29199b1cf40ecd61adad9"
+    },
+    "jev-leads__analyst-C__R01": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "5c4a5638ae32ec6c849acc88b7cb42b2ad8a7e191c524389d8850531629991be"
+    },
+    "jev-leads__analyst-C__R02": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "62fa2a63381c99671428af5549b5dcbd54ee1debd27c43935d8ea2dbd8cdc2f3"
+    },
+    "jev-leads__analyst-C__R03": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "79f153c2dad5524bd0bd224d7095a7a6aa4d8cb42e01808d35fb31fee4a4fe7d"
+    },
+    "jev-leads__analyst-C__R04": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "d2e14f76971ddab23dff89f743163b4449d724aff1cb35de68f742d9cd27c715"
+    },
+    "jev-leads__analyst-C__R05": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "52d252d1ea55a740576bc4a82487346850127006500b05740c057b69a7845956"
+    },
+    "jev-leads__analyst-C__R06": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "bffb9f40f9e71bb0e297176224a9164f1996b2516ce25fa6e569895386e11c00"
+    },
+    "jev-leads__analyst-C__R07": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "9f55e6f51b237a054d34fa09f5705159ffcf5cfcd9eb189f10f83bd3b4bb924d"
+    },
+    "jev-leads__analyst-C__R08": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "c32e340346ba98880f8c780dccc6e9f28abddf231bc1d0714b17518ed8bf3faa"
+    },
+    "jev-leads__analyst-C__R09": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "c2caa06b88e64f95a748ef714b054c21b07ec3882fa5b47431cf72f0f77aaba5"
+    },
+    "jev-leads__analyst-C__R10": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "78c9220dc0b9f2b20e775843744780dca8bddbb8b70e8cb9d36e7423f76a6ea2"
+    },
+    "jev-leads__analyst-C__R11": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "b69acd6de37be812df8683499951817b8a0270e523ade5b437f418f958b0c98b"
+    },
+    "jev-leads__analyst-C__R12": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "a75cbf688575474b4f0740d801c6391d6ab7c8b1b74f5bc4407e0b42ba922a67"
+    },
+    "jev-leads__analyst-C__R13": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "49143d961a625bd9d32cbea93011434cc9f88a630ca42b2cae25c3ec2b723433"
+    },
+    "jev-leads__analyst-C__R14": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "026ce94f77ffc95913a6b995b0f7bb2d1582efc4ef44ff776a8fd304033e747b"
+    },
+    "jev-leads__analyst-C__R15": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "c6cff1730489d6f8baeaa0814ecd57684562976dc08cec14d1997557448b9d34"
+    },
+    "jev-leads__analyst-C__R16": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "6c64b7a71da2a74dc3eaca8ede258e476647833d5e5524ad28cd62b6e414188d"
+    },
+    "jev-leads__analyst-C__R17": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "42de3b040f20ffff5c057a9593b5b66f794bdac141df25edd7e36aeec763e759"
+    },
+    "jev-leads__analyst-C__R18": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "c4e23bbc4c41f63e7892814da9aaab97c647f30030b1cab1c20ee925906c4898"
+    },
+    "jev-leads__analyst-C__R19": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "17e73092f713dc52b96bfacff0967db91906ce4a4a1f74ab7badf588719e7542"
+    },
+    "jev-leads__analyst-C__R20": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "abe5a2787f6a68ff623958241aeab7b361a1458f2a4af8f014a5ce999fedfe84"
+    },
+    "jev-leads__analyst-C__R21": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "8251737a65a0dca79ec86ed272c68545ac99ac880cc1a199469b2207abfa8db1"
+    },
+    "jev-leads__analyst-C__R22": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "6e3a891c5486b401abaf4a0e4cafa6401d06212e0f4a2b4d5998b267b5b0a3ae"
+    },
+    "jev-leads__analyst-C__R23": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "d229b38322085df8d67c81aff704661511a00cd488c066dff878e3f01aede7eb"
+    },
+    "jev-leads__analyst-C__R24": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "666a9ac3d4ecd63a70994465be8b94d0b07d44ff4a008482961d9a7099828912"
+    },
+    "jev-leads__analyst-C__R25": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "47deeaf0e946eb476fc61cbaac7d1efe5eaffa3e1657ddbef4408f24680842cd"
+    },
+    "jev-leads__analyst-C__R26": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "3c68963bc9221a5150840c5c62df5390debc2b84ae50059119130972ca800726"
+    },
+    "jev-leads__analyst-C__R27": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "02673b95562b2fda67f4939ef7303dea9f01cd1f9e861fca07371dba59365203"
+    },
+    "jev-leads__analyst-C__R28": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "1309f6660c419b02865d714444eb79a1494f33ef70a66c84505fe06e8067175a"
+    },
+    "jev-leads__analyst-C__R29": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "32090f1d528fd5cc3f6ec95d3ac41feedb474babb925d6e55171a81d3b4aae67"
+    },
+    "jev-leads__analyst-C__R30": {
+      "stage": "jev-leads",
+      "role": "analyst-C",
+      "prompt_sha256": "fb23fe89de1afa1cdc7c4bafef3bf1d206cea6aaa8224bd9a2cc9f89f03d7248"
+    },
+    "jev-screen__coders__R01": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "bbc40b00e6a4012772ad1ecf20f9b10696d83685adb1ee891ce2509ea0a06333"
+    },
+    "jev-screen__coders__R02": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "166c7b5752291714cb44025a59534431fade681dbfe10c3b149a01c6effa5d05"
+    },
+    "jev-screen__coders__R03": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "ecc78f8dbfb1dff28207b557e81f262cd870a3c03fca52b84b155b0f43fba62c"
+    },
+    "jev-screen__coders__R04": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "81d4037dac57a2407c4eaad5a92bcf609dbd5752a8ca998a400cf0bf382855a2"
+    },
+    "jev-screen__coders__R05": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "285c52df4f5546505bf98cce9009b56b1fc1b07afd3710a43e9f14c62dbdeb3c"
+    },
+    "jev-screen__coders__R06": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "0c293beb03e2313d58b193b95117397219f040ad4fab06608b3c764c33faa6a3"
+    },
+    "jev-screen__coders__R07": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "27f1d92394fda33e5d1743a5032cf145d717b75fef8eb4a3c6eba51a156a4f27"
+    },
+    "jev-screen__coders__R08": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "477147c4157614fac1d6e8766567815c258df5bbe38ce615bd9309f281d47170"
+    },
+    "jev-screen__coders__R09": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "e3dd55e7ebda63b12e014fb20b7a13ab6bbf3d525a681c2a76fa2908d2fd9498"
+    },
+    "jev-screen__coders__R10": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "4765c37881a03638fb1ee694edac4f18d586dc8c96713056d8219208859bc19c"
+    },
+    "jev-screen__coders__R11": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "a446b2e4f2ab75da3be0a6198ad48ed19ba00a644ef49c661a459b8141e93643"
+    },
+    "jev-screen__coders__R12": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "8a424d42508d7d758f8438f35552d4c77434fe4477e714b9d6ea633c15bc0acd"
+    },
+    "jev-screen__coders__R13": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "c6b455919babaf67331d3859094bbe3cec8d425d153e916197d61905645a38e7"
+    },
+    "jev-screen__coders__R14": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "aa7e8592101e2fda2b6769434f39dba6573ec7ec39fd4a3ed81554562ba08e35"
+    },
+    "jev-screen__coders__R15": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "8b2340062efcc63de3b65f8662f7210bf1a5da415fad5cf519e885a6c647fd7e"
+    },
+    "jev-screen__coders__R16": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "62c158fc4dcea91d95083728f7b482ca5f36ef6c073162adbec1fa5fe278bd65"
+    },
+    "jev-screen__coders__R17": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "914f63b769809ea927ad838498cf17f6c432fe559165599fb55a65b458cb7b7b"
+    },
+    "jev-screen__coders__R18": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "ea693db95132f36b76d75bd12e8d9b18932b454b638d4f47b463d386786aab26"
+    },
+    "jev-screen__coders__R19": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "ca06929f80e82f0b0605b2e39aaba0484d23207a0642d8a10c487309bc279b4f"
+    },
+    "jev-screen__coders__R20": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "7a6a0c0a8b267582dee01d29b06b9e300adab125cfcae478a30936226699defa"
+    },
+    "jev-screen__coders__R21": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "408fa3d9acb0f9656f10c8b769d7ffdfae128627a278012a9794e03298f8e711"
+    },
+    "jev-screen__coders__R22": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "405fb9fc65bf5a6df9ed201b9a8d148266fb76c4f6cb909d159b48f78e081618"
+    },
+    "jev-screen__coders__R23": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "8ff2bd31708bbf1f35284f11663fad9c0801e2078837bb646ceb98ae1833cfb0"
+    },
+    "jev-screen__coders__R24": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "d133b9bdc8a59b120397491c5e1b30cd7de40b420bff52a0f77d9edc5a5d3f4f"
+    },
+    "jev-screen__coders__R25": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "b629aecef22c0a8724b4673f1072b34da531bb883cf66a2ee788e0c604510125"
+    },
+    "jev-screen__coders__R26": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "5d14fd745cf2943cfd97cd4284200ee606a0afcd35e8f7fb786c9c4419f592d6"
+    },
+    "jev-screen__coders__R27": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "736491611ddb53101a52dad43e85494930fda61a9edafd75b3f4e87a92fc3167"
+    },
+    "jev-screen__coders__R28": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "5944872bc42c439f675de45a42f639d74b40ebec040cff17cb64e019c5b027d7"
+    },
+    "jev-screen__coders__R29": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "81b93deea0b68eef3a50f81aec33f0e4bd9402d5734b18be094d6f385aee675d"
+    },
+    "jev-screen__coders__R30": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "8adbc2b8cbea6a94f3b60917cdeda461694e997b02a5e7949bcbc562e88ce587"
+    },
+    "reconcile-adversary__reconciliation-adversary__RQ1": {
+      "stage": "reconcile-adversary",
+      "role": "reconciliation-adversary",
+      "prompt_sha256": "1fb7ca07ec17a480bde6bbb9ade875f78b124c1e6a78ccfdc5d3f841d2876e46"
+    },
+    "reconcile-adversary__reconciliation-adversary__RQ2": {
+      "stage": "reconcile-adversary",
+      "role": "reconciliation-adversary",
+      "prompt_sha256": "fea07fc07d7da5e37449d1e27a86ac5575e8fcba0e3dd27a95872a5fc017215c"
+    },
+    "reconcile-answer__reconciler-answers__RQ1": {
+      "stage": "reconcile-answer",
+      "role": "reconciler-answers",
+      "prompt_sha256": "f854aec5b9050585a80bacedf6628b8634c1011e9736dec72a40e7461ddb73ac"
+    },
+    "reconcile-answer__reconciler-answers__RQ2": {
+      "stage": "reconcile-answer",
+      "role": "reconciler-answers",
+      "prompt_sha256": "44ccf726b65b782d7aeb89a9fa7be27d1d860339e294212556b8d2f6329c3cbe"
+    },
+    "reconcile__reconciler__full-RQ1": {
+      "stage": "reconcile",
+      "role": "reconciler",
+      "prompt_sha256": "45e8a316a8d77c3386e715d29dedb06dbc75a0c906389b63b5688d195c85a163"
+    },
+    "reconcile__reconciler__full-RQ2": {
+      "stage": "reconcile",
+      "role": "reconciler",
+      "prompt_sha256": "dec48f10690f91197fabb8091eb3115abdff561b85a1baee5b055d01b4f2bc58"
+    },
+    "reconcile__reconciler__lite-RQ1": {
+      "stage": "reconcile",
+      "role": "reconciler",
+      "prompt_sha256": "5e0d658f80428312416fed329f21411edf788eac7f71c6cd9264e26b1055de31"
+    },
+    "reconcile__reconciler__lite-RQ2": {
+      "stage": "reconcile",
+      "role": "reconciler",
+      "prompt_sha256": "f0ca7ffff25901b3f794da16b9bcbd35b7bd6b403a95d68f6175c64d28f2cddd"
+    }
+  }
+}

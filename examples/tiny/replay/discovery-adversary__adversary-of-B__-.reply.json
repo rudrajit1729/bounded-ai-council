@@ -1,0 +1,47 @@
+{
+ "discovery/challenges/adversary_B.json": {
+  "adversary_for": "B",
+  "axes": [
+   "semantic",
+   "latent",
+   "contrastive"
+  ],
+  "challenges": [
+   {
+    "id": "CH-01",
+    "axis": "semantic",
+    "type": "GROUNDING",
+    "code_id": "B-RQ1-04",
+    "units": [
+     "R24"
+    ],
+    "quote": "suggesting what to try next",
+    "argument": "R24 describes help with error messages, not avoiding a search or a context switch. Its citation in B-RQ1-04 is not supported by its words."
+   },
+   {
+    "id": "CH-02",
+    "axis": "latent",
+    "type": "OMISSION",
+    "code_id": "B-RQ2-01",
+    "units": [
+     "R21"
+    ],
+    "quote": "a fast but careless intern",
+    "argument": "A careless intern produces wrong code; R21 reports the output is careless, which B-RQ2-01 covers. Cite R21 there as well as in B-RQ2-04."
+   },
+   {
+    "id": "CH-03",
+    "axis": "latent",
+    "type": "MERGE",
+    "code_id": "B-RQ2-04",
+    "units": [
+     "R09"
+    ],
+    "quote": "accept suggestions without understanding them",
+    "argument": "B-RQ2-04 and B-RQ2-08 both rest on R09; accepting without understanding and losing skills are one arrangement (reliance replacing understanding). Merge them."
+   }
+  ],
+  "quarantined_codes": [],
+  "notes": "No issue found with the test-writing and documentation codes."
+ }
+}

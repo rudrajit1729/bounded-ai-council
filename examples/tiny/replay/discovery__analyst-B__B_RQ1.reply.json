@@ -1,0 +1,168 @@
+{
+ "discovery/v0/per_reading/analyst_B_RQ1.json": {
+  "analyst": "B",
+  "lens": "layered",
+  "n_read": 30,
+  "codes": [
+   {
+    "id": "B-RQ1-01",
+    "layer": "semantic",
+    "rq": "RQ1",
+    "label": "Generates routine code quickly",
+    "definition": "It quickly writes routine code: boilerplate, repetitive code and routine tickets.",
+    "include": "Boilerplate, repetitive code, routine tickets done faster.",
+    "exclude": "Tests go to B-RQ1-02.",
+    "participants": [
+     "R01",
+     "R08",
+     "R15",
+     "R19"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R01",
+      "quote": "writes most of my boilerplate"
+     },
+     {
+      "uid": "R08",
+      "quote": "It is fast at boilerplate"
+     },
+     {
+      "uid": "R15",
+      "quote": "I finish routine tickets faster"
+     },
+     {
+      "uid": "R19",
+      "quote": "Boilerplate and repetitive code are where it shines"
+     }
+    ],
+    "n_participants": 4
+   },
+   {
+    "id": "B-RQ1-02",
+    "layer": "semantic",
+    "rq": "RQ1",
+    "label": "Makes writing tests cheaper",
+    "definition": "Writing tests, fixtures or mock data takes less effort with it.",
+    "include": "Tests, fixtures, mock data.",
+    "exclude": "Other code goes to B-RQ1-01.",
+    "participants": [
+     "R02",
+     "R12",
+     "R28"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R02",
+      "quote": "It saves me time on unit tests"
+     },
+     {
+      "uid": "R12",
+      "quote": "tests are cheap to start now"
+     },
+     {
+      "uid": "R28",
+      "quote": "first drafts of test fixtures and mock data"
+     }
+    ],
+    "n_participants": 3
+   },
+   {
+    "id": "B-RQ1-03",
+    "layer": "semantic",
+    "rq": "RQ1",
+    "label": "Helps understand code, errors and new technologies",
+    "definition": "It explains code, error messages or new technologies to the developer.",
+    "include": "Explanations, summaries, learning a new language or framework.",
+    "exclude": "Documentation the developer writes goes to B-RQ1-05.",
+    "participants": [
+     "R05",
+     "R10",
+     "R17",
+     "R24"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R05",
+      "quote": "explain unfamiliar code"
+     },
+     {
+      "uid": "R10",
+      "quote": "It summarised a 600-line function in plain English"
+     },
+     {
+      "uid": "R17",
+      "quote": "pick up Rust much faster"
+     },
+     {
+      "uid": "R24",
+      "quote": "explaining error messages"
+     }
+    ],
+    "n_participants": 4
+   },
+   {
+    "id": "B-RQ1-04",
+    "layer": "latent",
+    "rq": "RQ1",
+    "label": "Reduces searching and context switching",
+    "definition": "The developer stays in the editor instead of searching elsewhere.",
+    "include": "No web search, next steps suggested in place.",
+    "exclude": "Explanations as such go to B-RQ1-03.",
+    "participants": [
+     "R26",
+     "R24"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R26",
+      "quote": "fewer context switches"
+     },
+     {
+      "uid": "R24",
+      "quote": "suggesting what to try next"
+     }
+    ],
+    "n_participants": 2
+   },
+   {
+    "id": "B-RQ1-05",
+    "layer": "semantic",
+    "rq": "RQ1",
+    "label": "Drafts documentation",
+    "definition": "It writes documentation comments.",
+    "include": "Docstrings, comments.",
+    "exclude": "",
+    "participants": [
+     "R22"
+    ],
+    "anchor_quotes": [
+     {
+      "uid": "R22",
+      "quote": "I use it to write documentation comments"
+     }
+    ],
+    "n_participants": 1
+   }
+  ],
+  "candidate_themes": [],
+  "uncodeable": [
+   "R03",
+   "R04",
+   "R06",
+   "R07",
+   "R09",
+   "R11",
+   "R13",
+   "R14",
+   "R16",
+   "R18",
+   "R20",
+   "R23",
+   "R25",
+   "R27",
+   "R29"
+  ],
+  "notes": "latent pass found context switching; contrastive pass found nothing new."
+ }
+}

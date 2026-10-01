@@ -1,0 +1,25 @@
+{
+ "coding/challenges/coder3_batch2.json": {
+  "coder": "3",
+  "batch": 2,
+  "challenges": [
+   {
+    "id": "CC-01",
+    "type": "FALSE_POSITIVE",
+    "uid": "R23",
+    "code_id": "T05",
+    "quote": "checking whether a block came from the assistant, which adds overhead",
+    "argument": "No wrong or invented code is named; only the checking cost (T04). The decision model gives p=0.12."
+   },
+   {
+    "id": "CC-02",
+    "type": "FALSE_POSITIVE",
+    "uid": "R29",
+    "code_id": "T09",
+    "quote": "banned it on the payments service until we have a review policy",
+    "argument": "The unit states a rule, not a risk the developer sees; T09 excludes rules."
+   }
+  ],
+  "notes": "Checked every unit in the batch against the codebook."
+ }
+}

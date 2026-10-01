@@ -1,0 +1,25 @@
+{
+ "coding/challenges/coder3_batch1.json": {
+  "coder": "3",
+  "batch": 1,
+  "challenges": [
+   {
+    "id": "CC-01",
+    "type": "FALSE_NEGATIVE",
+    "uid": "R11",
+    "code_id": "T09",
+    "quote": "Our legal team is nervous about licensing of generated code",
+    "argument": "A licensing worry meets T09; the decision model agrees (p=0.85)."
+   },
+   {
+    "id": "CC-02",
+    "type": "FALSE_NEGATIVE",
+    "uid": "R19",
+    "code_id": "T04",
+    "quote": "Anything with business logic needs heavy editing",
+    "argument": "Heavy editing is in T04's include clause (p=0.80)."
+   }
+  ],
+  "notes": "Checked every unit in the batch against the codebook."
+ }
+}

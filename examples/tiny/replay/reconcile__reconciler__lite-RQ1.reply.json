@@ -1,0 +1,161 @@
+{
+ "reconciliation/merge_plan.json": {
+  "groups": [
+   {
+    "group_id": "G01",
+    "rq": "RQ1",
+    "label": "Writes boilerplate and routine code",
+    "definition": "The assistant writes boilerplate, repetitive code or routine tickets faster than the developer would.",
+    "include": "Boilerplate, getters and setters, config files, repetitive code, routine tickets.",
+    "exclude": "Tests go to 'Drafts tests, fixtures and mock data'; freed time for other work goes to 'Fewer context switches, more time for design'.",
+    "members": [
+     "A:A-RQ1-01",
+     "B:B-RQ1-01",
+     "C:C-RQ1-01",
+     "A:A-RQ1-07"
+    ],
+    "rationale": "All four cite R01, R08 and R19; A-RQ1-07 adds the boundary at business logic on the same units."
+   },
+   {
+    "group_id": "G02",
+    "rq": "RQ1",
+    "label": "Drafts tests, fixtures and mock data",
+    "definition": "The assistant drafts unit tests, fixtures or mock data, making tests cheaper to start.",
+    "include": "Unit tests, fixtures, mock data, test coverage.",
+    "exclude": "Other routine code goes to 'Writes boilerplate and routine code'.",
+    "members": [
+     "A:A-RQ1-02",
+     "B:B-RQ1-02",
+     "C:C-RQ1-02",
+     "C:C-RQ1-06"
+    ],
+    "rationale": "Three analysts cite R02, R12, R28 with matching definitions.",
+    "member_units": {
+     "C:C-RQ1-06": [
+      "R12",
+      "R28"
+     ]
+    }
+   },
+   {
+    "group_id": "G03",
+    "rq": "RQ1",
+    "label": "Explains unfamiliar code and error messages",
+    "definition": "The assistant explains legacy or unfamiliar code and error messages.",
+    "include": "Summaries and explanations of code, explanations of errors.",
+    "exclude": "Learning a whole language goes to 'Speeds up learning new languages and frameworks'.",
+    "members": [
+     "A:A-RQ1-03",
+     "B:B-RQ1-03",
+     "C:C-RQ1-03"
+    ],
+    "rationale": "All cite R05, R10, R24.",
+    "member_units": {
+     "B:B-RQ1-03": [
+      "R05",
+      "R10",
+      "R24"
+     ],
+     "C:C-RQ1-03": [
+      "R05",
+      "R10",
+      "R24"
+     ]
+    }
+   },
+   {
+    "group_id": "G04",
+    "rq": "RQ1",
+    "label": "Speeds up learning new languages and frameworks",
+    "definition": "The developer learns a new language or framework faster with the assistant.",
+    "include": "Picking up a language or framework.",
+    "exclude": "Explaining a specific piece of code goes to 'Explains unfamiliar code and error messages'.",
+    "members": [
+     "A:A-RQ1-04",
+     "C:C-RQ1-04",
+     "B:B-RQ1-03"
+    ],
+    "rationale": "R05 and R17 in all three.",
+    "member_units": {
+     "B:B-RQ1-03": [
+      "R05",
+      "R17"
+     ]
+    }
+   },
+   {
+    "group_id": "G05",
+    "rq": "RQ1",
+    "label": "Writes documentation from notes",
+    "definition": "The assistant turns the developer's notes into documentation comments.",
+    "include": "Docstrings, documentation comments.",
+    "exclude": "Code explanations go to 'Explains unfamiliar code and error messages'.",
+    "members": [
+     "A:A-RQ1-06",
+     "B:B-RQ1-05",
+     "C:C-RQ1-05",
+     "C:C-RQ1-06"
+    ],
+    "rationale": "Single-unit codes from all three analysts on R22.",
+    "member_units": {
+     "C:C-RQ1-06": [
+      "R22"
+     ]
+    }
+   },
+   {
+    "group_id": "G06",
+    "rq": "RQ1",
+    "label": "Fewer context switches, more time for design",
+    "definition": "The developer stays in context or gains time for higher-level work.",
+    "include": "No web searches for syntax, time freed for design.",
+    "exclude": "The kind of code written goes to 'Writes boilerplate and routine code'.",
+    "members": [
+     "A:A-RQ1-05",
+     "B:B-RQ1-04",
+     "C:C-RQ1-03"
+    ],
+    "rationale": "R26 in all three; A adds R15.",
+    "member_units": {
+     "C:C-RQ1-03": [
+      "R26"
+     ]
+    }
+   },
+   {
+    "group_id": "G07",
+    "rq": "RQ1",
+    "label": "Little or no benefit reported",
+    "definition": "The developer reports little use or less value than expected.",
+    "include": "Low use, low value.",
+    "exclude": "",
+    "members": [
+     "C:C-RQ1-07"
+    ],
+    "rationale": "Single-analyst negative case."
+   }
+  ],
+  "relations": [
+   {
+    "type": "overlaps",
+    "from": "G03",
+    "to": "G04",
+    "note": "R05 explains code while learning a framework"
+   },
+   {
+    "type": "contrasts_with",
+    "from": "G07",
+    "to": "G01",
+    "note": "the negative case"
+   },
+   {
+    "type": "overlaps",
+    "from": "G06",
+    "to": "G01",
+    "note": "time saved on routine work"
+   }
+  ],
+  "quarantined_assessment": [],
+  "notes": "G07 and possibly G06 may fall below the floor."
+ }
+}

@@ -1,0 +1,123 @@
+{
+ "reviewer": "DEMO-B",
+ "round": "r1",
+ "exported_at": "2026-09-30T12:30:00Z",
+ "n_codes": 9,
+ "status": {
+  "done": true
+ },
+ "_comment": "DUMMY FILE for the demo: reviewer DEMO-B is fictional.",
+ "blind_pass_missing": [
+  "onboarding to a new language",
+  "documentation writing"
+ ],
+ "reviews": {
+  "T01": {
+   "fidelity": "ok",
+   "grounding": "ok",
+   "distinctness": "ok",
+   "decision": "keep",
+   "pos": [
+    "R08"
+   ],
+   "neg": [
+    "R28"
+   ],
+   "note": ""
+  },
+  "T02": {
+   "fidelity": "ok",
+   "grounding": "ok",
+   "distinctness": "ok",
+   "decision": "keep",
+   "pos": [
+    "R28"
+   ],
+   "neg": [],
+   "note": ""
+  },
+  "T03": {
+   "fidelity": "ok",
+   "grounding": "ok",
+   "distinctness": "ok",
+   "decision": "keep",
+   "pos": [
+    "R10",
+    "R24"
+   ],
+   "neg": [
+    "R17"
+   ],
+   "note": ""
+  },
+  "T04": {
+   "fidelity": "ok",
+   "grounding": "ok",
+   "distinctness": "ok",
+   "decision": "keep",
+   "pos": [
+    "R13"
+   ],
+   "neg": [],
+   "note": ""
+  },
+  "T05": {
+   "fidelity": "ok",
+   "grounding": "ok",
+   "distinctness": "ok",
+   "decision": "keep",
+   "pos": [
+    "R13",
+    "R21"
+   ],
+   "neg": [],
+   "note": ""
+  },
+  "T06": {
+   "fidelity": "ok",
+   "grounding": "ok",
+   "distinctness": "ok",
+   "decision": "relabel",
+   "pos": [
+    "R08"
+   ],
+   "neg": [],
+   "note": "",
+   "newLabel": "Ignores team conventions and internal libraries",
+   "newDefinition": "Generated code does not follow the team's conventions or fit its internal libraries."
+  },
+  "T07": {
+   "fidelity": "ok",
+   "grounding": "ok",
+   "distinctness": "ok",
+   "decision": "keep",
+   "pos": [],
+   "neg": [],
+   "note": ""
+  },
+  "T08": {
+   "fidelity": "ok",
+   "grounding": "ok",
+   "distinctness": "ok",
+   "decision": "relabel",
+   "pos": [],
+   "neg": [],
+   "note": "",
+   "newLabel": "Relying on suggestions instead of own understanding",
+   "newDefinition": "The developer worries that people accept suggestions without understanding them or lose skills."
+  },
+  "T09": {
+   "fidelity": "ok",
+   "grounding": "ok",
+   "distinctness": "ok",
+   "decision": "keep",
+   "pos": [],
+   "neg": [],
+   "note": "Keep risks separate from rules."
+  },
+  "Q_Q:QA-01": {
+   "decision": "admit",
+   "note": "Admit; label as a net-benefit judgment."
+  }
+ }
+}
