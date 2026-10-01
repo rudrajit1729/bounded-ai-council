@@ -14,55 +14,62 @@
     "answer": "ACCEPT",
     "reason": "Heavy editing meets T04.",
     "revision": "R19 += T04"
+   },
+   {
+    "challenge_id": "CC-03",
+    "answer": "REJECT",
+    "reason": "T08's include clause names needing to supervise it; catching an error that looked fine is exactly that supervision.",
+    "revision": "none"
    }
   ]
  },
  "coding/v1/coder3_batch1.jsonl": [
   {
    "uid": "R01",
-   "why": "writes most of my boilerplate",
+   "why": "boilerplate",
    "codes": [
     "T01"
    ]
   },
   {
    "uid": "R02",
-   "why": "it drafts the test",
+   "why": "drafts unit tests",
    "codes": [
     "T02"
    ]
   },
   {
    "uid": "R03",
-   "why": "wrong in subtle ways",
+   "why": "subtle bugs; has to supervise it to catch them",
    "codes": [
-    "T05"
+    "T05",
+    "T08"
    ]
   },
   {
    "uid": "R04",
-   "why": "suggested string concatenation for a SQL query",
+   "why": "security: SQL concatenation",
    "codes": [
     "T09"
    ]
   },
   {
    "uid": "R05",
-   "why": "explain unfamiliar code",
+   "why": "explains unfamiliar code",
    "codes": [
     "T03"
    ]
   },
   {
    "uid": "R06",
-   "why": "n/a",
+   "why": "non-answer",
    "codes": [
     "ISSUE_NON_RESPONSE"
    ]
   },
   {
    "uid": "R07",
-   "why": "takes longer than writing the code myself",
+   "why": "net time loss on non-trivial code",
    "codes": [
     "T04",
     "T10"
@@ -70,7 +77,7 @@
   },
   {
    "uid": "R08",
-   "why": "fast at boilerplate; ignores naming conventions",
+   "why": "boilerplate; ignores naming conventions",
    "codes": [
     "T01",
     "T06"
@@ -78,21 +85,21 @@
   },
   {
    "uid": "R09",
-   "why": "juniors accept suggestions without understanding them",
+   "why": "juniors accept without understanding",
    "codes": [
     "T08"
    ]
   },
   {
    "uid": "R10",
-   "why": "summarised a 600-line function",
+   "why": "explains legacy code",
    "codes": [
     "T03"
    ]
   },
   {
    "uid": "R11",
-   "why": "legal nervous about licensing; only internal tools",
+   "why": "internal tools only; licensing worry",
    "codes": [
     "T07",
     "T09"
@@ -100,14 +107,14 @@
   },
   {
    "uid": "R12",
-   "why": "tests are cheap to start now",
+   "why": "cheaper tests, coverage up",
    "codes": [
     "T02"
    ]
   },
   {
    "uid": "R13",
-   "why": "invents API methods; I lose time chasing them",
+   "why": "invented methods; time lost",
    "codes": [
     "T05",
     "T04"
@@ -115,7 +122,7 @@
   },
   {
    "uid": "R14",
-   "why": "same as above",
+   "why": "back-reference",
    "codes": [
     "ISSUE_BACK_REFERENCE"
    ]
@@ -129,23 +136,23 @@
   },
   {
    "uid": "R16",
-   "why": "autocomplete interrupts my flow",
+   "why": "flow interruption",
    "codes": [
     "UNCOVERED"
    ],
-   "uncovered_note": "flow interruption by autocomplete"
+   "uncovered_note": "breaks the developer's flow"
   },
   {
    "uid": "R17",
-   "why": "pick up Rust much faster",
+   "why": "learning Rust",
    "codes": [
     "UNCOVERED"
    ],
-   "uncovered_note": "learning a new language faster"
+   "uncovered_note": "learning a new language"
   },
   {
    "uid": "R18",
-   "why": "can't tell what data it sends; policy unclear",
+   "why": "data to vendor; unclear policy",
    "codes": [
     "T09",
     "T07"
@@ -153,7 +160,7 @@
   },
   {
    "uid": "R19",
-   "why": "boilerplate shines; business logic needs heavy editing",
+   "why": "boilerplate; heavy editing; does not fit the business logic",
    "codes": [
     "T01",
     "T04",
@@ -162,7 +169,7 @@
   },
   {
    "uid": "R20",
-   "why": "hallucinated a configuration flag",
+   "why": "hallucinated flag",
    "codes": [
     "T05"
    ]

@@ -23,6 +23,8 @@ agent or a person can also answer them by hand (see AGENTS.md). Everything else 
   export-replies     copy a manual run's replies to a folder the `replay` backend reads (offline demos, audits)
   refine             after the low-alpha decision: archive the coding round, write the next codebook
                      version with the refined definitions (dropped codes removed); then `run.py code`
+  doctor             check that this computer is ready: Python, config, each family's CLI login or API key
+                     variable (never its value), the decision model, the workspace; --ping sends one tiny request
 
 Reporting commands (report, cost, heldout-score, retention, check-quotes, log-call) are in report.py
 and reachable through this file as well.
@@ -1214,6 +1216,26 @@ def low_alpha_decisions() -> dict:
     return out
 
 
+def coding_rounds(book=None) -> list:
+    """Earlier coding rounds, archived by `refine`: per round, the codebook versions, the archived results of the
+    primary condition and what the researchers decided on each code below the floor."""
+    book = book or rj(W / "codebooks" / "approved_codebook.json")
+    out = []
+    for rd in book.get("low_alpha_rounds") or []:
+        arch = W / rd.get("archived_to", "")
+        summ = rj(arch / "results" / primary_condition() / "summary.json")
+        rel = {r["code"]: r for r in read_csv(arch / "results" / primary_condition() / "reliability.csv")} \
+            if (arch / "results" / primary_condition() / "reliability.csv").exists() else {}
+        out.append(OrderedDict([("from_version", rd.get("from_version")), ("to_version", rd.get("to_version")),
+                                ("archived_to", rd.get("archived_to")), ("summary", summ), ("reliability", rel),
+                                ("decisions", [OrderedDict([("id", x["id"]), ("op", x["op"]), ("reason", x.get("reason", "")),
+                                                            ("label", (x.get("before") or {}).get("label") or next(
+                                                                (d["label"] for d in book.get("dropped_low_alpha", []) if d["id"] == x["id"]), "")),
+                                                            ("alpha", (rel.get(x["id"]) or {}).get("alpha"))])
+                                               for x in rd.get("log", [])])]))
+    return out
+
+
 def status_steps() -> list:
     """Every step of the run, in order, with whether it is done. Used by `status` and by the app."""
     def ex(*p):
@@ -1322,6 +1344,8 @@ def cmd_export_replies(args):
     src = W / "manual"
     dst = Path(args.to) if Path(args.to).is_absolute() else cfg.resolve(args.to)
     replies = sorted(src.glob("*.reply.json")) if src.exists() else []
+    # coding rounds archived by `refine` keep their manual replies under archive/<round>/manual/
+    replies += sorted((W / "archive").glob("*/manual/*.reply.json")) if (W / "archive").exists() else []
     if not replies:
         raise SystemExit("no replies in %s" % src)
     dst.mkdir(parents=True, exist_ok=True)
@@ -1461,9 +1485,15 @@ def main(argv=None) -> int:
     p.add_argument("--to", required=True, help="folder for the recorded replies (relative to the config's folder)")
     p = sub.add_parser("refine")
     p.add_argument("--version", help="the new codebook version (default: minor version + 1)")
+    p = sub.add_parser("doctor", help="check that this computer is ready (Python, config, model access, decision model, workspace)")
+    p.add_argument("--ping", action="store_true", help="also send one trivial request to each family and the decision model (costs a few tokens)")
+    p.add_argument("--json", action="store_true", help="machine-readable output (used by app.py)")
     import report as RP
     RP.add_parsers(sub)
     args = ap.parse_args(argv)
+    if args.cmd == "doctor":
+        import doctor
+        return doctor.main(args)
     init(args.config)
     RP.bind(sys.modules[__name__])
     cmds = {"prepare": cmd_prepare, "discovery-briefs": cmd_discovery_briefs, "merge-readings": cmd_merge_readings,

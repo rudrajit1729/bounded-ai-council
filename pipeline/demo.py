@@ -8,6 +8,10 @@ backend), and every researchers' step is filled with the dummy files in examples
     python3 pipeline/demo.py            # runs into examples/tiny/workspace/ (starts afresh if it exists)
     python3 pipeline/demo.py --keep     # keep an existing workspace and only run what is missing
 
+Two codes fall below alpha 0.67 in the first coding round: the fictional researchers refine one (T08)
+and drop the other (T10), so the demo also runs `council.py refine` and codes the whole corpus again
+with codebook 1.1, as a real study would.
+
 The demo runs the same commands a user or a coding agent runs (AGENTS.md), one after the other, and
 prints each one. At the end it prints where RESULTS.md, the results dashboard and the review
 dashboard are.
@@ -17,6 +21,7 @@ Standard library only.
 from __future__ import annotations
 
 import argparse
+import json
 import shutil
 import subprocess
 import sys
@@ -76,16 +81,31 @@ def main(argv=None) -> int:
            ("review_DEMO-B.json", "human/02_author_review/returned/review_DEMO-B.json")])
     run("human.py", "review-to-edits")
     human("the negotiated edit log", [("review_edits.json", "codebooks/review_edits.json")])
-    run("council.py", "approve")
+    if not (ws / "codebooks" / "approved_codebook.json").exists():   # with --keep, an approved codebook is kept
+        run("council.py", "approve")
     run("human.py", "heldout-packet")
     human("STOP 3, held-out coding, resolved", [("heldout_resolved.csv", "human/03_heldout_coding/resolved.csv")])
     run("run.py", "code")
+
+    def refined():
+        p = ws / "codebooks" / "approved_codebook.json"
+        return p.exists() and bool(json.loads(p.read_text(encoding="utf-8")).get("low_alpha_rounds"))
+    if not refined():   # with --keep, a workspace that is already past the first round skips it
+        run("human.py", "spot-check")
+        human("STOP 4, spot-check decisions", [("spot_check_decisions.csv", "human/05_spot_check/decisions.csv")])
+        run("council.py", "consensus")
+        run("human.py", "low-alpha")
+        human("STOP 5, the decision on codes below alpha 0.67: T08 refined, T10 dropped",
+              [("low_alpha_decisions.csv", "human/06_low_alpha/decisions.csv")])
+        run("council.py", "consensus")
+        # a refined code means a new codebook version and a recode of the whole corpus
+        run("council.py", "refine")
+        run("run.py", "code")
     run("human.py", "spot-check")
-    human("STOP 4, spot-check decisions", [("spot_check_decisions.csv", "human/05_spot_check/decisions.csv")])
+    human("STOP 4 again, spot-check decisions for the recoded corpus (codebook 1.1)",
+          [("spot_check_decisions_v1.1.csv", "human/05_spot_check/decisions.csv")])
     run("council.py", "consensus")
     run("human.py", "low-alpha")
-    human("STOP 5, the decision on codes below alpha 0.67", [("low_alpha_decisions.csv", "human/06_low_alpha/decisions.csv")])
-    run("council.py", "consensus")
     run("council.py", "heldout-score")
     run("council.py", "cost")
     run("council.py", "report")

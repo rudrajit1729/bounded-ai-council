@@ -18,8 +18,16 @@
     "code_id": "T04",
     "quote": "Anything with business logic needs heavy editing",
     "argument": "Heavy editing is in T04's include clause (p=0.80)."
+   },
+   {
+    "id": "CC-03",
+    "type": "FALSE_POSITIVE",
+    "uid": "R03",
+    "code_id": "T08",
+    "quote": "I caught an off-by-one error that looked perfectly fine",
+    "argument": "T08 is a worry that people accept suggestions they do not understand or lose skills; here the developer caught the error. Lead: p=0.02."
    }
   ],
-  "notes": "Checked every unit in the batch against the codebook."
+  "notes": "Checked every unit in the batch against the codebook, the leads first."
  }
 }

@@ -6,9 +6,10 @@ A local web app for running the council without a terminal or a coding agent.
     python3 pipeline/app.py --port 9000 --open
 
 Pages
-  Start    choose Lite or Full, upload or point to a CSV (uid,text), enter the research questions,
-           pick the model families and backends (API keys are named by their environment variable,
-           never typed in), save config.yaml; or open an existing config; or try the offline demo
+  Start    try the offline demo; connect your models (the `council.py doctor` checks: CLI logins, API key
+           variables set or not, never their values; SETUP.md at /doc); choose Lite or Full, upload or point
+           to a CSV (uid,text), enter the research questions, pick the model families and backends (API keys
+           are named by their environment variable, never typed in), save config.yaml; or open a config
   Run      every stage with its status (`council.py status`), a button that runs the stage's command
            in the background with a live log, and a "waiting for researchers" card at each human stop
            with links to the packets and dashboards and a place to put what the researchers return
@@ -225,6 +226,19 @@ def status():
         return {"error": p.stdout[-2000:]}
 
 
+def doctor_checks(ping=False):
+    """The `council.py doctor` checks on the open config (general checks if none is open). Keys are never read out."""
+    import doctor
+    cfg = STATE["config"]
+    try:
+        res = doctor.run_checks(str(cfg) if cfg else None, ping=ping, search=False)
+    except Exception as e:  # noqa: BLE001
+        return {"error": "the check failed: %s" % e}
+    if cfg:
+        res["config"] = os.path.relpath(cfg, REPO) if str(cfg).startswith(str(REPO)) else str(cfg)
+    return res
+
+
 def workspace():
     cfg = STATE["config"]
     if not cfg:
@@ -248,8 +262,19 @@ def inside(base: Path, rel: str):
 BASE = threading.local()
 
 
+DOCS = ("SETUP.md", "README.md", "AGENTS.md", "CHECKLIST.md", "examples/tiny/README.md", "examples/zhang2023/README.md",
+        "examples/zhang2023/data/ATTRIBUTION.md")
+
+
 def md_link(target: str) -> str:
-    """A relative link in a workspace Markdown file -> the app's view of that file."""
+    """A link in a Markdown file -> an external address, the app's view of a repository document (on /doc pages),
+    or the app's view of a workspace file."""
+    if re.match(r"^https?://[^\s\"'<>]+$", target):
+        return target
+    if getattr(BASE, "repo", False):
+        name = os.path.normpath(os.path.join(getattr(BASE, "dir", ""), target.split("#")[0])) if target.split("#")[0] else ""
+        return ("/doc?name=" + quote(name) + ("#" + target.split("#", 1)[1] if "#" in target else "")) if name in DOCS else \
+            ("#" + target.split("#", 1)[1] if target.startswith("#") else "#")
     if not re.match(r"^[\w./-]+$", target) or target.startswith("/") or ".." in target:
         return "#"
     base = getattr(BASE, "dir", "")
@@ -265,7 +290,21 @@ def md_inline(s: str) -> str:
 
 
 def md_to_html(text: str) -> str:
+    """A small Markdown subset: headings, paragraphs (wrapped lines joined), lists with wrapped items,
+    numbered lists, fenced code (also inside list items), tables, inline code, bold and links."""
     out, lines, i = [], text.splitlines(), 0
+    special = lambda l: (l.startswith("|") or re.match(r"^#{1,4}\s", l) or re.match(r"^\s*([-*]|\d+\.)\s+", l)
+                         or l.strip().startswith("```"))
+
+    def code_block(i):
+        ind = len(lines[i]) - len(lines[i].lstrip())
+        i += 1
+        buf = []
+        while i < len(lines) and not lines[i].strip().startswith("```"):
+            buf.append(lines[i][ind:] if lines[i][:ind].strip() == "" else lines[i])
+            i += 1
+        return '<pre class="log">%s</pre>' % html.escape("\n".join(buf)), i + 1
+
     while i < len(lines):
         ln = lines[i]
         if ln.startswith("|"):
@@ -283,24 +322,38 @@ def md_to_html(text: str) -> str:
             continue
         m = re.match(r"^(#{1,4})\s+(.*)", ln)
         if m:
-            out.append("<h%d>%s</h%d>" % (len(m.group(1)) + 1, md_inline(m.group(2)), len(m.group(1)) + 1))
-        elif re.match(r"^\s*[-*]\s+", ln):
-            out.append("<ul>")
-            while i < len(lines) and re.match(r"^\s*[-*]\s+", lines[i]):
-                out.append("<li>%s</li>" % md_inline(re.sub(r"^\s*[-*]\s+", "", lines[i])))
-                i += 1
-            out.append("</ul>")
-            continue
-        elif ln.startswith("```"):
+            anchor = re.sub(r"[^a-z0-9 -]", "", m.group(2).lower()).strip().replace(" ", "-")
+            out.append('<h%d id="%s">%s</h%d>' % (len(m.group(1)) + 1, anchor, md_inline(m.group(2)), len(m.group(1)) + 1))
             i += 1
-            buf = []
-            while i < len(lines) and not lines[i].startswith("```"):
-                buf.append(lines[i])
-                i += 1
-            out.append("<pre>%s</pre>" % html.escape("\n".join(buf)))
+        elif re.match(r"^\s*([-*]|\d+\.)\s+", ln):
+            tag = "ol" if re.match(r"^\s*\d+\.", ln) else "ul"
+            out.append("<%s>" % tag)
+            while i < len(lines) and lines[i].strip():
+                cur = lines[i]
+                if re.match(r"^\s*([-*]|\d+\.)\s+", cur):
+                    out.append("<li>%s" % md_inline(re.sub(r"^\s*([-*]|\d+\.)\s+", "", cur)))
+                    i += 1
+                elif cur.strip().startswith("```"):
+                    block, i = code_block(i)
+                    out.append(block)
+                elif cur.startswith("  "):
+                    out[-1] += " " + md_inline(cur.strip())
+                    i += 1
+                else:
+                    break
+            out.append("</%s>" % tag)
+        elif ln.strip().startswith("```"):
+            block, i = code_block(i)
+            out.append(block)
         elif ln.strip():
-            out.append("<p>%s</p>" % md_inline(ln))
-        i += 1
+            buf = [ln.strip()]
+            i += 1
+            while i < len(lines) and lines[i].strip() and not special(lines[i]):
+                buf.append(lines[i].strip())
+                i += 1
+            out.append("<p>%s</p>" % md_inline(" ".join(buf)))
+        else:
+            i += 1
     return "\n".join(out)
 
 
@@ -366,7 +419,7 @@ legend { font-weight: 700; padding: 0 6px; }
 .files { margin: 6px 0 0; padding-left: 18px; font-size: 14px; }
 pre.log { background: #0f1113; color: #e6e6e6; padding: 12px; border-radius: 10px; max-height: 360px; overflow: auto; font: 13px/1.45 ui-monospace, Menlo, Consolas, monospace; white-space: pre-wrap; overflow-wrap: anywhere; }
 .pill { display: inline-block; font-size: 13px; padding: 2px 8px; border-radius: 99px; background: var(--soft); color: var(--ink-2); }
-.pill.ok { color: var(--ok); } .pill.no { color: var(--err); }
+.pill.ok { color: var(--ok); } .pill.no { color: var(--err); } .pill.warn { color: var(--wait); }
 .rq { display: grid; grid-template-columns: 90px 1fr; gap: 8px; margin-bottom: 8px; }
 .fam { display: grid; grid-template-columns: 1fr 1.6fr 1.4fr 1.4fr; gap: 8px; align-items: end; padding: 8px 0; border-top: 1px dashed var(--line); }
 .fam:first-of-type { border-top: 0; }
@@ -417,6 +470,16 @@ The researchers' steps (blind pass, codebook review, held-out coding, spot-check
 <div class="card"><h2>New here? Try the demo first</h2>
 <p class="hint">Runs the whole procedure, in Full mode, on 30 invented survey answers, with recorded replies instead of models. No key, no network, about ten seconds.</p>
 <div class="row" style="margin-top:10px"><button class="btn" type="button" onclick="startDemo(this)">Try the demo</button></div></div>
+
+<div class="card" id="connect"><h2>Connect your models</h2>
+<p class="hint">Each model family is reached through its command-line tool (you log in once) or through an API key kept in an environment variable;
+Full mode can also use the TypeSafe decision model. <a href="/doc?name=SETUP.md" target="_blank" rel="noopener">SETUP.md</a> explains every step for macOS, Linux and Windows,
+what a run costs, and what to check before any data leaves this computer.</p>
+<p class="hint">This check runs <code>council.py doctor</code> on the open config (or general checks if none is open). It never shows or stores a key: it only says whether the variable is set.
+The app sees the environment of the terminal it was started from: set a key there, then restart the app.</p>
+<div class="row" style="margin-top:10px"><button class="btn ghost" type="button" id="docbtn">Check my setup</button>
+<button class="btn ghost" type="button" id="pingbtn">Test the connections (a few tokens each)</button></div>
+<p class="hint" id="docmsg" role="status" aria-live="polite"></p><div id="docout"></div></div>
 
 <div class="card"><h2>Open an existing config</h2>
 <div class="row"><label class="sr" for="openpath">Path to a config file</label><input id="openpath" placeholder="config.yaml or examples/tiny/config.yaml" style="flex:1;min-width:220px">
@@ -525,6 +588,26 @@ document.getElementById('csvfile').onchange = async e => {
   if (j.error) { msg.textContent = j.error; return; }
   document.getElementById('corpus_csv').value = j.path; msg.textContent = `Saved as ${j.path}: ${j.rows} units, columns ${j.columns.join(', ')}.`;
 };
+const DMARK = {pass: ['ok', 'PASS'], fail: ['no', 'FAIL'], warn: ['warn', 'WARN'], info: ['', 'info']};
+async function runDoctor(ping) {
+  const msg = document.getElementById('docmsg'), out = document.getElementById('docout');
+  if (ping && !confirm('Send one tiny request to each model family and to the decision model? Each costs a few tokens.')) return;
+  msg.textContent = ping ? 'Sending one tiny request to each…' : 'Checking…';
+  const j = ping ? await api('/api/doctor', {ping: true}) : await api('/api/doctor');
+  if (j.error) { msg.textContent = j.error; return; }
+  msg.textContent = `${j.config ? 'Config ' + j.config : 'No config open: general checks'}. ${j.n_pass} passed, ${j.n_fail} failed, ${j.n_warn} warning(s).` +
+    (j.n_fail ? ' Fix the FAIL lines, then check again.' : ' Ready.');
+  let html = '', group = null;
+  for (const it of j.items) {
+    if (it.group !== group) { if (group !== null) html += '</ul>'; group = it.group; html += `<h3 style="margin:12px 0 4px;font-size:15px">${esc(group)}</h3><ul class="files" style="list-style:none;padding-left:0">`; }
+    const [cls, lab] = DMARK[it.status] || ['', it.status];
+    html += `<li style="margin:4px 0"><span class="pill ${cls}">${lab}</span> ${esc(it.name)}${it.detail ? ' <span class="hint">' + esc(it.detail) + '</span>' : ''}` +
+      (it.fix && it.status !== 'pass' && it.status !== 'info' ? `<div class="hint" style="margin-left:52px">Fix: ${esc(it.fix)}</div>` : '') + '</li>';
+  }
+  out.innerHTML = html + (group !== null ? '</ul>' : '');
+}
+document.getElementById('docbtn').onclick = () => runDoctor(false);
+document.getElementById('pingbtn').onclick = () => runDoctor(true);
 document.getElementById('openbtn').onclick = async () => {
   const j = await api('/api/open', {path: document.getElementById('openpath').value});
   document.getElementById('openmsg').textContent = j.error || 'Opened. Go to the Run page.'; if (!j.error) location.href = '/run';
@@ -544,7 +627,8 @@ document.getElementById('f').onsubmit = async e => {
   const j = await api('/api/config', body);
   if (j.error) { msg.textContent = j.error; return; }
   document.getElementById('yaml').textContent = j.yaml;
-  msg.innerHTML = `Saved <code>${esc(j.path)}</code>. ${j.errors.length ? 'Fix: ' + esc(j.errors.join('; ')) : 'The config check passed.'} <a href="/run">Go to Run</a>`;
+  msg.innerHTML = `Saved <code>${esc(j.path)}</code>. ${j.errors.length ? 'Fix: ' + esc(j.errors.join('; ')) : 'The config check passed.'} <a href="#connect">Check your models</a> &middot; <a href="/run">Go to Run</a>`;
+  runDoctor(false);
 };
 """ % (json.dumps(BACKENDS), json.dumps(KEY_BACKENDS))
 
@@ -679,6 +763,18 @@ class Handler(BaseHTTPRequestHandler):
             return self.send(200, page("Results", "Results", results_body()))
         if u.path == "/api/status":
             return self.js(status())
+        if u.path == "/api/doctor":
+            return self.js(doctor_checks(False))
+        if u.path == "/doc":
+            name = os.path.normpath(q.get("name", ["SETUP.md"])[0])
+            if name not in DOCS or not (REPO / name).is_file():
+                return self.send(404, page("Not found", "", "<h1>Not found</h1>"))
+            BASE.repo, BASE.dir = True, os.path.dirname(name)
+            try:
+                body = md_to_html((REPO / name).read_text(encoding="utf-8"))
+            finally:
+                BASE.repo = False
+            return self.send(200, page(name, "", "<p class=\"hint\"><code>%s</code></p>%s" % (html.escape(name), body)))
         if u.path == "/api/job":
             with JOB_LOCK:
                 return self.js({k: JOB[k] for k in ("id", "running", "step", "label", "log", "exit")})
@@ -720,7 +816,8 @@ class Handler(BaseHTTPRequestHandler):
         u = urlparse(self.path).path
         try:
             return {"/api/run": self.api_run, "/api/upload": self.api_upload, "/api/config": self.api_config, "/api/corpus": self.api_corpus,
-                    "/api/open": self.api_open, "/api/demo": self.api_demo}.get(u, lambda b: self.js({"error": "unknown"}, 404))(body)
+                    "/api/open": self.api_open, "/api/demo": self.api_demo,
+                    "/api/doctor": lambda b: self.js(doctor_checks(bool(b.get("ping"))))}.get(u, lambda b: self.js({"error": "unknown"}, 404))(body)
         except (ValueError, SystemExit) as e:
             return self.js({"error": str(e)}, 400)
 

@@ -5,3 +5,6 @@ __pycache__/
 examples/tiny/workspace/
 runs/
 /config.yaml
+
+# built by examples/zhang2023/to_pipeline_csv.py
+examples/zhang2023/corpus.csv

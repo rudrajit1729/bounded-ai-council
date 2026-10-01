@@ -1,0 +1,33 @@
+{
+ "coding/challenges/coder2_batch2.json": {
+  "coder": "2",
+  "batch": 2,
+  "challenges": [
+   {
+    "id": "CC-01",
+    "type": "FALSE_POSITIVE",
+    "uid": "R21",
+    "code_id": "T05",
+    "quote": "a fast but careless intern",
+    "argument": "R21 is a negative example of T05 in the codebook."
+   },
+   {
+    "id": "CC-02",
+    "type": "ISSUE_MISSED",
+    "uid": "R30",
+    "code_id": "ISSUE_NON_RESPONSE",
+    "quote": "I barely use it",
+    "argument": "Low use is content about the assistant; it is not a non-answer."
+   },
+   {
+    "id": "CC-03",
+    "type": "FALSE_POSITIVE",
+    "uid": "R26",
+    "code_id": "T01",
+    "quote": "I don't have to search the web for syntax anymore",
+    "argument": "T01 is the assistant writing boilerplate or routine code; the answer is about not leaving the editor to look up syntax."
+   }
+  ],
+  "notes": "Checked every unit in the batch against the codebook, the leads first."
+ }
+}

@@ -1,0 +1,75 @@
+{
+ "coding/v0/coder2_batch2.jsonl": [
+  {
+   "uid": "R21",
+   "why": "careless output, like an intern's",
+   "codes": [
+    "T05"
+   ]
+  },
+  {
+   "uid": "R22",
+   "why": "writes documentation comments from notes",
+   "codes": [
+    "UNCOVERED"
+   ],
+   "uncovered_note": "documentation from notes"
+  },
+  {
+   "uid": "R23",
+   "why": "an extra review step to check where code came from",
+   "codes": [
+    "T04"
+   ]
+  },
+  {
+   "uid": "R24",
+   "why": "explains error messages and suggests what to try",
+   "codes": [
+    "T03"
+   ]
+  },
+  {
+   "uid": "R25",
+   "why": "suggestions rarely fit the internal libraries",
+   "codes": [
+    "T06"
+   ]
+  },
+  {
+   "uid": "R26",
+   "why": "no longer searches the web for syntax: routine code without the lookup",
+   "codes": [
+    "T01"
+   ]
+  },
+  {
+   "uid": "R27",
+   "why": "worry about losing their own skills",
+   "codes": [
+    "T08"
+   ]
+  },
+  {
+   "uid": "R28",
+   "why": "drafts test fixtures and mock data",
+   "codes": [
+    "T02"
+   ]
+  },
+  {
+   "uid": "R29",
+   "why": "the lead banned it on the payments service pending a review policy",
+   "codes": [
+    "T07"
+   ]
+  },
+  {
+   "uid": "R30",
+   "why": "'not much to say': nothing to code",
+   "codes": [
+    "ISSUE_NON_RESPONSE"
+   ]
+  }
+ ]
+}

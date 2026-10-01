@@ -1,0 +1,97 @@
+{
+ "coding/answers/coder3_batch2.json": {
+  "coder": "3",
+  "batch": 2,
+  "answers": [
+   {
+    "challenge_id": "CC-01",
+    "answer": "REJECT",
+    "reason": "Reviewers check where a block came from because its code cannot be trusted as written; that is the unreliability T05 describes.",
+    "revision": "none"
+   },
+   {
+    "challenge_id": "CC-02",
+    "answer": "REJECT",
+    "reason": "Banning it on the payments service until there is a review policy implies a security risk the team sees.",
+    "revision": "none"
+   }
+  ]
+ },
+ "coding/v1/coder3_batch2.jsonl": [
+  {
+   "uid": "R21",
+   "why": "careless intern",
+   "codes": [
+    "UNCOVERED"
+   ],
+   "uncovered_note": "how careless its output is"
+  },
+  {
+   "uid": "R22",
+   "why": "docstrings",
+   "codes": [
+    "UNCOVERED"
+   ],
+   "uncovered_note": "writes docstrings"
+  },
+  {
+   "uid": "R23",
+   "why": "review overhead; its code cannot be trusted as written",
+   "codes": [
+    "T04",
+    "T05"
+   ]
+  },
+  {
+   "uid": "R24",
+   "why": "explains errors",
+   "codes": [
+    "T03"
+   ]
+  },
+  {
+   "uid": "R25",
+   "why": "does not fit internal libraries",
+   "codes": [
+    "T06"
+   ]
+  },
+  {
+   "uid": "R26",
+   "why": "answers syntax questions in the editor",
+   "codes": [
+    "T03"
+   ]
+  },
+  {
+   "uid": "R27",
+   "why": "deskilling",
+   "codes": [
+    "T08"
+   ]
+  },
+  {
+   "uid": "R28",
+   "why": "fixtures and mocks",
+   "codes": [
+    "T02"
+   ]
+  },
+  {
+   "uid": "R29",
+   "why": "ban on the payments service; payments security",
+   "codes": [
+    "T07",
+    "T09"
+   ]
+  },
+  {
+   "uid": "R30",
+   "why": "barely uses it",
+   "codes": [
+    "UNCOVERED"
+   ],
+   "uncovered_note": "low use"
+  }
+ ]
+}

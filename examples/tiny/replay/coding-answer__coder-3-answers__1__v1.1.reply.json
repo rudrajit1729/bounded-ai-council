@@ -1,0 +1,170 @@
+{
+ "coding/answers/coder3_batch1.json": {
+  "coder": "3",
+  "batch": 1,
+  "answers": [
+   {
+    "challenge_id": "CC-01",
+    "answer": "ACCEPT",
+    "reason": "Licensing is in T09's include clause.",
+    "revision": "R11 += T09"
+   },
+   {
+    "challenge_id": "CC-02",
+    "answer": "ACCEPT",
+    "reason": "Heavy editing meets T04.",
+    "revision": "R19 += T04"
+   }
+  ]
+ },
+ "coding/v1/coder3_batch1.jsonl": [
+  {
+   "uid": "R01",
+   "why": "boilerplate",
+   "codes": [
+    "T01"
+   ]
+  },
+  {
+   "uid": "R02",
+   "why": "drafts unit tests",
+   "codes": [
+    "T02"
+   ]
+  },
+  {
+   "uid": "R03",
+   "why": "subtle bugs",
+   "codes": [
+    "T05"
+   ]
+  },
+  {
+   "uid": "R04",
+   "why": "security: SQL concatenation",
+   "codes": [
+    "T09"
+   ]
+  },
+  {
+   "uid": "R05",
+   "why": "explains unfamiliar code",
+   "codes": [
+    "T03"
+   ]
+  },
+  {
+   "uid": "R06",
+   "why": "non-answer",
+   "codes": [
+    "ISSUE_NON_RESPONSE"
+   ]
+  },
+  {
+   "uid": "R07",
+   "why": "review takes longer than writing it, for non-trivial code",
+   "codes": [
+    "T04"
+   ]
+  },
+  {
+   "uid": "R08",
+   "why": "boilerplate; ignores naming conventions",
+   "codes": [
+    "T01",
+    "T06"
+   ]
+  },
+  {
+   "uid": "R09",
+   "why": "juniors accept without understanding",
+   "codes": [
+    "T08"
+   ]
+  },
+  {
+   "uid": "R10",
+   "why": "explains legacy code",
+   "codes": [
+    "T03"
+   ]
+  },
+  {
+   "uid": "R11",
+   "why": "internal tools only; licensing worry",
+   "codes": [
+    "T07",
+    "T09"
+   ]
+  },
+  {
+   "uid": "R12",
+   "why": "cheaper tests, coverage up",
+   "codes": [
+    "T02"
+   ]
+  },
+  {
+   "uid": "R13",
+   "why": "invented methods; time lost",
+   "codes": [
+    "T05",
+    "T04"
+   ]
+  },
+  {
+   "uid": "R14",
+   "why": "back-reference",
+   "codes": [
+    "ISSUE_BACK_REFERENCE"
+   ]
+  },
+  {
+   "uid": "R15",
+   "why": "routine tickets faster",
+   "codes": [
+    "T01"
+   ]
+  },
+  {
+   "uid": "R16",
+   "why": "flow interruption",
+   "codes": [
+    "UNCOVERED"
+   ],
+   "uncovered_note": "breaks the developer's flow"
+  },
+  {
+   "uid": "R17",
+   "why": "learning Rust",
+   "codes": [
+    "UNCOVERED"
+   ],
+   "uncovered_note": "learning a new language"
+  },
+  {
+   "uid": "R18",
+   "why": "data to vendor; unclear policy",
+   "codes": [
+    "T09",
+    "T07"
+   ]
+  },
+  {
+   "uid": "R19",
+   "why": "boilerplate; heavy editing; does not fit the business logic",
+   "codes": [
+    "T01",
+    "T04",
+    "T06"
+   ]
+  },
+  {
+   "uid": "R20",
+   "why": "hallucinated flag",
+   "codes": [
+    "T05"
+   ]
+  }
+ ]
+}

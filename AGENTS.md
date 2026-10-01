@@ -11,6 +11,24 @@ files, and needs no key and no network. Then point the user to
 `examples/tiny/workspace/human/02_author_review/codebook_review.html`. A user without a terminal can
 use the local app instead: `python3 pipeline/app.py`, then http://127.0.0.1:8765/.
 
+**If the user wants to see real results without running any model**, point them to the paper's run
+on 256 Stack Overflow threads: `examples/zhang2023/dashboard_lite.html` and
+`examples/zhang2023/dashboard_full.html` (README, "Play with the paper's data").
+
+**Before a real run, run `doctor` first** and ask the user only for what it reports missing:
+
+```bash
+python3 pipeline/council.py --config config.yaml doctor      # or with no --config before a config exists
+```
+
+It checks Python, the config, each family's CLI login or API key variable (it reports only whether
+the variable is set, never its value), the decision model, the corpus and the workspace, and prints
+the fix for each FAIL. Relay each fix to the user in plain words and point them to the matching
+section of `SETUP.md` (how to get a key, set it on their system, or log in to a CLI). Do not ask for
+anything `doctor` shows as PASS. Never ask the user to paste a key into the chat or a file: they set
+it in their own terminal. When nothing fails, run `doctor --ping` once, but only after telling the
+user that it sends one tiny paid request per family.
+
 ## 0. Rules that hold throughout
 
 1. **Programs decide what is deterministic.** Provenance checks, the support floor, consensus,
@@ -34,7 +52,8 @@ use the local app instead: `python3 pipeline/app.py`, then http://127.0.0.1:8765
    or dashboard before they have returned their blind pass. Never show model assignments to the
    researchers doing held-out coding.
 6. **Secrets.** Keys stay in environment variables. Never print, read, copy or write a key (do not
-   open shell profiles to look for one). The config holds only the variable's name.
+   open shell profiles to look for one, and do not ask the user to paste one into the chat). The
+   config holds only the variable's name; `doctor` tells you whether it is set.
 7. **Data governance.** Before the first model call, confirm with the user that the corpus is
    de-identified and that consent terms allow every vendor in the config, and record this under
    `data_governance`.
@@ -45,6 +64,8 @@ use the local app instead: `python3 pipeline/app.py`, then http://127.0.0.1:8765
 ## 1. Ask the user for these inputs
 
 Do not start until you have all of them. Put them in `config.yaml` (copy `config.example.yaml`).
+Run `doctor` first (above): what it already finds (installed and logged-in CLIs, key variables that
+are set) needs no question; ask only for the rest.
 
 | Input | Config key | Notes |
 |---|---|---|
@@ -53,16 +74,18 @@ Do not start until you have all of them. Put them in `config.yaml` (copy `config
 | Research questions | `study.research_questions` | `id`, `text`, optional `rationale` (what the question means), optional `slug`. |
 | Corpus description and vocabulary | `study.corpus_description`, `unit_name(_plural)`, `respondent_name(_plural)`, `scope_rule`, `topic_phrase` | One or two sentences the analysts read; the extraction rule all roles apply. |
 | Issue codes | `issue_codes` | Defaults: wrong field, back-reference, non-response. Add study-specific ones if needed. |
-| Model families available | `roles`, `models` | Which three families, through which CLI or API, with which model ids; the env var NAME of each API key. If only two families are available, say so and record the vendor caveat. |
-| Decision model (Full) | `decision_model` | Jev (env var name of the key), a `command` with the same contract, `manual` (each request is written to `<workspace>/manual/` for you or the user to answer; not calibrated), or `enabled: false`. |
+| Model families available | `roles`, `models` | Which three families, through which CLI or API, with which model ids; the env var NAME of each API key. If only two families are available, say so and record the vendor caveat. `SETUP.md`, section 1, shows the user how to set each one up. |
+| Decision model (Full) | `decision_model` | Jev (env var name of the key), a `command` with the same contract, `manual` (each request is written to `<workspace>/manual/` for you or the user to answer; not calibrated), or `enabled: false`. `SETUP.md`, section 3. |
 | Researchers | (your notes) | At least two people for the blind pass, author review, held-out coding and spot-check. |
 | Data governance | `data_governance` | What leaves the machine, to which vendors, under which terms. |
 | Prices (optional) | `prices` | USD per million input and output tokens per model id, dated. |
 
-Then run, and fix every ERROR it prints (missing corpus, placeholder model ids, a family without a
-`models` entry, an adversary from the same family, an unknown backend):
+Then run, and fix every FAIL and ERROR they print (missing corpus, placeholder model ids, a family
+without a `models` entry, an adversary from the same family, an unknown backend, a key variable that
+is not set, a CLI that is not logged in):
 
 ```bash
+python3 pipeline/council.py --config config.yaml doctor
 python3 pipeline/council.py --config config.yaml status
 ```
 `status` also prints the next command to run; `status --json` gives the same for programs.

@@ -1,0 +1,77 @@
+{
+ "coding/v0/coder1_batch2.jsonl": [
+  {
+   "uid": "R21",
+   "why": "fast but careless intern",
+   "codes": [
+    "UNCOVERED"
+   ],
+   "uncovered_note": "careless output; R21 is a negative example of T05 and is not over-reliance"
+  },
+  {
+   "uid": "R22",
+   "why": "turns my notes into readable docstrings",
+   "codes": [
+    "UNCOVERED"
+   ],
+   "uncovered_note": "writing documentation comments"
+  },
+  {
+   "uid": "R23",
+   "why": "checking whether a block came from the assistant adds overhead",
+   "codes": [
+    "T04"
+   ]
+  },
+  {
+   "uid": "R24",
+   "why": "explaining error messages",
+   "codes": [
+    "T03"
+   ]
+  },
+  {
+   "uid": "R25",
+   "why": "rarely fit our internal libraries",
+   "codes": [
+    "T06"
+   ]
+  },
+  {
+   "uid": "R26",
+   "why": "no longer looks up syntax; relies on it instead",
+   "codes": [
+    "T08"
+   ]
+  },
+  {
+   "uid": "R27",
+   "why": "losing my own skills",
+   "codes": [
+    "T08"
+   ]
+  },
+  {
+   "uid": "R28",
+   "why": "first drafts of test fixtures",
+   "codes": [
+    "T02"
+   ]
+  },
+  {
+   "uid": "R29",
+   "why": "banned it on the payments service",
+   "codes": [
+    "T07"
+   ]
+  },
+  {
+   "uid": "R30",
+   "why": "barely use it",
+   "codes": [
+    "UNCOVERED"
+   ],
+   "uncovered_note": "low use of the assistant; no code covers it"
+  }
+ ]
+}

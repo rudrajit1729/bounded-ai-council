@@ -2,71 +2,72 @@
  "coding/v0/coder2_batch2.jsonl": [
   {
    "uid": "R21",
-   "why": "fast but careless intern",
+   "why": "careless output, like an intern's",
    "codes": [
     "T05"
    ]
   },
   {
    "uid": "R22",
-   "why": "turns my notes into readable docstrings",
+   "why": "writes documentation comments from notes",
    "codes": [
     "UNCOVERED"
    ],
-   "uncovered_note": "writing documentation comments"
+   "uncovered_note": "documentation from notes"
   },
   {
    "uid": "R23",
-   "why": "checking whether a block came from the assistant adds overhead",
+   "why": "an extra review step to check where code came from",
    "codes": [
     "T04"
    ]
   },
   {
    "uid": "R24",
-   "why": "explaining error messages",
+   "why": "explains error messages and suggests what to try",
    "codes": [
     "T03"
    ]
   },
   {
    "uid": "R25",
-   "why": "rely on it less; rarely fit our internal libraries",
+   "why": "suggestions rarely fit the internal libraries",
    "codes": [
     "T06"
    ]
   },
   {
    "uid": "R26",
-   "why": "fewer context switches",
+   "why": "no longer searches the web for syntax: routine code without the lookup",
    "codes": [
     "T01"
    ]
   },
   {
    "uid": "R27",
-   "why": "losing my own skills",
+   "why": "worry about losing their own skills",
    "codes": [
-    "T08"
-   ]
+    "UNCOVERED"
+   ],
+   "uncovered_note": "fear of deskilling; the label names accepting suggestions, not losing skills"
   },
   {
    "uid": "R28",
-   "why": "first drafts of test fixtures",
+   "why": "drafts test fixtures and mock data",
    "codes": [
     "T02"
    ]
   },
   {
    "uid": "R29",
-   "why": "banned it on the payments service",
+   "why": "the lead banned it on the payments service pending a review policy",
    "codes": [
     "T07"
    ]
   },
   {
    "uid": "R30",
-   "why": "barely use it",
+   "why": "'not much to say': nothing to code",
    "codes": [
     "ISSUE_NON_RESPONSE"
    ]

@@ -26,8 +26,24 @@
     "code_id": "ISSUE_NON_RESPONSE",
     "quote": "I barely use it",
     "argument": "The unit has codeable content (low use, T10); it is not a non-answer."
+   },
+   {
+    "id": "CC-04",
+    "type": "FALSE_NEGATIVE",
+    "uid": "R27",
+    "code_id": "T08",
+    "quote": "I'm concerned about losing my own skills",
+    "argument": "T08's definition names developers losing their own skills by relying on it. Lead: p=0.90."
+   },
+   {
+    "id": "CC-05",
+    "type": "FALSE_POSITIVE",
+    "uid": "R26",
+    "code_id": "T01",
+    "quote": "I don't have to search the web for syntax anymore",
+    "argument": "T01 is the assistant writing boilerplate or routine code; the answer is about not leaving the editor to look up syntax."
    }
   ],
-  "notes": "Checked every unit in the batch against the codebook."
+  "notes": "Checked every unit in the batch against the codebook, the leads first."
  }
 }

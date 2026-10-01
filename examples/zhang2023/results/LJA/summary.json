@@ -1,0 +1,132 @@
+{
+  "source": "LJA",
+  "coders": [
+    "1",
+    "2",
+    "3"
+  ],
+  "coder_vendors": {
+    "1": "Claude",
+    "2": "GPT",
+    "3": "Gemini"
+  },
+  "cross_vendor_pairs": [
+    "1-2",
+    "1-3",
+    "2-3"
+  ],
+  "consensus_rule": "2 of 3 coders",
+  "n_units": 256,
+  "n_codes": 72,
+  "codebook_version": "1.2",
+  "n_issue_units_consensus": 8,
+  "issue_units": [
+    "U001",
+    "U037",
+    "U070",
+    "U075",
+    "U132",
+    "U157",
+    "U173",
+    "U222"
+  ],
+  "prevalence_base": 248,
+  "n_units_uncoded_after_consensus": 4,
+  "n_uncovered_any_coder": 5,
+  "n_uncovered_consensus": 0,
+  "uncovered_units": {
+    "U022": [
+      {
+        "coder": "2",
+        "note": "Copilot autocomplete is named as a possible source of a harmful, randomly inserted import line"
+      }
+    ],
+    "U099": [
+      {
+        "coder": "2",
+        "note": "Copilot began throwing an error when invoked from comments and worked again after updating Visual Studio"
+      }
+    ],
+    "U132": [
+      {
+        "coder": "1",
+        "note": "poster mentions Copilot underlining/disliking their try block code while debugging, but never consults it about the failure"
+      }
+    ],
+    "U152": [
+      {
+        "coder": "2",
+        "note": "persistent unexplained error message while Copilot otherwise continues working"
+      }
+    ],
+    "U218": [
+      {
+        "coder": "2",
+        "note": "first-time installation sends and receives Copilot requests but renders no suggestions"
+      }
+    ]
+  },
+  "alpha_median": 0.8676617231789687,
+  "alpha_min": 0.1611986001749781,
+  "alpha_max": 1.0,
+  "n_codes_alpha_below_0.67": 6,
+  "n_codes_alpha_at_or_above_0.80": 49,
+  "n_codes_alpha_undefined": 0,
+  "codes_alpha_below_0.67": [
+    "T01",
+    "T05",
+    "T21",
+    "T46",
+    "T60",
+    "T67"
+  ],
+  "alpha_median_bootstrap": null,
+  "cross_vendor_kappa_median": 0.8675433189507569,
+  "survival": {
+    "n_unit_code_pairs_any_coder": 858,
+    "n_unit_code_pairs_consensus": 681,
+    "rate_pairs": 0.794,
+    "n_assignments": 2092,
+    "n_assignments_in_consensus_pairs": 1915,
+    "rate_assignments": 0.915,
+    "rate_pairs_substantive_codes_only": 0.797
+  },
+  "per_coder": {
+    "1": {
+      "vendor": "Claude",
+      "n_units": 256,
+      "n_assignments": 696,
+      "codes_per_unit": 2.72,
+      "n_issue": 6,
+      "n_uncovered": 1,
+      "n_no_code": 0
+    },
+    "2": {
+      "vendor": "GPT",
+      "n_units": 256,
+      "n_assignments": 721,
+      "codes_per_unit": 2.82,
+      "n_issue": 8,
+      "n_uncovered": 4,
+      "n_no_code": 0
+    },
+    "3": {
+      "vendor": "Gemini",
+      "n_units": 256,
+      "n_assignments": 647,
+      "codes_per_unit": 2.53,
+      "n_issue": 9,
+      "n_uncovered": 0,
+      "n_no_code": 0
+    }
+  },
+  "integrity": {
+    "invalid_codes_used_and_dropped": [],
+    "units_missing_per_coder": {
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    "problems": []
+  }
+}

@@ -50,6 +50,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 CFG = None            # set by configure()
+CALL_SUFFIX = ""      # appended to every call id; run.py sets "__v<version>" when a refined codebook recodes the corpus
 WS: Path | None = None
 LOG: Path | None = None
 _lock = threading.Lock()
@@ -351,7 +352,7 @@ def call(*, stage: str, role: str, family: str, brief: Path, inputs: list, outpu
     prompt, hashes = build_prompt(brief, inputs, instruction)
     spec, backend, model = resolve_model(family, stage)
     dr = default_reasoning(stage)
-    call_id = re.sub(r"[^\w.-]", "_", "%s__%s__%s" % (stage, role, batch) + ("__a%d" % attempt if attempt else ""))
+    call_id = re.sub(r"[^\w.-]", "_", "%s__%s__%s" % (stage, role, batch) + ("__a%d" % attempt if attempt else "") + CALL_SUFFIX)
     if backend not in ("manual", "replay") and backend not in BACKENDS:
         raise SystemExit("config: unknown backend %r for family %s" % (backend, family))
     note, t0 = "", time.time()
@@ -489,7 +490,7 @@ Reply with ONE JSON object and nothing else, saved as `{reply}` next to this fil
 
 def decide_by_file(dm, state, questions, *, stage, role, batch, t0):
     """Decision model answered by hand (manual) or from a recording (replay). Same contract as `command`."""
-    call_id = re.sub(r"[^\w.-]", "_", "%s__%s__%s" % (stage, role, batch))
+    call_id = re.sub(r"[^\w.-]", "_", "%s__%s__%s" % (stage, role, batch) + CALL_SUFFIX)
     req = json.dumps({"state": state, "questions": questions}, ensure_ascii=False, indent=1)
     if dm.get("backend") == "manual":
         d = WS / "manual"

@@ -44,7 +44,8 @@ roles:
 
 # Family -> backend and model id. Backends: claude_cli | codex_cli | anthropic_api | openai_api |
 # gemini_api | command | manual | replay. API keys are read from the environment variable NAMED in api_key_env;
-# never put a key in this file.
+# never put a key in this file. SETUP.md shows how to set up each family (CLI login or API key);
+# `python3 pipeline/council.py --config config.yaml doctor` checks what is ready.
 models:
   claude:
     backend: claude_cli                  # `claude -p`, no tools, no MCP servers
@@ -71,7 +72,8 @@ reasoning:
   reduced_effort: low
 
 # [Full] Calibrated yes/no decision model (grounding and omission leads at discovery; screening and
-# leads at coding). Not used at reconciliation.
+# leads at coding). Not used at reconciliation. Without a TypeSafe key: `enabled: false` (Full without it)
+# or `backend: manual`; see SETUP.md, section 3.
 decision_model:
   enabled: true
   backend: typesafe                      # typesafe | command | manual (requests in <workspace>/manual/) | replay (needs replay_dir)

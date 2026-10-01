@@ -1,0 +1,132 @@
+{
+  "source": "L",
+  "coders": [
+    "1",
+    "2",
+    "3"
+  ],
+  "coder_vendors": {
+    "1": "Claude",
+    "2": "GPT",
+    "3": "Gemini"
+  },
+  "cross_vendor_pairs": [
+    "1-2",
+    "1-3",
+    "2-3"
+  ],
+  "consensus_rule": "2 of 3 coders",
+  "n_units": 256,
+  "n_codes": 72,
+  "codebook_version": "1.2",
+  "n_issue_units_consensus": 7,
+  "issue_units": [
+    "U001",
+    "U037",
+    "U070",
+    "U075",
+    "U132",
+    "U173",
+    "U222"
+  ],
+  "prevalence_base": 249,
+  "n_units_uncoded_after_consensus": 0,
+  "n_uncovered_any_coder": 3,
+  "n_uncovered_consensus": 0,
+  "uncovered_units": {
+    "U152": [
+      {
+        "coder": "2",
+        "note": "non-disruptive persistent error message from an otherwise working Copilot installation"
+      }
+    ],
+    "U173": [
+      {
+        "coder": "3",
+        "note": "auto-import feature not working alongside Copilot; unclear whether Copilot supposed to provide it"
+      }
+    ],
+    "U218": [
+      {
+        "coder": "2",
+        "note": "first-time authenticated installation communicates with the service but displays no suggestions"
+      }
+    ]
+  },
+  "alpha_median": 0.7961043396342316,
+  "alpha_min": -0.0013054830287206887,
+  "alpha_max": 1.0,
+  "n_codes_alpha_below_0.67": 19,
+  "n_codes_alpha_at_or_above_0.80": 35,
+  "n_codes_alpha_undefined": 0,
+  "codes_alpha_below_0.67": [
+    "T01",
+    "T03",
+    "T05",
+    "T18",
+    "T21",
+    "T36",
+    "T37",
+    "T41",
+    "T42",
+    "T44",
+    "T46",
+    "T50",
+    "T52",
+    "T55",
+    "T60",
+    "T67",
+    "T71",
+    "T77",
+    "T85"
+  ],
+  "alpha_median_bootstrap": null,
+  "cross_vendor_kappa_median": 0.798324375076128,
+  "survival": {
+    "n_unit_code_pairs_any_coder": 910,
+    "n_unit_code_pairs_consensus": 652,
+    "rate_pairs": 0.716,
+    "n_assignments": 2039,
+    "n_assignments_in_consensus_pairs": 1781,
+    "rate_assignments": 0.873,
+    "rate_pairs_substantive_codes_only": 0.724
+  },
+  "per_coder": {
+    "1": {
+      "vendor": "Claude",
+      "n_units": 256,
+      "n_assignments": 702,
+      "codes_per_unit": 2.74,
+      "n_issue": 5,
+      "n_uncovered": 0,
+      "n_no_code": 0
+    },
+    "2": {
+      "vendor": "GPT",
+      "n_units": 256,
+      "n_assignments": 700,
+      "codes_per_unit": 2.73,
+      "n_issue": 8,
+      "n_uncovered": 2,
+      "n_no_code": 0
+    },
+    "3": {
+      "vendor": "Gemini",
+      "n_units": 256,
+      "n_assignments": 607,
+      "codes_per_unit": 2.37,
+      "n_issue": 14,
+      "n_uncovered": 1,
+      "n_no_code": 0
+    }
+  },
+  "integrity": {
+    "invalid_codes_used_and_dropped": [],
+    "units_missing_per_coder": {
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    "problems": []
+  }
+}

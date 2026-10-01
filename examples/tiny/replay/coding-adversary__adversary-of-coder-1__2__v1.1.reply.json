@@ -1,0 +1,17 @@
+{
+ "coding/challenges/coder1_batch2.json": {
+  "coder": "1",
+  "batch": 2,
+  "challenges": [
+   {
+    "id": "CC-01",
+    "type": "FALSE_POSITIVE",
+    "uid": "R26",
+    "code_id": "T08",
+    "quote": "I don't have to search the web for syntax anymore",
+    "argument": "T08 is a worry about over-reliance or lost skills; the answer reports a benefit and voices no worry. Lead: p=0.12."
+   }
+  ],
+  "notes": "Checked every unit in the batch against the codebook, the leads first."
+ }
+}

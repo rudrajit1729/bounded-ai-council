@@ -1,0 +1,170 @@
+{
+ "coding/answers/coder2_batch1.json": {
+  "coder": "2",
+  "batch": 1,
+  "answers": [
+   {
+    "challenge_id": "CC-01",
+    "answer": "REJECT",
+    "reason": "Heavy editing because the code does not fit our logic is a fit problem as well; I keep T06 beside T04.",
+    "revision": "none"
+   },
+   {
+    "challenge_id": "CC-02",
+    "answer": "ACCEPT",
+    "reason": "Unclear policy is in T07's definition.",
+    "revision": "R18 += T07"
+   }
+  ]
+ },
+ "coding/v1/coder2_batch1.jsonl": [
+  {
+   "uid": "R01",
+   "why": "boilerplate, getters, setters and config files are written for them",
+   "codes": [
+    "T01"
+   ]
+  },
+  {
+   "uid": "R02",
+   "why": "describes the case and the assistant drafts the unit test",
+   "codes": [
+    "T02"
+   ]
+  },
+  {
+   "uid": "R03",
+   "why": "subtly wrong suggestion: an off-by-one that looked fine",
+   "codes": [
+    "T05"
+   ]
+  },
+  {
+   "uid": "R04",
+   "why": "insecure suggestion: SQL built by string concatenation",
+   "codes": [
+    "T09"
+   ]
+  },
+  {
+   "uid": "R05",
+   "why": "asks it to explain unfamiliar framework code",
+   "codes": [
+    "T03"
+   ]
+  },
+  {
+   "uid": "R06",
+   "why": "the answer is 'n/a'",
+   "codes": [
+    "ISSUE_NON_RESPONSE"
+   ]
+  },
+  {
+   "uid": "R07",
+   "why": "reviewing its output takes longer than writing the code, for non-trivial work",
+   "codes": [
+    "T04"
+   ]
+  },
+  {
+   "uid": "R08",
+   "why": "boilerplate is fast but does not follow the team's naming conventions",
+   "codes": [
+    "T01",
+    "T06"
+   ]
+  },
+  {
+   "uid": "R09",
+   "why": "worry that juniors accept suggestions they do not understand",
+   "codes": [
+    "T08"
+   ]
+  },
+  {
+   "uid": "R10",
+   "why": "explains legacy code: a 600-line function summarised in plain English",
+   "codes": [
+    "T03"
+   ]
+  },
+  {
+   "uid": "R11",
+   "why": "licensing worry from legal; use limited to internal tools",
+   "codes": [
+    "T07",
+    "T09"
+   ]
+  },
+  {
+   "uid": "R12",
+   "why": "writing tests is less tedious and coverage went up",
+   "codes": [
+    "T02"
+   ]
+  },
+  {
+   "uid": "R13",
+   "why": "invented API methods, and time lost chasing them",
+   "codes": [
+    "T05",
+    "T04"
+   ]
+  },
+  {
+   "uid": "R14",
+   "why": "only refers back to an earlier answer",
+   "codes": [
+    "ISSUE_BACK_REFERENCE"
+   ]
+  },
+  {
+   "uid": "R15",
+   "why": "finishes routine tickets faster",
+   "codes": [
+    "T01"
+   ]
+  },
+  {
+   "uid": "R16",
+   "why": "inline suggestions break concentration",
+   "codes": [
+    "UNCOVERED"
+   ],
+   "uncovered_note": "interruptions from inline suggestions"
+  },
+  {
+   "uid": "R17",
+   "why": "learns a new language (Rust) faster",
+   "codes": [
+    "UNCOVERED"
+   ],
+   "uncovered_note": "learning a language"
+  },
+  {
+   "uid": "R18",
+   "why": "unclear what data reaches the vendor; company policy unclear",
+   "codes": [
+    "T09",
+    "T07"
+   ]
+  },
+  {
+   "uid": "R19",
+   "why": "good at boilerplate; business-logic code needs heavy editing because it does not fit our logic",
+   "codes": [
+    "T01",
+    "T04",
+    "T06"
+   ]
+  },
+  {
+   "uid": "R20",
+   "why": "an invented configuration flag",
+   "codes": [
+    "T05"
+   ]
+  }
+ ]
+}

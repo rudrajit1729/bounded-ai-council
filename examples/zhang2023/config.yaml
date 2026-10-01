@@ -1,6 +1,7 @@
 # The paper's experiment expressed as a pipeline config (Full mode, Lite layered underneath).
-# Corpus: Zhang et al. (2023) Stack Overflow threads, rebuilt as of 18 June 2023 (256 surviving posts).
-# Build corpus.csv first: ZHANG_DEMO_ROOT=/path/to/demo_v2 python3 to_pipeline_csv.py
+# Corpus: Zhang et al. (2023) Stack Overflow threads, rebuilt as of 18 June 2023 (256 surviving posts), in data/.
+# Build corpus.csv first (adds the paper's strata):  python3 examples/zhang2023/to_pipeline_csv.py
+# For Lite only, use config.lite.yaml. Set up your models first (SETUP.md) and run `council.py doctor`.
 # Paths are relative to this folder.
 
 mode: full

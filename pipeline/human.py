@@ -581,8 +581,9 @@ def cmd_low_alpha(args):
             w.writerow([cid, books[cid]["label"], (rel.get(cid, {}).get("alpha") or "")[:5], "", "", "", "", "", "", ""])
     (d / "README.md").write_text(LOW_ALPHA_README.format(n=len(low), rel=K.cfg.d["reliability"]["units"], floor=K.cfg.t["alpha_drop"], cond=cond),
                                  encoding="utf-8")
-    print("low-alpha (%s): %d code(s) below %s%s -> %s. STOP: the researchers decide, per code, refine and recode or drop."
-          % (cond, len(low), K.cfg.t["alpha_drop"], (" (" + ", ".join(low) + ")") if low else "", d))
+    print("low-alpha (%s): %d code(s) below %s%s -> %s. %s"
+          % (cond, len(low), K.cfg.t["alpha_drop"], (" (" + ", ".join(low) + ")") if low else "", d,
+             "STOP: the researchers decide, per code, refine and recode or drop." if low else "Nothing to decide."))
     return 0
 
 

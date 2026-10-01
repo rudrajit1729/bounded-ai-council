@@ -535,6 +535,9 @@ def code_adversary(book):
 
 def cmd_code(args):
     book = K.approved_book()
+    if book.get("low_alpha_rounds"):
+        # a refined codebook recodes the whole corpus: its calls get their own ids (manual prompts, replay files)
+        models.CALL_SUFFIX = "__v%s" % book.get("version")
     code_lite()
     stop_if_pending()
     if K.cfg.full:

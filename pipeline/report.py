@@ -355,8 +355,12 @@ def cmd_report(args):
         L.append("- Blind pass: %d units (seed %s, %s). Researcher codes the council lacked: %s." % (
             len(sp.get("blind_pass", [])), sp.get("seed"), sp.get("blind_pass_note", ""), "; ".join(rv.get("blind_pass_codes_missing") or []) or "none recorded"))
         L.append("- Edits: %d (%s). Approved codes: %d; dropped at review: %d; quarantined candidates %d proposed, %d accepted. Version %s, closed %s." % (
-            rv.get("n_edits", 0), ", ".join("%s=%d" % kv for kv in (rv.get("edits_by_type") or {}).items()), ap["n_approved"],
-            len(ap.get("dropped_at_review") or []), ap.get("n_quarantined_proposed", 0), ap.get("n_quarantined_accepted", 0), ap.get("version"), rv.get("closed_at")))
+            rv.get("n_edits", 0), ", ".join("%s=%d" % kv for kv in (rv.get("edits_by_type") or {}).items()), ap["n_approved"] + len(ap.get("dropped_low_alpha") or []),
+            len(ap.get("dropped_at_review") or []), ap.get("n_quarantined_proposed", 0), ap.get("n_quarantined_accepted", 0),
+            ((ap.get("low_alpha_rounds") or [{}])[0].get("from_version") or ap.get("version")), rv.get("closed_at")))
+        for rd in ap.get("low_alpha_rounds") or []:
+            L.append("- After the low-alpha decision: codebook %s (%s). The table shows the current version." % (rd.get("to_version"), "; ".join(
+                "%s %s" % (x["id"], "refined" if x["op"] == "refine" else "dropped") for x in rd.get("log", []))))
         L.append("")
         L.append("| Id | RQ | Label | Analysts | Units at discovery | Layer origin |\n|---|---|---|---|---|---|")
         for c in ap["codes"]:
@@ -433,6 +437,16 @@ def cmd_report(args):
                 L.append("")
                 L.append("Screening recall against Lite coding (evaluation units): %d of %d Lite consensus pairs were shown to the coders (%.3f); "
                          "%d reached consensus under screening (%.3f)." % (shown, len(lp), shown / len(lp), len(lp & ljp), len(lp & ljp) / len(lp)))
+        for rd in M.coding_rounds(ap):
+            rs = rd["summary"]
+            L.append("")
+            L.append("**Earlier coding round (codebook %s, archived in `%s/`).** Alpha median %s (min %s, max %s); %d code(s) below %s. "
+                     "The researchers' decisions: %s. The whole corpus was then recoded with codebook %s; the table above is that recode." % (
+                         rd["from_version"], rd["archived_to"], R.fmt(rs.get("alpha_median")), R.fmt(rs.get("alpha_min")), R.fmt(rs.get("alpha_max")),
+                         len(rs.get("codes_dropped_alpha_below_floor") or []), t["alpha_drop"],
+                         "; ".join("%s %s (alpha %s) %s%s" % (x["id"], x["label"], R.fmt(float(x["alpha"])) if x["alpha"] else "n/a",
+                                                             "refined" if x["op"] == "refine" else "dropped", (": " + x["reason"].rstrip(".")) if x["reason"] else "")
+                                   for x in rd["decisions"]) or "none", rd["to_version"]))
         prev = W / "results" / prim / "prevalence.csv"
         if prev.exists():
             L.append("")

@@ -2,37 +2,37 @@
  "coding/v0/coder3_batch2.jsonl": [
   {
    "uid": "R21",
-   "why": "fast but careless intern",
+   "why": "needs supervising like an intern",
    "codes": [
     "T08"
    ]
   },
   {
    "uid": "R22",
-   "why": "turns my notes into readable docstrings",
+   "why": "docstrings",
    "codes": [
     "UNCOVERED"
    ],
-   "uncovered_note": "writing documentation comments"
+   "uncovered_note": "writes docstrings"
   },
   {
    "uid": "R23",
-   "why": "checking whether a block came from the assistant adds overhead",
+   "why": "review overhead; supervising its code",
    "codes": [
     "T04",
-    "T05"
+    "T08"
    ]
   },
   {
    "uid": "R24",
-   "why": "explaining error messages",
+   "why": "explains errors",
    "codes": [
     "T03"
    ]
   },
   {
    "uid": "R25",
-   "why": "rely on it less; rarely fit our internal libraries",
+   "why": "less value than expected; does not fit internal libraries",
    "codes": [
     "T06",
     "T10"
@@ -40,28 +40,28 @@
   },
   {
    "uid": "R26",
-   "why": "fewer context switches",
+   "why": "answers syntax questions in the editor",
    "codes": [
     "T03"
    ]
   },
   {
    "uid": "R27",
-   "why": "losing my own skills",
+   "why": "deskilling",
    "codes": [
     "T08"
    ]
   },
   {
    "uid": "R28",
-   "why": "first drafts of test fixtures",
+   "why": "fixtures and mocks",
    "codes": [
     "T02"
    ]
   },
   {
    "uid": "R29",
-   "why": "banned it on the payments service",
+   "why": "ban on the payments service; payments security",
    "codes": [
     "T07",
     "T09"
@@ -69,7 +69,7 @@
   },
   {
    "uid": "R30",
-   "why": "barely use it",
+   "why": "barely uses it",
    "codes": [
     "T10"
    ]

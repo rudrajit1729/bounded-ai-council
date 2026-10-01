@@ -1,0 +1,73 @@
+code,label,n_units,pct_units,n_any_coder,n_unanimous,alpha,kappa_cross_vendor_mean,n_analysts_at_discovery,n_units_at_discovery
+T02,"A working Copilot stops suggesting, with no error, and fixes are rituals",20,10.8,28,14,0.7473955064641646,0.7425338081376113,3,51
+T07,"Signing in, authorizing or activating Copilot fails",17,9.2,19,14,0.8906844106463878,0.8906764473745299,3,25
+T36,Using Copilot to produce the code for a stated task,17,9.2,30,13,0.6842700258397933,0.6895187455960592,3,52
+T09,"Keys that accept and browse suggestions, and the Tab clashes they cause",15,8.1,16,13,0.9263072453861927,0.9261664888783532,3,22
+T01,"Keeping Copilot on as the completer while I type, in whatever editor and beside whatever completion list I have",14,7.6,26,5,0.4946641556811049,0.493739977900615,3,111
+T04,"Not available for this IDE, platform, version, machine or container",14,7.6,19,9,0.7436240413768503,0.7430453408145982,3,36
+T08,"Copilot's Tab and Ctrl+Enter collide with other keys, or can't be typed",14,7.6,15,13,0.9487248082753701,0.9486356340288925,3,23
+T05,"The suggestion was wrong, invented or of no use",12,6.5,18,2,0.4715073529411765,0.45090241610314585,3,35
+T06,"No way to tell whether the code is right, and no way to read what it does",12,6.5,17,7,0.7042181069958848,0.705194037604338,3,28
+T12,"Available and suggesting in the editor, platform and language I work in",12,6.5,16,7,0.7266965936097174,0.7293141283242933,3,18
+T16,"Corporate proxies, VPNs and certificates block it: works at home, not at work",12,6.5,12,11,0.9696329548455241,0.9691714836223504,3,16
+T37,"Almost nothing can be configured, so posters hand-edit, patch and reverse-engineer",12,6.5,29,8,0.5323936026023313,0.5680832450680623,2,27
+T11,Copilot's code ran and produced the right result,11,5.9,18,8,0.7116782831068544,0.7096962194893225,3,20
+T47,"Answerers post Copilot's output as the answer, saying where it came from",11,5.9,15,10,0.8521090534979424,0.8540526569268914,2,15
+T10,"Copilot overrides editor settings and breaks typing: brackets, duplicate keys, dead redo",10,5.4,11,10,0.9659662622077538,0.9664218258132212,3,21
+T13,Posting Copilot's code as the answer to someone else's question,10,5.4,12,8,0.8595848595848596,0.8608872492458176,3,17
+T24,"Self-contained computations: primes, Euclid, intersection, regex scanning, value conversions",9,4.9,9,9,1.0,1.0,3,11
+T62,Rebuilding Copilot's grey inline suggestion in my own editor or control,9,4.9,10,7,0.8793706293706294,0.8766371482470188,2,10
+T77,Praise or a positive verdict with no capability and no result named,9,4.9,13,1,0.45750452079566006,0.44509851901157654,2,22
+T20,"Too much, too often: suggest only when I ask and stay quiet in comments, paths and normal mode",8,4.3,9,8,0.9582577132486388,0.9589743589743587,3,13
+T45,"The only fix is turning Copilot off; some do, others configure around it",8,4.3,12,8,0.850104275286757,0.8520004267577085,2,17
+T48,"The implemented unit is a line or a few lines inside existing code: imports, members, option names, annotations, repeated lines",8,4.3,10,3,0.6546546546546546,0.6432528045431273,2,15
+T14,Suggestions appear unasked and push the editor's own completion list aside,7,3.8,12,7,0.798951048951049,0.8028193858479419,3,17
+T15,"Wanting suggestions only when I ask, not while I type",6,3.2,7,6,0.9456675800812624,0.9469320066334989,3,17
+T17,"The written comment, name or pseudocode was filled in",6,3.2,8,3,0.6974639587498684,0.6902606591903301,3,15
+T22,"Sorting, filtering, de-duplicating and reshaping lists, objects and dataframes",6,3.2,7,6,0.9456675800812624,0.9469320066334989,3,12
+T23,"Click handlers, built page elements, CSS and font rules",6,3.2,6,4,0.8716517857142857,0.8691726344977114,3,11
+T25,"Waitlist, trial, payment and the signed-in account decide who can use it",6,3.2,8,6,0.8965827338129496,0.8975111572126497,3,11
+T43,Consulting Copilot about a problem that is already failing,6,3.2,11,6,0.7739602169981916,0.7787891121224457,2,17
+T49,"Behind the company proxy and VPN: works at home, dies at the office",6,3.2,8,3,0.6974639587498684,0.6902606591903301,2,14
+T52,Judged better or worse than the editor's own completion and rival assistants,6,3.2,10,3,0.6196730605688369,0.6144653259517973,2,14
+T64,"Document the settings, let me build on it, stop overriding my editor",6,3.2,8,4,0.7710075667064915,0.7706093189964154,2,9
+T69,Labs and Chat panels never appear or return errors,6,3.2,7,5,0.8855037833532458,0.8849805900421922,2,7
+T80,"Copilot produced nothing usable, so the poster asked people",6,3.2,6,5,0.9394927917499737,0.9376218323586739,1,7
+T19,Side by side with IntelliSense: expecting both completions to coexist,5,2.7,8,5,0.8282556750298686,0.8279569892473124,3,13
+T26,"Using Copilot on code that already exists: explain, document, test, diagram",5,2.7,7,2,0.6345958312150483,0.6248450115706857,3,10
+T33,Accept only part of a suggestion: the first line or the next word,5,2.7,5,5,1.0,1.0,3,6
+T35,"Whole blocks, finished code, and in my own quote and line-ending style",5,2.7,5,5,1.0,1.0,3,5
+T39,Copilot blamed for editor behaviour that turned out to have another cause,5,2.7,5,4,0.9269191662430096,0.9241706161137436,2,20
+T50,"Expecting more than line completion: whole-project context, explain, document, test, chat",5,2.7,7,3,0.726678550207962,0.7183147035978164,2,14
+T51,Looked right but used something that does not exist,5,2.7,6,5,0.9358258928571429,0.9376218323586739,2,14
+T68,"How much of the suggestion to take: a word, a line, a whole block",5,2.7,7,4,0.8074776785714286,0.806794466856386,2,8
+T70,"Suggestions come back one line, repeated, or arrive unclosed",5,2.7,6,5,0.9358258928571429,0.9376218323586739,2,7
+T72,Expecting the same control in Visual Studio or JetBrains that VS Code documents,5,2.7,7,3,0.726678550207962,0.7183147035978164,2,6
+T79,"Arguing that docs, textbooks or your own effort should come before Copilot",5,2.7,5,4,0.9269191662430096,0.9241706161137436,1,7
+T83,Copilot as one slot among assistants: an alternative named in its place,5,2.7,7,3,0.726678550207962,0.7262032085561487,1,5
+T27,"Keep my code and secrets out, and let me pick where Copilot runs",4,2.2,4,3,0.9074818986323411,0.9030303030303023,3,9
+T28,"Schemas, ORM calls, routes and framework or infrastructure config",4,2.2,7,4,0.7950089126559715,0.8001419882188153,3,9
+T29,Accept inserts the whole block when only one line was wanted,4,2.2,5,4,0.9214373548298949,0.9241706161137436,3,8
+T31,"Encryption, token signing, process memory, terminal capture, struct printing",4,2.2,4,4,1.0,1.0,3,7
+T41,"Useful only once checked, and the thread often does the checking",4,2.2,10,1,0.3850267379679144,0.3642202758481828,2,19
+T46,"Expecting one account, once approved or paid, to work everywhere",4,2.2,9,1,0.41535332994407737,0.4319076396500178,2,16
+T56,Trying Copilot out to see what it can do,4,2.2,5,1,0.5936395759717314,0.56745988879644,2,12
+T59,Suggestions arrive in some languages and file types and not in others,4,2.2,5,2,0.7224456958970233,0.7209542230818826,2,27
+T60,Worth rearranging work for: editors changed and the same help asked for elsewhere,4,2.2,6,1,0.5374094931617055,0.5192703612358325,2,11
+T65,"One line, a whole block, or nothing at all depending on setup",4,2.2,4,3,0.9074818986323411,0.9030303030303023,2,9
+T85,Routing around Copilot by naming another assistant,4,2.2,9,2,0.5216874628639334,0.5177289844289099,1,5
+T21,The inline completion delivered: lines and function bodies arrived as you type,3,1.6,5,2,0.6952296819787986,0.6931858265191596,3,12
+T30,"Expecting a comment to produce the code it describes, in my language and editor",3,1.6,4,3,0.8984098939929328,0.9030303030303023,3,8
+T38,"Using Copilot in a language, API or task the poster says they do not know",3,1.6,5,3,0.8149637972646823,0.8179239200515793,2,22
+T55,"The deliverable is about existing code: explanation, docstring, test, diagram, fix or verdict",3,1.6,6,2,0.6299275945293645,0.6497021048596582,2,12
+T71,"The suggestion fitted because of what Copilot had seen: this file, the established pattern, public code",3,1.6,4,1,0.6203785211267606,0.6170830263657271,2,10
+T73,Offers up to ten alternative solutions to pick from,3,1.6,5,2,0.6952296819787986,0.6895415043452222,2,5
+T74,"Service URLs, API endpoints and connections to remote services",3,1.6,4,2,0.7746423672349598,0.7713285466539165,2,4
+T03,Using Copilot with or without checking what it gives,2,1.1,4,1,0.5669093648004018,0.5737551595049535,3,38
+T32,Keeping Copilot away from secrets and confidential code,2,1.1,2,2,1.0,1.0,3,7
+T34,Secrets and private code are sent to GitHub and leak in suggestions,2,1.1,2,2,1.0,1.0,3,5
+T42,It helped where the poster's own knowledge or the documentation ran out,2,1.1,5,1,0.4938380281690141,0.5189286562771339,2,18
+T67,"Using Copilot on the assumption it reads the surrounding file, style and project",2,1.1,3,0,0.39579684763572687,0.38402649981597387,2,8
+T87,"Copilot proposed the approach, algorithm or data model",2,1.1,5,2,0.6619635508524397,0.709969788519636,1,3
+T18,"Churning out the repetitive parts: imports, boilerplate, long lists",1,0.5,4,0,0.19439579684763575,0.1602502760397512,3,13
+T44,Expecting suggestions that work and that use things which really exist,0,0.0,1,0,0.0,0.0,2,17

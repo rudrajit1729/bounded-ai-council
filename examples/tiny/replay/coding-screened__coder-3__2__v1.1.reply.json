@@ -1,0 +1,79 @@
+{
+ "coding/v0/coder3_batch2.jsonl": [
+  {
+   "uid": "R21",
+   "why": "careless intern",
+   "codes": [
+    "UNCOVERED"
+   ],
+   "uncovered_note": "how careless its output is"
+  },
+  {
+   "uid": "R22",
+   "why": "docstrings",
+   "codes": [
+    "UNCOVERED"
+   ],
+   "uncovered_note": "writes docstrings"
+  },
+  {
+   "uid": "R23",
+   "why": "review overhead; its code cannot be trusted as written",
+   "codes": [
+    "T04",
+    "T05"
+   ]
+  },
+  {
+   "uid": "R24",
+   "why": "explains errors",
+   "codes": [
+    "T03"
+   ]
+  },
+  {
+   "uid": "R25",
+   "why": "does not fit internal libraries",
+   "codes": [
+    "T06"
+   ]
+  },
+  {
+   "uid": "R26",
+   "why": "answers syntax questions in the editor",
+   "codes": [
+    "T03"
+   ]
+  },
+  {
+   "uid": "R27",
+   "why": "deskilling",
+   "codes": [
+    "T08"
+   ]
+  },
+  {
+   "uid": "R28",
+   "why": "fixtures and mocks",
+   "codes": [
+    "T02"
+   ]
+  },
+  {
+   "uid": "R29",
+   "why": "ban on the payments service; payments security",
+   "codes": [
+    "T07",
+    "T09"
+   ]
+  },
+  {
+   "uid": "R30",
+   "why": "barely uses it",
+   "codes": [
+    "UNCOVERED"
+   ],
+   "uncovered_note": "low use"
+  }
+ ]
+}

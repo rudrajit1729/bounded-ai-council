@@ -9,9 +9,10 @@
   },
   {
    "uid": "R02",
-   "why": "it drafts the test",
+   "why": "it drafts the test, which I then fix",
    "codes": [
-    "T02"
+    "T02",
+    "T04"
    ]
   },
   {
@@ -52,7 +53,7 @@
   },
   {
    "uid": "R08",
-   "why": "fast at boilerplate; ignores naming conventions",
+   "why": "fast at boilerplate; ignores our naming conventions",
    "codes": [
     "T01",
     "T06"
@@ -143,9 +144,10 @@
   },
   {
    "uid": "R20",
-   "why": "hallucinated a configuration flag",
+   "why": "hallucinated a configuration flag; the build failed in CI",
    "codes": [
-    "T05"
+    "T05",
+    "T04"
    ]
   }
  ]

@@ -2,7 +2,20 @@
  "coding/answers/coder1_batch1.json": {
   "coder": "1",
   "batch": 1,
-  "answers": []
+  "answers": [
+   {
+    "challenge_id": "CC-01",
+    "answer": "ACCEPT",
+    "reason": "The developer fixes a draft and still reports a saving; that is not the cost T04 describes.",
+    "revision": "R02 -= T04"
+   },
+   {
+    "challenge_id": "CC-02",
+    "answer": "REJECT",
+    "reason": "A build that fails in CI on a flag that does not exist is time lost chasing an error, which T04's include clause names.",
+    "revision": "none"
+   }
+  ]
  },
  "coding/v1/coder1_batch1.jsonl": [
   {
@@ -57,7 +70,7 @@
   },
   {
    "uid": "R08",
-   "why": "fast at boilerplate; ignores naming conventions",
+   "why": "fast at boilerplate; ignores our naming conventions",
    "codes": [
     "T01",
     "T06"
@@ -148,9 +161,10 @@
   },
   {
    "uid": "R20",
-   "why": "hallucinated a configuration flag",
+   "why": "hallucinated a configuration flag; the build failed in CI",
    "codes": [
-    "T05"
+    "T05",
+    "T04"
    ]
   }
  ]

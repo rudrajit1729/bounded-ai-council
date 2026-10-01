@@ -1,128 +1,248 @@
 {
   "recorded_from": "examples/tiny/workspace_agent",
   "recorded_at": "2026-10-01T06:55:44+00:00",
-  "n_replies": 167,
-  "note": "Replies to manual prompts, replayed by the `replay` backend (models.<family>.replay_dir, decision_model.replay_dir). No model is contacted when replaying. Three discovery-adversary prompt hashes were refreshed after a fix made the order of the grounding-lead file deterministic (the content is unchanged).",
+  "n_replies": 221,
+  "note": "Replies to manual prompts, replayed by the `replay` backend (models.<family>.replay_dir, decision_model.replay_dir). No model is contacted when replaying. Three discovery-adversary prompt hashes were refreshed after a fix made the order of the grounding-lead file deterministic (the content is unchanged). The coding-stage replies were re-recorded on 2026-10-01 so that the coders disagree on borderline answers as independent coders do, and a second coding round was recorded for codebook 1.1 (call ids ending in __v1.1) after the fictional researchers refined T08 and dropped T10; their prompt hashes are those of the replayed run.",
   "calls": {
     "coding-adversary__adversary-of-coder-1__1": {
       "stage": "coding-adversary",
       "role": "adversary-of-coder-1",
-      "prompt_sha256": "13789ddd3ba524666a93bd8dc0b30e4d48f615b118b4621cf15cae76f528133e"
+      "prompt_sha256": "550e156252e89177e1b501c683e6b8c7a77d4e53d185b36c86762f885ddac5cb"
+    },
+    "coding-adversary__adversary-of-coder-1__1__v1.1": {
+      "stage": "coding-adversary",
+      "role": "adversary-of-coder-1",
+      "prompt_sha256": "88f1e9232d977e01c560b12c1e8d34d82de37c97c49794539cdd0a11f1984b3c"
     },
     "coding-adversary__adversary-of-coder-1__2": {
       "stage": "coding-adversary",
       "role": "adversary-of-coder-1",
       "prompt_sha256": "3a33bf5e2debc468ecf4ddc83b4cca0a2e7a8e36db935ef672388dbdbc01f63f"
     },
+    "coding-adversary__adversary-of-coder-1__2__v1.1": {
+      "stage": "coding-adversary",
+      "role": "adversary-of-coder-1",
+      "prompt_sha256": "ae960aa938cb57ca2156abc9cc9a195a2ee9892af8265c4f06d193c7adb96a43"
+    },
     "coding-adversary__adversary-of-coder-2__1": {
       "stage": "coding-adversary",
       "role": "adversary-of-coder-2",
-      "prompt_sha256": "f1d41011ba0fe5f17e59dee6d177209e76ac7a63ea7d0f29bba861f2d5ab720f"
+      "prompt_sha256": "0c21365d635291ca24d63780a7f69873a1724e702b177411b57be9fbbb4663a7"
+    },
+    "coding-adversary__adversary-of-coder-2__1__v1.1": {
+      "stage": "coding-adversary",
+      "role": "adversary-of-coder-2",
+      "prompt_sha256": "99a53b5a95999be5e44a1df5bbba886fcb468912bb8b56a81efa333cf9ae0d29"
     },
     "coding-adversary__adversary-of-coder-2__2": {
       "stage": "coding-adversary",
       "role": "adversary-of-coder-2",
-      "prompt_sha256": "c01cd983432b9ce5e84b1c16f91cf7a8b5d91d2459f871064b0e927f47a30755"
+      "prompt_sha256": "f1874323c1c8ddeff1bcc87a326ef1637e3fde553a78b40ed676d9c64d7f88dc"
+    },
+    "coding-adversary__adversary-of-coder-2__2__v1.1": {
+      "stage": "coding-adversary",
+      "role": "adversary-of-coder-2",
+      "prompt_sha256": "95c073ea816ec407d19b19ef466e94e08c89f2f83737596075586e22bac1fa96"
     },
     "coding-adversary__adversary-of-coder-3__1": {
       "stage": "coding-adversary",
       "role": "adversary-of-coder-3",
-      "prompt_sha256": "671f77a1eea0ae3d971360397ede014875f9ec2e63e7c623d3c89334939519eb"
+      "prompt_sha256": "490710a6e858c4cab7492dfb2dda98ca319ce4156ca51b6c6a5b13b5cc0e2183"
+    },
+    "coding-adversary__adversary-of-coder-3__1__v1.1": {
+      "stage": "coding-adversary",
+      "role": "adversary-of-coder-3",
+      "prompt_sha256": "4f70190878deb0b910c7745a81f2fd37cd6e315bc0623de35733ed88616afd2c"
     },
     "coding-adversary__adversary-of-coder-3__2": {
       "stage": "coding-adversary",
       "role": "adversary-of-coder-3",
-      "prompt_sha256": "3151ff97cbac8a89b574982265b4da35163e904fbd1a0178657d0944c12071f0"
+      "prompt_sha256": "0cc06888159209dbc39204718a4272c55e5429f3ecf6d7f7ca873b45a45f7be0"
+    },
+    "coding-adversary__adversary-of-coder-3__2__v1.1": {
+      "stage": "coding-adversary",
+      "role": "adversary-of-coder-3",
+      "prompt_sha256": "1dd5fbb6ab60c00987e70743d13a6cca9af4c3b3e9b52427121adc0fb94296dc"
     },
     "coding-answer__coder-1-answers__1": {
       "stage": "coding-answer",
       "role": "coder-1-answers",
-      "prompt_sha256": "4595e3be720f680b2508fea3be52b90c4150a97786862578539f03f9bbcce65d"
+      "prompt_sha256": "2afe5c3079aa63052302da746ee4ead154d119e72c6110e142475d5724e88532"
+    },
+    "coding-answer__coder-1-answers__1__v1.1": {
+      "stage": "coding-answer",
+      "role": "coder-1-answers",
+      "prompt_sha256": "93e25177b8370a73cc8fce0bf514f1b5bbb1ae8c327fdcef6118a76d3ebea0c4"
     },
     "coding-answer__coder-1-answers__2": {
       "stage": "coding-answer",
       "role": "coder-1-answers",
-      "prompt_sha256": "6596db52e06dca65b1c82b108a858973f88033ebdff86d79c0f9a2d0d447b925"
+      "prompt_sha256": "68e2b240a191e19f433b77cfd0c77601cb3350a10fddabb946fc88bfbac39053"
+    },
+    "coding-answer__coder-1-answers__2__v1.1": {
+      "stage": "coding-answer",
+      "role": "coder-1-answers",
+      "prompt_sha256": "452a970d8571ac8989fd372952e5a85f18f408969e699b980c15063a897a5551"
     },
     "coding-answer__coder-2-answers__1": {
       "stage": "coding-answer",
       "role": "coder-2-answers",
-      "prompt_sha256": "f0370aa891d023c74c0b28e1d3ca52d273efd6a1f60985faf0c8825ab92e69f9"
+      "prompt_sha256": "ea46dcb5f5f8e6bd4aa7db1315720b802c6dafd0b331aee4812d41f4985ee639"
+    },
+    "coding-answer__coder-2-answers__1__v1.1": {
+      "stage": "coding-answer",
+      "role": "coder-2-answers",
+      "prompt_sha256": "865bc6c46876a7bf0db8212beda9796087bb2611af759c15127fffc3ca8b6bf3"
     },
     "coding-answer__coder-2-answers__2": {
       "stage": "coding-answer",
       "role": "coder-2-answers",
-      "prompt_sha256": "73e72ad47c587bd21d10f919112055bc1c013d5e18febf026a7f41ebfda1f5da"
+      "prompt_sha256": "bfc9312652505070828a97190d3818417784533d5b761eeab076cf6f4db540fc"
+    },
+    "coding-answer__coder-2-answers__2__v1.1": {
+      "stage": "coding-answer",
+      "role": "coder-2-answers",
+      "prompt_sha256": "e8195ab44bf46c6d0cfcc83ea4fc3d461c2d94d01f9d607d20004e2a6dce1864"
     },
     "coding-answer__coder-3-answers__1": {
       "stage": "coding-answer",
       "role": "coder-3-answers",
-      "prompt_sha256": "2d70afdbc987aefca9db4ab30979ebb60130745e6bc39e3dfbbde70a3ff36947"
+      "prompt_sha256": "3f6ba6d47973909a65e712c7a48bab99754d62c7a5b2ecf3a8d687ad9d0e0e19"
+    },
+    "coding-answer__coder-3-answers__1__v1.1": {
+      "stage": "coding-answer",
+      "role": "coder-3-answers",
+      "prompt_sha256": "7ea971c950422279e286cd1f32ca00c4c5023f2d1b429555c7c035ac4bca06a1"
     },
     "coding-answer__coder-3-answers__2": {
       "stage": "coding-answer",
       "role": "coder-3-answers",
-      "prompt_sha256": "735a4b53e8c760a8d7405a021ea76c85828e5fc541b7b70b19441be229474ba3"
+      "prompt_sha256": "478006f6b088604731ea170250c01f066ccd535008650cbdaea978512d349ac4"
+    },
+    "coding-answer__coder-3-answers__2__v1.1": {
+      "stage": "coding-answer",
+      "role": "coder-3-answers",
+      "prompt_sha256": "afd5ea29ac9ae771d90d60a103411e93de3439bbfebac028ec65ba96457a4346"
     },
     "coding-screened__coder-1__1": {
       "stage": "coding-screened",
       "role": "coder-1",
       "prompt_sha256": "6cdf223ecfc84200899c97406cf9046b4d3ed806be2c8309d57949f3531eb78c"
     },
+    "coding-screened__coder-1__1__v1.1": {
+      "stage": "coding-screened",
+      "role": "coder-1",
+      "prompt_sha256": "bf3586dcc2437dcc6875b0e129eb64d94603cc941d9a1df4045364ff1551e9e0"
+    },
     "coding-screened__coder-1__2": {
       "stage": "coding-screened",
       "role": "coder-1",
       "prompt_sha256": "87333a84505d73f3ed818e9cc1e36222b48e4e69ea9aa1a75f76e7d4c4251632"
+    },
+    "coding-screened__coder-1__2__v1.1": {
+      "stage": "coding-screened",
+      "role": "coder-1",
+      "prompt_sha256": "a24baf680b7cef3ecb7dc2b331dbbc9087f014eea185fc82d78e46a0e50bff26"
     },
     "coding-screened__coder-2__1": {
       "stage": "coding-screened",
       "role": "coder-2",
       "prompt_sha256": "692243435c9f95369287db8ac2dc6878ccdb3278bd963ce50bd3c93dcf3e48b7"
     },
+    "coding-screened__coder-2__1__v1.1": {
+      "stage": "coding-screened",
+      "role": "coder-2",
+      "prompt_sha256": "ba8693aa6250b9732b5810be608543f8b9103d1532592aaa3179d9a08f31b440"
+    },
     "coding-screened__coder-2__2": {
       "stage": "coding-screened",
       "role": "coder-2",
       "prompt_sha256": "c3e54629159fa866b8bf295539d8feac5bc5b632ed5112dcaba791e7ec212d48"
+    },
+    "coding-screened__coder-2__2__v1.1": {
+      "stage": "coding-screened",
+      "role": "coder-2",
+      "prompt_sha256": "e3a8d5e808ecdaab920d350b5c6b5d57e385a1d878f6668151d5c82ae36a00ab"
     },
     "coding-screened__coder-3__1": {
       "stage": "coding-screened",
       "role": "coder-3",
       "prompt_sha256": "01ac481de157aeba3e78f8d2fd1f48d1f7896b0549d61201c942f744265843de"
     },
+    "coding-screened__coder-3__1__v1.1": {
+      "stage": "coding-screened",
+      "role": "coder-3",
+      "prompt_sha256": "c9461fccc9b817b968ceae0aa612ae95ddc4153d3646b3783f823b3eca467865"
+    },
     "coding-screened__coder-3__2": {
       "stage": "coding-screened",
       "role": "coder-3",
       "prompt_sha256": "3043235ec5100e022a8773276c519c5f6220405dd028d07024d5b1fb63ff3144"
+    },
+    "coding-screened__coder-3__2__v1.1": {
+      "stage": "coding-screened",
+      "role": "coder-3",
+      "prompt_sha256": "67b1a2c7184857ff51fe9faaf97fd2b758c60f0f4d31d28836449c03f7c17737"
     },
     "coding__coder-1__1": {
       "stage": "coding",
       "role": "coder-1",
       "prompt_sha256": "2491bf22a6045b73351ce89486372008559c1321d6ad98c3f4f603dca1da0e8c"
     },
+    "coding__coder-1__1__v1.1": {
+      "stage": "coding",
+      "role": "coder-1",
+      "prompt_sha256": "54e50cfae28ecfdc0f4fd4292fd0817af8107796d9d3c507380958c380e689b5"
+    },
     "coding__coder-1__2": {
       "stage": "coding",
       "role": "coder-1",
       "prompt_sha256": "af4e52095c9eec5cff0e4e1e613b4b18ca14a35d0be3b0767bdcec98ec053134"
+    },
+    "coding__coder-1__2__v1.1": {
+      "stage": "coding",
+      "role": "coder-1",
+      "prompt_sha256": "3835eb74c1d03020d3aff05bd3c2332c51ae2f52a239bcfb60d0ee45b8c62ca4"
     },
     "coding__coder-2__1": {
       "stage": "coding",
       "role": "coder-2",
       "prompt_sha256": "f6a17c5e328ef712d85ddd9e7386cbf4efc6422d2cdba8c3dc846f26bc21a116"
     },
+    "coding__coder-2__1__v1.1": {
+      "stage": "coding",
+      "role": "coder-2",
+      "prompt_sha256": "e740dfe7736f11f81f9df6acdf97a26fcf60ef05c2eb192806372415543f2bdb"
+    },
     "coding__coder-2__2": {
       "stage": "coding",
       "role": "coder-2",
       "prompt_sha256": "6ecb35fa101b5e348a6bcd8a6127a854d81cc4b628378114e52281159fef8138"
+    },
+    "coding__coder-2__2__v1.1": {
+      "stage": "coding",
+      "role": "coder-2",
+      "prompt_sha256": "0d3b1452cc0990499559ec124dd07e6c464a520ac2438aaef50d2a198361db93"
     },
     "coding__coder-3__1": {
       "stage": "coding",
       "role": "coder-3",
       "prompt_sha256": "3a248fd602496358a0905db8fb14d1da840bfc39fb45616826eac106037e0c2e"
     },
+    "coding__coder-3__1__v1.1": {
+      "stage": "coding",
+      "role": "coder-3",
+      "prompt_sha256": "b39adf47d37a78f10cd833c7d7388cc30480bf0bcdca78c3bb53280ef3194462"
+    },
     "coding__coder-3__2": {
       "stage": "coding",
       "role": "coder-3",
       "prompt_sha256": "5a7c4480cbc628944078962921491a46d84813ecdc0e6826117303b376fd16cd"
+    },
+    "coding__coder-3__2__v1.1": {
+      "stage": "coding",
+      "role": "coder-3",
+      "prompt_sha256": "3f42475a5b7efca99853e2eab8c4105effb730dcb8f90f52688fb11b9942529e"
     },
     "discovery-adversary__adversary-of-A__-": {
       "stage": "discovery-adversary",
@@ -654,150 +774,300 @@
       "role": "coders",
       "prompt_sha256": "bbc40b00e6a4012772ad1ecf20f9b10696d83685adb1ee891ce2509ea0a06333"
     },
+    "jev-screen__coders__R01__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "d682c13fe83d9d138c22a54d77955f7fab5eba95c11535b4d16059aaab34c477"
+    },
     "jev-screen__coders__R02": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "166c7b5752291714cb44025a59534431fade681dbfe10c3b149a01c6effa5d05"
+    },
+    "jev-screen__coders__R02__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "dc19769350fe13ec3e27eac637278903317d16be46a8ca10953e373900a971f7"
     },
     "jev-screen__coders__R03": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "ecc78f8dbfb1dff28207b557e81f262cd870a3c03fca52b84b155b0f43fba62c"
     },
+    "jev-screen__coders__R03__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "9e04c41ae6c769b6609f2824c26cbbd077299adc5b6de25cee06bb6ec23d01ec"
+    },
     "jev-screen__coders__R04": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "81d4037dac57a2407c4eaad5a92bcf609dbd5752a8ca998a400cf0bf382855a2"
+    },
+    "jev-screen__coders__R04__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "fbeacabd4772d3ae72a0595ec15a0c95dbb5136cefd7854d9e2a81a9ca8cbb5e"
     },
     "jev-screen__coders__R05": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "285c52df4f5546505bf98cce9009b56b1fc1b07afd3710a43e9f14c62dbdeb3c"
     },
+    "jev-screen__coders__R05__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "26be54052570889d53a1b00dfb5e1874757ceb77c7ee8fd5fea29f0b87c63f85"
+    },
     "jev-screen__coders__R06": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "0c293beb03e2313d58b193b95117397219f040ad4fab06608b3c764c33faa6a3"
+    },
+    "jev-screen__coders__R06__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "00b33f1f5117a5aa0dffc16a5b414ba9b3be78aa637cc90ae1ffae0bd1291d30"
     },
     "jev-screen__coders__R07": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "27f1d92394fda33e5d1743a5032cf145d717b75fef8eb4a3c6eba51a156a4f27"
     },
+    "jev-screen__coders__R07__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "5498943f0af9c323a702490ca9fa7b8283567bb4b4a06271bed756d481bee2f8"
+    },
     "jev-screen__coders__R08": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "477147c4157614fac1d6e8766567815c258df5bbe38ce615bd9309f281d47170"
+    },
+    "jev-screen__coders__R08__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "31e4c523f7c287716af4667e0268f7fa30f1c3db3a84b217e0ef8da7b68c398a"
     },
     "jev-screen__coders__R09": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "e3dd55e7ebda63b12e014fb20b7a13ab6bbf3d525a681c2a76fa2908d2fd9498"
     },
+    "jev-screen__coders__R09__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "1e55cad4374046826e2f67e54090a59449b0e001e423cdde1e818be835822dcf"
+    },
     "jev-screen__coders__R10": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "4765c37881a03638fb1ee694edac4f18d586dc8c96713056d8219208859bc19c"
+    },
+    "jev-screen__coders__R10__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "d175f9e3b9787ae8b45a3fe1be784a2fa7556277459ddabfe2bb046b5d960bf3"
     },
     "jev-screen__coders__R11": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "a446b2e4f2ab75da3be0a6198ad48ed19ba00a644ef49c661a459b8141e93643"
     },
+    "jev-screen__coders__R11__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "3876f630fead9521ae82d77e4f100449cfef7908d987239467ba80441f6a7cf8"
+    },
     "jev-screen__coders__R12": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "8a424d42508d7d758f8438f35552d4c77434fe4477e714b9d6ea633c15bc0acd"
+    },
+    "jev-screen__coders__R12__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "3af54c8ea2596387dfe675f76f53a8a2b8967d730610114982f610ac7a9ba55e"
     },
     "jev-screen__coders__R13": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "c6b455919babaf67331d3859094bbe3cec8d425d153e916197d61905645a38e7"
     },
+    "jev-screen__coders__R13__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "4a35cb02a7114ddc1458b724b7d9956be384d48703d74846128fa96445783946"
+    },
     "jev-screen__coders__R14": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "aa7e8592101e2fda2b6769434f39dba6573ec7ec39fd4a3ed81554562ba08e35"
+    },
+    "jev-screen__coders__R14__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "00bd238c193eabb97c112db3a99fb2fb7fe65a8e1afdcbd6069b7abe12b36a6e"
     },
     "jev-screen__coders__R15": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "8b2340062efcc63de3b65f8662f7210bf1a5da415fad5cf519e885a6c647fd7e"
     },
+    "jev-screen__coders__R15__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "d5505bbe5db99001b400ffe9c7d64d955b036aaa8eb0c85f5e67874279d9f491"
+    },
     "jev-screen__coders__R16": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "62c158fc4dcea91d95083728f7b482ca5f36ef6c073162adbec1fa5fe278bd65"
+    },
+    "jev-screen__coders__R16__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "cb68c56dfcf3374ef0853bf032a79a8cfea73ae4ece33e72809d40ea4f5997d3"
     },
     "jev-screen__coders__R17": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "914f63b769809ea927ad838498cf17f6c432fe559165599fb55a65b458cb7b7b"
     },
+    "jev-screen__coders__R17__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "d71dacb362f913ece68557daee2ef87da85efd820415b7fa7c5776323272f301"
+    },
     "jev-screen__coders__R18": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "ea693db95132f36b76d75bd12e8d9b18932b454b638d4f47b463d386786aab26"
+    },
+    "jev-screen__coders__R18__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "9c726c4a4928d1512acf219366f21df44cebcbd48a309c28295d7fb6f7bc88ef"
     },
     "jev-screen__coders__R19": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "ca06929f80e82f0b0605b2e39aaba0484d23207a0642d8a10c487309bc279b4f"
     },
+    "jev-screen__coders__R19__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "89a29e247152e38dab3c9088636ac5f992560a228fb4b4fbe2a306252132e1c3"
+    },
     "jev-screen__coders__R20": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "7a6a0c0a8b267582dee01d29b06b9e300adab125cfcae478a30936226699defa"
+    },
+    "jev-screen__coders__R20__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "baa6a7e95f37ac5e475d1e9e3fe5fbf1eaaf15ac0557b4034cfade8bc69c2dfa"
     },
     "jev-screen__coders__R21": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "408fa3d9acb0f9656f10c8b769d7ffdfae128627a278012a9794e03298f8e711"
     },
+    "jev-screen__coders__R21__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "24e2c5216b6bcc103ec45fe3600194b80f8009319cdefad72f97391622696b44"
+    },
     "jev-screen__coders__R22": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "405fb9fc65bf5a6df9ed201b9a8d148266fb76c4f6cb909d159b48f78e081618"
+    },
+    "jev-screen__coders__R22__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "5466131b7bfa96fca4d2359c65866e3bb30af6d99d1ef561d0f17badcca59f84"
     },
     "jev-screen__coders__R23": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "8ff2bd31708bbf1f35284f11663fad9c0801e2078837bb646ceb98ae1833cfb0"
     },
+    "jev-screen__coders__R23__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "38c9e52e496c32763d8b7f7863d1aaa41dc7a5db674e25d7c3a26c8af159adc7"
+    },
     "jev-screen__coders__R24": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "d133b9bdc8a59b120397491c5e1b30cd7de40b420bff52a0f77d9edc5a5d3f4f"
+    },
+    "jev-screen__coders__R24__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "207cc4f72030747267dd4e22c262f5e8ac98282dbbc445600dbba5a752ad864a"
     },
     "jev-screen__coders__R25": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "b629aecef22c0a8724b4673f1072b34da531bb883cf66a2ee788e0c604510125"
     },
+    "jev-screen__coders__R25__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "683c1c15ebf857c405eb6d97d003904dd5198ca24b65e37aea282ea3079ed1c7"
+    },
     "jev-screen__coders__R26": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "5d14fd745cf2943cfd97cd4284200ee606a0afcd35e8f7fb786c9c4419f592d6"
+    },
+    "jev-screen__coders__R26__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "947ff3116afa68a952798ea12776f7312afe43feace5d724d3a40fccff73aca2"
     },
     "jev-screen__coders__R27": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "736491611ddb53101a52dad43e85494930fda61a9edafd75b3f4e87a92fc3167"
     },
+    "jev-screen__coders__R27__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "e2fd7dc284c81e278765badf96b6b5574e66a3a34f7f849e7a2d184770f51255"
+    },
     "jev-screen__coders__R28": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "5944872bc42c439f675de45a42f639d74b40ebec040cff17cb64e019c5b027d7"
+    },
+    "jev-screen__coders__R28__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "37ca2178777dc64bd8ea5a944d95762f134e1181af80c789a3af9b25af41061c"
     },
     "jev-screen__coders__R29": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "81b93deea0b68eef3a50f81aec33f0e4bd9402d5734b18be094d6f385aee675d"
     },
+    "jev-screen__coders__R29__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "61ff6089d3a2ea24e27e781adda54ba6bbeae8fc6831ff20cc4e24ce9c65da64"
+    },
     "jev-screen__coders__R30": {
       "stage": "jev-screen",
       "role": "coders",
       "prompt_sha256": "8adbc2b8cbea6a94f3b60917cdeda461694e997b02a5e7949bcbc562e88ce587"
+    },
+    "jev-screen__coders__R30__v1.1": {
+      "stage": "jev-screen",
+      "role": "coders",
+      "prompt_sha256": "8ade2ddf792a6ef08f43291c9ac48e7d738918738aa41bd5e87d535f330add86"
     },
     "reconcile-adversary__reconciliation-adversary__RQ1": {
       "stage": "reconcile-adversary",

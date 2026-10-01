@@ -20,6 +20,9 @@ from collections import OrderedDict, defaultdict
 from datetime import datetime, timezone
 
 M = None   # the council module (cfg, W, helpers), bound by bind()
+# Optional overrides for a dashboard built outside a run's workspace (examples/zhang2023/build_dashboards.py):
+# title, subtitle_html, about_html (a section after the tiles), links [(href, text)], human_html, cost_html.
+OPTIONS = {}
 
 
 def bind(module):
@@ -65,6 +68,8 @@ def collect() -> dict:
     rel = {r["code"]: r for r in M.read_csv(W / "results" / prim / "reliability.csv")} if (W / "results" / prim / "reliability.csv").exists() else {}
     prev = {r["code"]: r for r in M.read_csv(W / "results" / prim / "prevalence.csv")} if (W / "results" / prim / "prevalence.csv").exists() else {}
     ap = rj(W / "codebooks" / "approved_codebook.json")
+    if ap and not ap.get("review") and ap.get("gate"):
+        ap["review"] = ap["gate"]   # codebooks written by the paper's experiment call the review record "gate"
     dec = M.low_alpha_decisions()
 
     analysts = []
@@ -141,7 +146,7 @@ def collect() -> dict:
         ("cfg", cfg), ("corpus", corpus), ("splits", sp), ("prim", prim), ("conds", conds_s), ("summ", summ), ("rel", rel),
         ("prev", prev), ("approved", ap), ("decisions", dec), ("analysts", analysts), ("recon", recon), ("recon_ch", recon_ch),
         ("recon_ans", recon_ans), ("coders", coders), ("cost", cost), ("heldout", rj(W / "results" / "human_council_agreement.json")),
-        ("spot", spot_rows), ("man", rj(W / "manifest.json"))])
+        ("spot", spot_rows), ("man", rj(W / "manifest.json")), ("rounds", M.coding_rounds(ap) if ap else [])])
 
 
 # --------------------------------------------------------------------------- page
@@ -272,15 +277,22 @@ def build() -> str:
     a('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">')
     a('<title>Council Results</title><style>%s</style></head><body><div class="wrap">' % CSS)
     a('<header><div class="theme"><button type="button" id="theme" aria-label="Switch light or dark theme">Light / dark</button></div>')
-    a('<h1>Council results: %s</h1>' % esc(W.name))
+    a('<h1>%s</h1>' % esc(OPTIONS.get("title") or "Council results: %s" % W.name))
     a('<p class="sub">Mode <b>%s</b> &middot; %d %s &middot; %d research question%s &middot; codebook version %s &middot; results of condition <b>%s</b> &middot; generated %s</p>' % (
         esc(cfg.mode.capitalize()), len(d["corpus"]), esc(cfg.study["unit_name_plural"]), len(cfg.rqs), "" if len(cfg.rqs) == 1 else "s",
         esc(ap.get("version", "n/a")), esc(d["prim"]), datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")))
     links = [("RESULTS.md", "RESULTS.md (the full report)"), ("results/%s/reliability_report.md" % d["prim"], "Reliability report"),
              ("human/02_author_review/codebook_review.html", "Author review dashboard")]
-    a('<p class="sub">%s</p>' % " &middot; ".join('<a href="%s">%s</a>' % (esc(h), esc(l)) for h, l in links if (W / h).exists()))
-    a('<nav class="toc" aria-label="Sections"><a href="#stages">Stages</a><a href="#reliability">Reliability</a><a href="#prevalence">Prevalence</a>'
-      '<a href="#codebook">Codebook</a><a href="#human">Human checks</a><a href="#cost">Calls and cost</a></nav></header>')
+    links = OPTIONS["links"] if "links" in OPTIONS else [(h, l) for h, l in links if (W / h).exists()]
+    if OPTIONS.get("subtitle_html"):
+        a('<p class="sub">%s</p>' % OPTIONS["subtitle_html"])
+    a('<p class="sub">%s</p>' % " &middot; ".join('<a href="%s">%s</a>' % (esc(h), esc(l)) for h, l in links))
+    has_stages = any(x["v0"] is not None for x in d["analysts"]) or bool(d["recon"])
+    has_cost = bool(d["cost"]["llm"] or d["cost"]["dm"])
+    a('<nav class="toc" aria-label="Sections">%s<a href="#reliability">Reliability</a><a href="#prevalence">Prevalence</a>'
+      '<a href="#codebook">Codebook</a><a href="#human">Human checks</a>%s</nav></header>' % (
+          ('<a href="#stages">%s</a>' % ("About" if OPTIONS.get("about_html") else "Stages")) if has_stages or OPTIONS.get("about_html") else "",
+          '<a href="#cost">Calls and cost</a>' if has_cost or OPTIONS.get("cost_html") else ""))
     if "demo" in (cfg.d.get("data_governance") or "").lower():
         a('<section><p class="note" style="margin:0"><b>Demo.</b> %s</p></section>' % esc(cfg.d.get("data_governance")))
 
@@ -290,15 +302,20 @@ def build() -> str:
     tiles = [(len(d["corpus"]), cfg.study["unit_name_plural"]),
              (d["recon"].get(cfg.mode, {}).get("raw", "n/a"), "raw codes from the analysts"),
              (d["recon"].get(cfg.mode, {}).get("kept", "n/a"), "candidate codes"),
-             (ap.get("n_approved", "n/a"), "approved codes"),
+             (ap.get("n_approved", "n/a"), "approved codes" + (" (codebook %s)" % ap.get("version") if ap.get("low_alpha_rounds") else "")),
              (len(summ.get("codes_retained") or []), "codes retained after reliability"),
              (fmt(alphas), "median Krippendorff's alpha")]
     for v, k in tiles:
+        if v in ("n/a", None):
+            continue
         a('<div class="tile"><div class="v">%s</div><div class="k">%s</div></div>' % (esc(v), esc(k)))
     a('</div></section>')
 
+    if OPTIONS.get("about_html"):
+        a('<section id="stages" aria-labelledby="h-about"><h2 id="h-about">About this run</h2>%s</section>' % OPTIONS["about_html"])
     # stages
-    a('<section id="stages" aria-labelledby="h-st"><h2 id="h-st">What each stage produced</h2>')
+    mark = len(P)
+    a('<section id="%s" aria-labelledby="h-st"><h2 id="h-st">What each stage produced</h2>' % ("stages" if not OPTIONS.get("about_html") else "stages-detail"))
     a('<h3>Stage 1: discovery, codes per analyst</h3><div class="scroll"><table><thead><tr><th>Analyst</th><th>Family</th>'
       '<th class="n">Codes v0</th><th class="n">semantic / latent / contrastive</th>%s</tr></thead><tbody>' % (
           '<th class="n">Codes v1</th><th>Adversary</th><th class="n">Challenges</th><th class="n">Accept / reject / partial</th><th class="n">Quarantined</th>' if cfg.full else ""))
@@ -326,7 +343,7 @@ def build() -> str:
         a('<h3>Stage 3: author review</h3><p>Reviewed by %s. %d edits (%s). <b>%d candidate codes became %d approved codes</b>; %d quarantined candidate(s) admitted. Blind-pass codes the council lacked: %s.</p>' % (
             esc(rv.get("reviewed_by") or "not recorded"), rv.get("n_edits", 0),
             esc(", ".join("%s %d" % kv for kv in (rv.get("edits_by_type") or {}).items()) or "none"),
-            d["recon"].get(cfg.mode, {}).get("kept", 0) or 0, ap.get("n_approved", 0), ap.get("n_quarantined_accepted", 0),
+            d["recon"].get(cfg.mode, {}).get("kept", 0) or 0, ap.get("n_approved", 0) + len(ap.get("dropped_low_alpha") or []), ap.get("n_quarantined_accepted", 0),
             esc("; ".join(rv.get("blind_pass_codes_missing") or []) or "none recorded")))
     if cfg.full and d["coders"]:
         a('<h3>Stage 4: coding adversaries</h3><div class="scroll"><table><thead><tr><th>Coder</th><th>Family</th><th>Adversary</th>'
@@ -337,6 +354,8 @@ def build() -> str:
                 esc(x["id"]), esc(x["family"]), esc(x["adversary"]), x["challenges"], an["ACCEPT"], an["REJECT"], an["PARTIAL"], x["added"], x["removed"]))
         a('</tbody></table></div>')
     a('</section>')
+    if not has_stages:
+        del P[mark:]   # no stage outputs in this folder (a results-only dashboard)
 
     # reliability
     a('<section id="reliability" aria-labelledby="h-rel"><h2 id="h-rel">Reliability (condition %s)</h2>' % esc(d["prim"]))
@@ -344,7 +363,7 @@ def build() -> str:
         a('<p class="empty">No coding results yet: run Stage 4.</p></section>')
     else:
         low = summ.get("codes_dropped_alpha_below_floor") or []
-        hi = [c for c in summ.get("codes_retained", []) if (num(rel.get(c, {}).get("alpha")) or 0) >= high]
+        hi = [c for c in summ.get("codes_retained", []) if (num(rel.get(c, {}).get("alpha"), 12) or 0) >= high]
         a('<div class="tiles">')
         for v, k in [(fmt(summ.get("alpha_median")), "median alpha"), ("%s to %s" % (fmt(summ.get("alpha_min")), fmt(summ.get("alpha_max"))), "min to max"),
                      (len(low), "codes below %s" % floor), (len(hi), "codes at or above %s" % high),
@@ -361,6 +380,16 @@ def build() -> str:
         a('<div class="legend"><span><span class="sw" style="background:var(--series)"></span>alpha of a retained code</span>'
           '<span><span class="sw" style="background:var(--critical)"></span>below %s (goes to the researchers)</span>'
           '<span><span class="sw dash"></span>%s floor and %s high mark</span></div>' % (floor, floor, high))
+        for rd in d["rounds"]:
+            rs = rd["summary"]
+            a('<h3>Earlier coding round: codebook %s</h3><p>Median alpha <b>%s</b> (%s to %s); %d code%s below %s. The researchers decided:</p><ul>' % (
+                esc(rd["from_version"]), fmt(rs.get("alpha_median")), fmt(rs.get("alpha_min")), fmt(rs.get("alpha_max")),
+                len(rs.get("codes_dropped_alpha_below_floor") or []), "" if len(rs.get("codes_dropped_alpha_below_floor") or []) == 1 else "s", floor))
+            for x in rd["decisions"]:
+                a('<li><b>%s %s</b> (alpha %s) <b>%s</b>%s</li>' % (esc(x["id"]), esc(x["label"]), fmt(x["alpha"]),
+                                                                   "refined" if x["op"] == "refine" else "dropped", (": " + esc(x["reason"])) if x["reason"] else ""))
+            a('</ul><p class="note">That round is archived in <code>%s/</code>. The whole corpus was then recoded with codebook %s; '
+              'the figures on this page are from that recode.</p>' % (esc(rd["archived_to"]), esc(rd["to_version"])))
         a('<h3>Codes below %s and the researchers\' decision</h3>' % floor)
         if not low:
             a('<p class="empty">None.</p>')
@@ -446,25 +475,34 @@ def build() -> str:
     a('</section>')
 
     # human checks
-    a('<section id="human" aria-labelledby="h-hu"><h2 id="h-hu">Human checks</h2><ul>')
-    hc = d["heldout"]
-    a('<li>Held-out sample: %s</li>' % ("pooled kappa <b>%s</b> between the researchers\' resolved labels and council consensus, over %d units and %d codes (median per-code kappa %s)." % (
-        fmt(hc.get("pooled_kappa")), hc.get("n_units", 0), hc.get("n_codes_scored", 0), fmt(hc.get("median_kappa_per_code"))) if hc else "not yet scored."))
-    sr = d["spot"]
-    if sr is not None:
-        no = [r for r in sr if (r.get("keep") or "").strip().lower() in ("n", "no", "0", "false", "remove")]
-        a('<li>Spot-check: %d rows checked; %d not kept%s.</li>' % (len(sr), len(no), (": " + esc("; ".join("%s %s" % (r.get("uid"), r.get("code")) for r in no))) if no else ""))
+    a('<section id="human" aria-labelledby="h-hu"><h2 id="h-hu">Human checks</h2>')
+    if OPTIONS.get("human_html"):
+        a(OPTIONS["human_html"])
     else:
-        a('<li>Spot-check: not yet returned.</li>')
-    a('<li>Blind pass: %d %s; codes the council lacked: %s.</li>' % (len(d["splits"].get("blind_pass", [])), esc(cfg.study["unit_name_plural"]),
-                                                                    esc("; ".join(rv.get("blind_pass_codes_missing") or []) or "none recorded")))
-    a('</ul></section>')
+        a('<ul>')
+        hc = d["heldout"]
+        a('<li>Held-out sample: %s</li>' % ("pooled kappa <b>%s</b> between the researchers\' resolved labels and council consensus, over %d units and %d codes (median per-code kappa %s)." % (
+            fmt(hc.get("pooled_kappa")), hc.get("n_units", 0), hc.get("n_codes_scored", 0), fmt(hc.get("median_kappa_per_code"))) if hc else "not yet scored."))
+        sr = d["spot"]
+        if sr is not None:
+            no = [r for r in sr if (r.get("keep") or "").strip().lower() in ("n", "no", "0", "false", "remove")]
+            a('<li>Spot-check: %d rows checked; %d not kept%s.</li>' % (len(sr), len(no), (": " + esc("; ".join("%s %s" % (r.get("uid"), r.get("code")) for r in no))) if no else ""))
+        else:
+            a('<li>Spot-check: not yet returned.</li>')
+        a('<li>Blind pass: %d %s; codes the council lacked: %s.</li>' % (len(d["splits"].get("blind_pass", [])), esc(cfg.study["unit_name_plural"]),
+                                                                        esc("; ".join(rv.get("blind_pass_codes_missing") or []) or "none recorded")))
+        a('</ul>')
+    a('</section>')
 
     # cost
-    a('<section id="cost" aria-labelledby="h-cost"><h2 id="h-cost">Calls, tokens and cost by stage</h2>')
-    cost = d["cost"]
+    a('<section id="cost" aria-labelledby="h-cost"%s><h2 id="h-cost">Calls, tokens and cost by stage</h2>' % ("" if has_cost or OPTIONS.get("cost_html") else " hidden"))
+    if OPTIONS.get("cost_html"):
+        a(OPTIONS["cost_html"])
+    cost = d["cost"] if has_cost or not OPTIONS.get("cost_html") else {"llm": [], "dm": [], "estimated": []}
     for kind, title in (("llm", "Model calls (analysts, adversaries, reconciler, coders)"), ("dm", "Decision-model requests")):
         rows = cost[kind]
+        if OPTIONS.get("cost_html") and not has_cost:
+            break
         a('<h3>%s</h3>' % title)
         if not rows:
             a('<p class="empty">None.</p>')
@@ -481,7 +519,8 @@ def build() -> str:
     if cost["estimated"]:
         a('<p class="note">Token counts of manually answered or replayed calls are estimates (about 4 characters per token); costs use the list prices in the config (`prices`).</p>')
     a('</section>')
-    a('<p class="note">Built by <code>council.py dashboard</code> from the files in this workspace. Nothing on this page is loaded from the network.</p>')
+    a('<p class="note">%s Nothing on this page is loaded from the network.</p>' % (
+        OPTIONS.get("footer_html") or "Built by <code>council.py dashboard</code> from the files in this workspace."))
     a('</div><script>%s</script></body></html>' % JS)
     return "".join(P)
 
