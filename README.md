@@ -14,7 +14,7 @@ cd council-pipeline
 python3 pipeline/app.py
 ```
 
-Open the address it prints, **http://127.0.0.1:8765/** (only your computer can reach it). Then:
+Open the address it prints, **http://127.0.0.1:8765/**. Then:
 
 1. **Try the demo**: the button on the Start page runs the whole procedure in Full mode on 30
    invented survey answers, with recorded replies instead of models (no key, no network, a few
@@ -58,8 +58,8 @@ The local app (`python3 pipeline/app.py`) after **Try the demo**, and the dashbo
 ## About
 
 This repository runs the bounded AI council procedure for codebook thematic analysis of qualitative
-data, as described in *A Bounded AI Council Procedure for Thematic Analysis of Qualitative Data in
-Software Engineering Research* (Choudhuri, Bird, Badea, Sarma). Models from three families do the
+data, as described in *A Bounded AI Council Procedure for Qualitative Analysis in Software Engineering Research*
+(Choudhuri, Bird, Badea, Sarma). Models from three families do the
 assembly work: three analysts independently read the corpus once per research question and propose
 candidate codes with cited units and verbatim quotes (discovery); one reconciler groups the
 candidates on shared evidence (reconciliation); three coders apply the approved codebook to every
@@ -209,8 +209,8 @@ Please cite the paper (and this software; see `CITATION.cff`):
 ```bibtex
 @unpublished{choudhuri2026council,
   author = {Choudhuri, Rudrajit and Bird, Christian and Badea, Carmen and Sarma, Anita},
-  title  = {A Bounded {AI} Council Procedure for Thematic Analysis of Qualitative Data in
-            Software Engineering Research},
+  title  = {A Bounded {AI} Council Procedure for Qualitative Analysis in Software Engineering
+            Research},
   year   = {2026},
   note   = {Manuscript under review}
 }

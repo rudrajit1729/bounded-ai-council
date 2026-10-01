@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this pipeline, please cite the paper and this software."
-title: "A Bounded AI Council Procedure for Thematic Analysis of Qualitative Data in Software Engineering Research"
+title: "A Bounded AI Council Procedure for Qualitative Analysis in Software Engineering Research"
 type: software
 authors:
   - family-names: Choudhuri
@@ -30,7 +30,7 @@ keywords:
   - software engineering
 preferred-citation:
   type: article
-  title: "A Bounded AI Council Procedure for Thematic Analysis of Qualitative Data in Software Engineering Research"
+  title: "A Bounded AI Council Procedure for Qualitative Analysis in Software Engineering Research"
   authors:
     - family-names: Choudhuri
       given-names: Rudrajit
