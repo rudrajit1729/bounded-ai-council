@@ -1,0 +1,483 @@
+{
+ "pairs": 335,
+ "agreeing": 237,
+ "disagreeing": 98,
+ "rows": [
+  {
+   "rq": "RQ1.4",
+   "council_code": "Encryption, token signing, process memory, terminal capture, struct printing",
+   "zhang_category": "String processing",
+   "code_maps_to": "Memory read / Printing / Serialization",
+   "threads": 2
+  },
+  {
+   "rq": "RQ1.4",
+   "council_code": "Self-contained computations: primes, Euclid, intersection, regex scanning, value conversions",
+   "zhang_category": "Data processing",
+   "code_maps_to": "Algorithm / Image processing / String processing / URL building",
+   "threads": 2
+  },
+  {
+   "rq": "RQ1.4",
+   "council_code": "Click handlers, built page elements, CSS and font rules",
+   "zhang_category": "URL building",
+   "code_maps_to": "Front-end element control",
+   "threads": 1
+  },
+  {
+   "rq": "RQ1.4",
+   "council_code": "Encryption, token signing, process memory, terminal capture, struct printing",
+   "zhang_category": "Data processing",
+   "code_maps_to": "Memory read / Printing / Serialization",
+   "threads": 1
+  },
+  {
+   "rq": "RQ1.4",
+   "council_code": "Explaining, documenting, testing, diagramming and fixing code already written",
+   "zhang_category": "Algorithm",
+   "code_maps_to": "Test / Text processing",
+   "threads": 1
+  },
+  {
+   "rq": "RQ1.4",
+   "council_code": "Imports, class members, option names, annotations and repeated boilerplate lines",
+   "zhang_category": "Front-end element control",
+   "code_maps_to": "Iteration / Printing",
+   "threads": 1
+  },
+  {
+   "rq": "RQ1.4",
+   "council_code": "Imports, class members, option names, annotations and repeated boilerplate lines",
+   "zhang_category": "Data processing",
+   "code_maps_to": "Iteration / Printing",
+   "threads": 1
+  },
+  {
+   "rq": "RQ1.4",
+   "council_code": "Schemas, ORM calls, routes and framework or infrastructure config",
+   "zhang_category": "Printing",
+   "code_maps_to": "Data processing",
+   "threads": 1
+  },
+  {
+   "rq": "RQ1.4",
+   "council_code": "Sorting, filtering, de-duplicating and reshaping lists, objects and dataframes",
+   "zhang_category": "Serialization",
+   "code_maps_to": "Data processing / Filtering / Iteration",
+   "threads": 1
+  },
+  {
+   "rq": "RQ1.5",
+   "council_code": "Asking Copilot when stuck, and to fix code that fails",
+   "zhang_category": "To help generate code",
+   "code_maps_to": "To check the code / To fix bugs",
+   "threads": 2
+  },
+  {
+   "rq": "RQ1.5",
+   "council_code": "Checking the suggestion, or keeping it and asking later why it works",
+   "zhang_category": "To provide ideas for writing code",
+   "code_maps_to": "To help generate code / To improve coding ability",
+   "threads": 2
+  },
+  {
+   "rq": "RQ1.5",
+   "council_code": "Getting code for a language, API or task I don't know",
+   "zhang_category": "To provide ideas for writing code",
+   "code_maps_to": "To help generate code / To improve coding ability",
+   "threads": 2
+  },
+  {
+   "rq": "RQ1.5",
+   "council_code": "Having Copilot produce the code for a task, function or config block",
+   "zhang_category": "To fix bugs",
+   "code_maps_to": "To help generate code / To provide ideas for writing code",
+   "threads": 2
+  },
+  {
+   "rq": "RQ1.5",
+   "council_code": "Installing Copilot, or its new chat, to see what it can do",
+   "zhang_category": "To help generate code",
+   "code_maps_to": "To try out the functionality of Copilot",
+   "threads": 2
+  },
+  {
+   "rq": "RQ1.5",
+   "council_code": "Checking the suggestion, or keeping it and asking later why it works",
+   "zhang_category": "To fix bugs",
+   "code_maps_to": "To help generate code / To improve coding ability",
+   "threads": 1
+  },
+  {
+   "rq": "RQ1.5",
+   "council_code": "Checking the suggestion, or keeping it and asking later why it works",
+   "zhang_category": "To check the code",
+   "code_maps_to": "To help generate code / To improve coding ability",
+   "threads": 1
+  },
+  {
+   "rq": "RQ1.5",
+   "council_code": "Finishing the line or function as I type, in whatever editor I work in",
+   "zhang_category": "To try out the functionality of Copilot",
+   "code_maps_to": "To help generate code",
+   "threads": 1
+  },
+  {
+   "rq": "RQ1.5",
+   "council_code": "Finishing the line or function as I type, in whatever editor I work in",
+   "zhang_category": "To generate code comments",
+   "code_maps_to": "To help generate code",
+   "threads": 1
+  },
+  {
+   "rq": "RQ1.5",
+   "council_code": "Finishing the line or function as I type, in whatever editor I work in",
+   "zhang_category": "To improve coding ability",
+   "code_maps_to": "To help generate code",
+   "threads": 1
+  },
+  {
+   "rq": "RQ1.5",
+   "council_code": "Getting code for a language, API or task I don't know",
+   "zhang_category": "To fix bugs",
+   "code_maps_to": "To help generate code / To improve coding ability",
+   "threads": 1
+  },
+  {
+   "rq": "RQ1.5",
+   "council_code": "Posting Copilot's code as the answer to someone else's question",
+   "zhang_category": "To provide ideas for writing code",
+   "code_maps_to": "To fix bugs / To help generate code",
+   "threads": 1
+  },
+  {
+   "rq": "RQ1.5",
+   "council_code": "Writing a plain-language comment and letting Copilot write the code",
+   "zhang_category": "To provide ideas for writing code",
+   "code_maps_to": "To help generate code",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.1",
+   "council_code": "Answerers post Copilot's output as the answer, saying where it came from",
+   "zhang_category": "Better code quality",
+   "code_maps_to": "Useful code generation",
+   "threads": 3
+  },
+  {
+   "rq": "RQ2.1",
+   "council_code": "Called great, or met with astonishment, with no capability named",
+   "zhang_category": "Faster development",
+   "code_maps_to": "Better user experience / Useful code generation",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.1",
+   "council_code": "Completes whole lines and function bodies as you type",
+   "zhang_category": "Good adaptation to users' code patterns",
+   "code_maps_to": "Faster development / Useful code generation",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.1",
+   "council_code": "Helpful when stuck or for whole blocks, in the way otherwise",
+   "zhang_category": "Frequent updates to provide more features",
+   "code_maps_to": "Better user experience / Useful code generation",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.1",
+   "council_code": "Offers up to ten alternative solutions to pick from",
+   "zhang_category": "Frequent updates to provide more features",
+   "code_maps_to": "Better user experience / Useful code generation",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.1",
+   "council_code": "Picks up the surrounding code and the repeated pattern",
+   "zhang_category": "Better code quality",
+   "code_maps_to": "Good adaptation to users' code patterns / Useful code generation",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.1",
+   "council_code": "Provisional until someone who knows checks it, and the thread often does the checking",
+   "zhang_category": "Better code quality",
+   "code_maps_to": "Useful code generation",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.1",
+   "council_code": "Write the comment or pseudocode, press Tab, and it writes the code",
+   "zhang_category": "Good adaptation to users' code patterns",
+   "code_maps_to": "Faster development / Useful code generation",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "Copilot overrides editor settings and breaks typing: brackets, duplicate keys, dead redo",
+   "zhang_category": "Limitation to code generation",
+   "code_maps_to": "Difficulty of integration / Hard to configure / Show loading",
+   "threads": 5
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "The only fix is turning Copilot off; some do, others configure around it",
+   "zhang_category": "Limitation to code generation",
+   "code_maps_to": "Difficulty of integration / Lack of customization / Unfriendly user experience",
+   "threads": 5
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "Corporate proxies, VPNs and certificates block it: works at home, not at work",
+   "zhang_category": "Difficulty of integration",
+   "code_maps_to": "Difficulty of accessing Copilot / Hard to configure",
+   "threads": 3
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "Signing in, authorizing or activating Copilot fails",
+   "zhang_category": "Difficulty of integration",
+   "code_maps_to": "Difficulty of accessing Copilot / Hard to configure",
+   "threads": 3
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "A working Copilot stops suggesting, with no error, and fixes are rituals",
+   "zhang_category": "Poor quality of generated code / Unfriendly user experience",
+   "code_maps_to": "Difficulty of accessing Copilot / Difficulty of integration / Hard to configure / Show loading",
+   "threads": 2
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "Copilot blamed for editor behaviour that turned out to have another cause",
+   "zhang_category": "Limitation to code generation",
+   "code_maps_to": "Difficulty of integration",
+   "threads": 2
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "Copilot's Tab and Ctrl+Enter collide with other keys, or can't be typed",
+   "zhang_category": "Limitation to code generation",
+   "code_maps_to": "Difficulty of integration / Lack of customization / Unfriendly user experience",
+   "threads": 2
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "Little can be configured, so posters edit JSON, add plugins, patch the extension",
+   "zhang_category": "Difficulty of integration",
+   "code_maps_to": "Hard to configure / Lack of customization / Limitation to code generation",
+   "threads": 2
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "Little can be configured, so posters edit JSON, add plugins, patch the extension",
+   "zhang_category": "Poor quality of generated code / Unfriendly user experience",
+   "code_maps_to": "Hard to configure / Lack of customization / Limitation to code generation",
+   "threads": 2
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "Little can be configured, so posters edit JSON, add plugins, patch the extension",
+   "zhang_category": "Difficulty of accessing Copilot",
+   "code_maps_to": "Hard to configure / Lack of customization / Limitation to code generation",
+   "threads": 2
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "Suggested code is wrong, invented, or no help at all",
+   "zhang_category": "Difficulty of understanding the generated code",
+   "code_maps_to": "Challenge of not providing outdated suggestions / Limitation to code generation / Poor quality of generated code",
+   "threads": 2
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "Suggestions come in some languages and file types but not others",
+   "zhang_category": "Difficulty of integration",
+   "code_maps_to": "Limitation to code generation",
+   "threads": 2
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "A working Copilot stops suggesting, with no error, and fixes are rituals",
+   "zhang_category": "Limitation to code generation",
+   "code_maps_to": "Difficulty of accessing Copilot / Difficulty of integration / Hard to configure / Show loading",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "A working Copilot stops suggesting, with no error, and fixes are rituals",
+   "zhang_category": "High pricing",
+   "code_maps_to": "Difficulty of accessing Copilot / Difficulty of integration / Hard to configure / Show loading",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "A working Copilot stops suggesting, with no error, and fixes are rituals",
+   "zhang_category": "Unfriendly user experience",
+   "code_maps_to": "Difficulty of accessing Copilot / Difficulty of integration / Hard to configure / Show loading",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "A working Copilot stops suggesting, with no error, and fixes are rituals",
+   "zhang_category": "High pricing / Limitation to code generation",
+   "code_maps_to": "Difficulty of accessing Copilot / Difficulty of integration / Hard to configure / Show loading",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "Accept inserts the whole block when only one line was wanted",
+   "zhang_category": "Difficulty of integration / Poor quality of generated code",
+   "code_maps_to": "Lack of customization / Unfriendly user experience",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "Accept inserts the whole block when only one line was wanted",
+   "zhang_category": "Difficulty of integration / Limitation to code generation",
+   "code_maps_to": "Lack of customization / Unfriendly user experience",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "Copilot blamed for editor behaviour that turned out to have another cause",
+   "zhang_category": "High pricing",
+   "code_maps_to": "Difficulty of integration",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "Copilot overrides editor settings and breaks typing: brackets, duplicate keys, dead redo",
+   "zhang_category": "Poor quality of generated code / Unfriendly user experience",
+   "code_maps_to": "Difficulty of integration / Hard to configure / Show loading",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "Copilot's Tab and Ctrl+Enter collide with other keys, or can't be typed",
+   "zhang_category": "Hard to configure",
+   "code_maps_to": "Difficulty of integration / Lack of customization / Unfriendly user experience",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "Labs and Chat panels never appear or return errors",
+   "zhang_category": "Poor quality of generated code",
+   "code_maps_to": "Difficulty of accessing Copilot / Difficulty of integration / Limitation to code generation",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "Little can be configured, so posters edit JSON, add plugins, patch the extension",
+   "zhang_category": "Difficulty of integration / Poor quality of generated code",
+   "code_maps_to": "Hard to configure / Lack of customization / Limitation to code generation",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "No way to tell whether the code is right or what it does",
+   "zhang_category": "Limitation to code generation",
+   "code_maps_to": "Difficulty of understanding the generated code / Poor quality of generated code",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "Not available for this IDE, platform, version, machine or container",
+   "zhang_category": "Limitation to code generation",
+   "code_maps_to": "Difficulty of accessing Copilot / Difficulty of integration / Hard to configure",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "Not available for this IDE, platform, version, machine or container",
+   "zhang_category": "Poor quality of generated code",
+   "code_maps_to": "Difficulty of accessing Copilot / Difficulty of integration / Hard to configure",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "Only GitHub or IT can lift the limit, and later answers report it lifted",
+   "zhang_category": "Unfriendly user experience",
+   "code_maps_to": "Difficulty of accessing Copilot / Difficulty of integration / Limitation to code generation",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "Only GitHub or IT can lift the limit, and later answers report it lifted",
+   "zhang_category": "Lack of customization",
+   "code_maps_to": "Difficulty of accessing Copilot / Difficulty of integration / Limitation to code generation",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "Suggestions come back one line, repeated, or arrive unclosed",
+   "zhang_category": "Unfriendly user experience",
+   "code_maps_to": "Limitation to code generation / Poor quality of generated code",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "Suggestions come back one line, repeated, or arrive unclosed",
+   "zhang_category": "Difficulty of integration",
+   "code_maps_to": "Limitation to code generation / Poor quality of generated code",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "Suggestions come in some languages and file types but not others",
+   "zhang_category": "High pricing",
+   "code_maps_to": "Limitation to code generation",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "The only fix is turning Copilot off; some do, others configure around it",
+   "zhang_category": "Code privacy threat",
+   "code_maps_to": "Difficulty of integration / Lack of customization / Unfriendly user experience",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "Waitlist, trial, payment and the signed-in account decide who can use it",
+   "zhang_category": "Difficulty of integration",
+   "code_maps_to": "Difficulty of accessing Copilot / High pricing",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.2",
+   "council_code": "Waitlist, trial, payment and the signed-in account decide who can use it",
+   "zhang_category": "Poor quality of generated code / Unfriendly user experience",
+   "code_maps_to": "Difficulty of accessing Copilot / High pricing",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.3",
+   "council_code": "Keys that accept and browse suggestions, and the Tab clashes they cause",
+   "zhang_category": "Can be integrated with more IDEs",
+   "code_maps_to": "Allow customization of shortcuts for suggestions / Compatible with other code generation tools",
+   "threads": 2
+  },
+  {
+   "rq": "RQ2.3",
+   "council_code": "Document the settings, let me build on it, stop overriding my editor",
+   "zhang_category": "Accept the needed part of the suggestions",
+   "code_maps_to": "Compatible with other code generation tools",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.3",
+   "council_code": "Side by side with IntelliSense: coexisting with the editor's own completion",
+   "zhang_category": "Give suggestions when requested",
+   "code_maps_to": "Compatible with other code generation tools / Suggestions in IDE UI can be configured",
+   "threads": 1
+  },
+  {
+   "rq": "RQ2.3",
+   "council_code": "Too much, too often: suggest only when I ask and stay quiet in comments, paths and normal mode",
+   "zhang_category": "Accept the needed part of the suggestions",
+   "code_maps_to": "Give suggestions when requested / Suggestions in IDE UI can be configured",
+   "threads": 1
+  }
+ ]
+}
