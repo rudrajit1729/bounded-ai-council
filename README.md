@@ -83,7 +83,7 @@ The local app (`python3 pipeline/app.py`) after **Try the demo**, and the dashbo
 ## About
 
 This repository runs the bounded AI council procedure for codebook thematic analysis of qualitative
-data, as described in *A Bounded AI Council Procedure for Qualitative Analysis in Software Engineering Research*
+data, as described in *A Pragmatic Approach to Qualitative Analysis in SE Research Using an AI Council*
 (Choudhuri, Bird, Badea, Sarma). Models from three families do the
 assembly work: three analysts independently read the corpus once per research question and propose
 candidate codes with cited units and verbatim quotes (discovery); one reconciler groups the
@@ -239,8 +239,7 @@ Please cite the paper (and this software; see `CITATION.cff`):
 ```bibtex
 @unpublished{choudhuri2026council,
   author = {Choudhuri, Rudrajit and Bird, Christian and Badea, Carmen and Sarma, Anita},
-  title  = {A Bounded {AI} Council Procedure for Qualitative Analysis in Software Engineering
-            Research},
+  title  = {A Pragmatic Approach to Qualitative Analysis in {SE} Research Using an {AI} Council},
   year   = {2026},
   note   = {Manuscript under review}
 }
